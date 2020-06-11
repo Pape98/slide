@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>SLIDE | Home Page</title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+      
+          
+             <h2 class="ui center aligned icon header">
+                  <i class="hand point right outline icon"></i>
+                  <div class="content">
+                    DMs Attendance
+                    <div class="sub header">This is used to take attendance during General Meetings.</div>
+                    <div style="padding-top:20px">
+                        <% if(requestee.position.indexOf("President") >= 0 || requestee.position.indexOf("Executive") >= 0 ){ %>
+                        <a id="createMeeting"><button class="ui secondary button">Create a meeting</button></a>
+                        <% } %>
+                    </div>
+                  </div>
+            </h2>
+            
+           
+            
+             <div class="ui centered cards" style="padding:20px;">
+                
+                 
+            <% meetings.forEach(function(meeting){ %>
+            
+                <div class="ui small  card">
+                
+                    <div class="ui center aligned content">
+                        <div class="ui image small " style="padding: 20px 0 20px 0">
+                              <img src="https://openclipart.org/image/2400px/svg_to_png/272517/diversemeeting.png">
+                      </div>
+                        <% if(requestee.position.indexOf("President") >= 0 || requestee.position.indexOf("Executive") >= 0 ){ %>
+                            <a href="/meetings/<%= meeting._id %>/delete"><i class="right floated mini ui icon red large close delete" data-content="Click to delete"></i></a>
+                        <% } %>
+                      <div class="header"><%= meeting.meetingDate%></div>
+                     
+                    </div>
+                   <div class="ui center aligned extra content">
+                       <a href="/meetings/<%=meeting._id %>"><div class="ui fluid  yellow button">View/Take Attendance</div> </a> 
+                    </div>
+                  </div>
+            
+            <% }); %>
+              
+             </div>
+              
+           
+<!--  ------------------------------------------------------------------------------------------------------>
+
+         <div class="ui basic modal">
+          
+          <form class="ui inverted center aligned tiny form" method="POST" action="/meetings/new" style="padding-left:230px; padding-right:230px;">
+              <div class="field">
+                   <h2 class="ui center aligned icon header" style="color:white">
+                      <i class="calendar icon" style="color:white"></i>
+                      <div class=" content">
+                        Create an Meeting
+                        <div class="sub header" style="color:white">Enter Date of Meeting: (Example: September 24th)</div>
+                       
+                      </div>
+                    </h2>
+                
+                <input type="text" name="meetingDate" placeholder="Meeting Date">
+              </div>
+              <button class="ui right floated primary button" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <% include ../partials/footer2 %>
+
+    </body>
+</html>

@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <title>SLIDE | Lunch Buddy</title>
+       
+       
+        <% if (user.role == "member"){%>
+          <% include ../partials/menu2 %>
+        <% } else {%>
+            <% include ../partials/menu3 %>
+        <%} %>
+
+
+                <div class="thirteen wide column" id ="secondcolumn" style="padding-right:42px">
+                  
+                     <h2 class="ui center aligned icon header">
+                          <i class=" handshake icon"></i>
+                          <div class="content">
+                            Lunch Buddies
+                            <div class="sub header">You can view your lunch buddies for the week on this page</div>
+                          </div>
+                    </h2>
+
+<!-- ---------------------------------------------------------------------------------------------------------- -->
+                    <% var today = new Date();  %>
+                    <% var today = today.getTime(); %>
+
+                    <h4 class="ui dividing header">Current Buddy</h4>
+
+
+                    <% lunchBuddyEvents.forEach(function(event){ %>
+                    
+                  <% if(event.lunchBuddyIds[1] != undefined && event.lunchBuddyIds[0] != undefined){%>
+                    <% if(today < event.eventDate){ %>
+
+                        <% if (JSON.stringify(user._id) == JSON.stringify(event.lunchBuddyIds[0]._id)){%>
+                              
+                             
+                                <div class="ui centered card">
+                                    <div class="content">
+                                      <img class="right floated mini ui image" src="<%=event.lunchBuddyIds[1].profilePicture%>">
+                                      <div class="header">
+                                        <%=event.lunchBuddyIds[1].firstName.toUpperCase()%>&nbsp;<%=event.lunchBuddyIds[1].lastName.toUpperCase()%>
+                                      </div>
+                                      <div class="meta">
+                                         <% if(event.lunchBuddyIds[1].subcommittee == "SAAM"){ %>
+                                            <div class="ui teal  label">SAAM</div>
+                                        <% }%>
+
+                                        <% if(event.lunchBuddyIds[1].subcommittee == "DEVO"){ %>
+                                            <span class="ui purple  label">DEVO</span>
+                                        <%}%>
+
+                                        <% if(event.lunchBuddyIds[1].subcommittee == "SHIP"){ %>
+                                           <div class="ui red  label">SHIP</div>
+                                        <%}%>
+
+                                        <% if(event.lunchBuddyIds[1].subcommittee == "RAMH"){ %>
+                                            <div class="ui green   label">RAMH</div>
+                                        <%}%>
+
+                                        <% if(event.lunchBuddyIds[1].role == "staff"){ %>
+                                            <div class="ui black   label">STAFF</div>
+                                        <%}%>
+                                      </div>
+                                      </div>
+                                      <div class="content">
+                                        <div class="description">
+                                        <%=event.Description%>
+                                      </div>
+                                      
+                                    </div>
+
+                                    <div class="extra content">
+                                      <a>
+                                        <i class="phone icon"></i>
+                                        <%=event.lunchBuddyIds[1].phoneNumber%>
+                                      </a>
+                                       <div class="">
+                                        <i class="at icon"></i>
+                                        <%=event.lunchBuddyIds[1].email%>
+                                      </div>
+                                    </div>
+
+                                 
+                                       <% var d = new Date(); %>
+                                       <% var m = new Date(); %>
+                                       <% m = event.eventDate %>
+                                       <% d = d.getTime(); m = m.getTime(); %>
+                                        
+                                       
+                                    
+                                  </div>
+                              
+                        <% } %>
+
+                        <% if (JSON.stringify(user._id) == JSON.stringify(event.lunchBuddyIds[1]._id)){%>
+                             <div class="ui centered card">
+                                    <div class="content">
+                                      <img class="right floated mini ui image" src="<%=event.lunchBuddyIds[0].profilePicture%>">
+                                      <div class="header">
+                                        <%=event.lunchBuddyIds[0].firstName.toUpperCase()%>&nbsp;<%=event.lunchBuddyIds[0].lastName.toUpperCase()%>
+                                      </div>
+                                      <div class="meta">
+                                         <% if(event.lunchBuddyIds[0].subcommittee == "SAAM"){ %>
+                                            <div class="ui teal  label">SAAM</div>
+                                        <% }%>
+
+                                        <% if(event.lunchBuddyIds[0].subcommittee == "DEVO"){ %>
+                                            <span class="ui purple  label">DEVO</span>
+                                        <%}%>
+
+                                        <% if(event.lunchBuddyIds[0].subcommittee == "SHIP"){ %>
+                                           <div class="ui red  label">SHIP</div>
+                                        <%}%>
+
+                                        <% if(event.lunchBuddyIds[0].subcommittee == "RAMH"){ %>
+                                            <div class="ui green   label">RAMH</div>
+                                        <%}%>
+
+                                        <% if(event.lunchBuddyIds[0].role == "staff"){ %>
+                                            <div class="ui black   label">STAFF</div>
+                                        <%}%>
+                                      </div>
+                                      </div>
+                                      <div class="content">
+                                        <div class="description">
+                                        <%=event.Description%>
+                                      </div>
+                                      
+                                    </div>
+
+                                    <div class="extra content">
+                                      <a>
+                                        <i class="phone icon"></i>
+                                        <%=event.lunchBuddyIds[0].phoneNumber%>
+                                      </a>
+                                       <div class="">
+                                        <i class="at icon"></i>
+                                        <%=event.lunchBuddyIds[0].email%>
+                                      </div>
+                                    </div>
+
+                                  
+
+                                   
+                                  </div>
+                          <% } %>
+                        <% } %>
+                        <%}%>
+                    <% }); %>
+
+
+<!-- ---------------------------------------------------------------------------------------------------------- -->
+
+                  
+                    
+                </div>
+            
+        
+
+             <% if (user.role == "member"){%>
+                <% include ../partials/dashboard %>
+              <% } else {%>
+                <% include ../partials/footer2 %>
+              <%} %>
+                
+      
+
+    </body>
+</html>

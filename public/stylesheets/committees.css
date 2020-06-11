@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+html,body{margin:0;padding:0;height:100%;}
+
+@media only screen and (max-width: 768px) {
+
+#mybutton2{
+  display:block;
+	}
+#mybutton{
+  display:none;
+	}
+}
+
+@media only screen and (min-width: 769px) {
+
+#mybutton2{
+  display:none;
+	}
+}
+
+
+ #pic-container {
+    position: relative;
+    text-align: center;
+    color: white;    
+}
+
+#picture{
+	 opacity: 0.91;
+  filter: alpha(opacity=91); /* For IE8 and earlier */
+  -webkit-filter: brightness(70%); /* Safari */
+  filter: brightness(70%);
+
+	
+}
+
+  .logo1 {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width:28%;
+   	max-height:28%;
+ 
+  
+}
+
+
+  #mybutton {
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+}
+
+  .title {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'ABeeZee', sans-serif; 
+    font-size:7vw;
+    color:white;;
+   
+    padding: 8px;
+  
+}
+
+.meaning {
+    position: absolute;
+    top: 61%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'ABeeZee', sans-serif;
+     font-size:3vw;
+    color:white;
+}
+
+  #mybutton2 {
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+}
+
+

@@ -1,0 +1,242 @@
+<html>
+    <head>
+        <title>SLIDE | Create Event </title>
+        <link  rel="stylesheet" type="text/css" href="/stylesheets/calendar.css">  
+       
+
+     <% if(user.role == "member"){ %>
+    
+     <% include ../partials/menu2 %>
+
+        
+        
+            <h2 class="ui center aligned icon header">
+                  <i class="calendar plus icon"></i>
+                  <div class="content">
+                    Create an event
+                    <div class="sub header">Use this form to provide details and time for an event.</div>
+                     <div style="padding-top:20px">
+                        <a href="/my-events"><button class="ui button"> My Events</button></a>
+                        <a href="/event"><button class="ui button"> All Events</button></a>
+                        <a href="/points/view"><button class="ui button"> My Points</button></a>
+                    </div>
+                  </div>
+            </h2> 
+            
+            <div>
+                <form class=" ui equal width tiny form" action="/event" method="POST">
+                     <h4 class="ui dividing header">Event Information</h4>
+                     <div class="fields">
+                         <div class="required field">
+                            <label>Event Name</label>
+                            <input type="text" name="eventName" placeholder="Event Name">
+                         </div>
+                          <div class="required field">
+                              <label>Point Type</label>
+                              <div class="ui selection dropdown">
+                                  <input type="hidden" name="pointType">
+                                  <i class="dropdown icon"></i>
+                                  <div class="default text">-- Select Point Type</div>
+                                  <div class="menu">
+                                      <div class="item" data-value="Social"><div class="ui teal horizontal small label">Social</div></div>
+                                      <div class="item" data-value="Service"><div class="ui yellow horizontal small label">Service</div></div>
+                                      <div class="item" data-value="Programming"><div class="ui purple horizontal small label">Programming</div></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="required field">
+                            <label>Points per shift</label>
+                            <input type="number" name="pointShift" placeholder="Number of points per shif">
+                         </div>
+                     </div>
+                     
+                     <div class="fields">
+                          <div class="required field">
+                            <label>Location</label>
+                            <input type="text" name="Location" placeholder="Address or building">
+                         </div>
+                        <div class=" required field">
+                          <label>Date of Event (ex: mm/dd/yyyy)</label>
+                            <div class="ui right icon input">
+                          <input type="date" name="eventDate" placeholder="Date of Event">
+                          <i class=" calendar icon"></i>
+                        </div>
+                         </div>
+                        <div class="field">
+                          <label>Different Slots ?</label>
+                           <div class="ui selection dropdown">
+                            <input type="hidden" name="slots">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Yes or No</div>
+                            <div class="menu">
+                              <div class="item" data-value="Yes">Yes</div>
+                              <div class="item" data-value="No">No</div>
+                            </div>
+                          </div>
+                         </div>
+                      </div>
+                      
+                      <div class="field">
+                        <label>Event Description (Optional)</label>
+                        <textarea  name="Description" placeholder="Address? Details? Ask for someone when you get there?"></textarea>
+                      </div>
+                     
+            <h4 class="ui dividing header">Time Information</h4>         
+                   <div class="fields" style="padding-bottom:30px";>
+                        <div class="required field">
+                            <label>Start Time:</label>
+                            <div class="ui right icon input">
+                            <input type="time" name="startTime">
+                            <i class="hourglass start icon"></i>
+                         </div>
+                         </div>
+                         <div class=" field">
+                            <label>End Time:</label>
+                            <div class="ui right icon input">
+                            <input type="time" name="endTime">
+                            <i class="hourglass end icon"></i>
+                         </div>
+                         </div>
+                          <div class=" field">
+                            <label>Number of Spots</label>
+                            <input type="number" name="numberSpots" placeholder="Number of spots available">
+                         </div>
+                     </div>
+                   
+                   
+                      <div class="ui right floated  buttons" style="margin-top:-20px">
+                          <button class="ui button">Cancel</button>
+                          <div class="or"></div>
+                          <button class="ui submit green button">Submit</button>
+                        </div>
+                    
+                </form>
+            </div>
+        </div>
+        
+         <% include ../partials/dashboard %>
+         
+          <% } else { %>
+         
+         
+             <% include ../partials/menu3 %>
+
+        <div class="twelve wide column" id ="secondcolumn" style="padding-left:35px;">
+            
+        <% if(success && success.length > 0){ %>   
+            <div class="ui positive message">
+              <div class="header">
+                <%= success %>
+              </div>
+              <p><%=check%></p>
+            </div>
+        <% } %>
+        
+            <h2 class="ui center aligned icon header">
+                  <i class="calendar plus icon"></i>
+                  <div class="content">
+                    Create an event
+                    <div class="sub header">Use this form to provide details and time for an event.</div>
+                  </div>
+            </h2> 
+            
+            <div>
+                <form class=" ui equal width tiny form" action="/event" method="POST">
+                     <h4 class="ui dividing header">Event Information</h4>
+                     <div class="fields">
+                         <div class="required field">
+                            <label>Event Name</label>
+                            <input type="text" name="eventName" placeholder="Event Name">
+                         </div>
+                          <div class="required field">
+                              <label>Point Type</label>
+                              <div class="ui selection dropdown">
+                                  <input type="hidden" name="pointType">
+                                  <i class="dropdown icon"></i>
+                                  <div class="default text">-- Select Point Type</div>
+                                  <div class="menu">
+                                      <div class="item" data-value="Social"><div class="ui teal horizontal small label">Social</div></div>
+                                      <div class="item" data-value="Service"><div class="ui yellow horizontal small  label">Service</div></div>
+                                      <div class="item" data-value="Programming"><div class="ui purple horizontal small label">Programming</div></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="required field">
+                            <label>Points per shift</label>
+                            <input type="number" name="pointShift" placeholder="Number of points per shif">
+                         </div>
+                     </div>
+                     
+                     <div class="fields">
+                          <div class="required field">
+                            <label>Location</label>
+                            <input type="text" name="Location" placeholder="Address or building">
+                         </div>
+                        <div class=" required field">
+                          <label>Date of Event (ex: mm/dd/yyyy)</label>
+                            <div class="ui right icon input">
+                          <input type="date" name="eventDate" placeholder="Date of Event">
+                          <i class=" calendar icon"></i>
+                        </div>
+                         </div>
+                        <div class="field">
+                          <label>Different Slots ?</label>
+                           <div class="ui selection dropdown">
+                            <input type="hidden" name="slots">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Yes or No</div>
+                            <div class="menu">
+                              <div class="item" data-value="Yes">Yes</div>
+                              <div class="item" data-value="No">No</div>
+                            </div>
+                          </div>
+                         </div>
+                      </div>
+                      
+                      <div class="field">
+                        <label>Event Description (Optional)</label>
+                        <textarea  name="Description" placeholder="Address? Details? Ask for someone when you get there?"></textarea>
+                      </div>
+                     
+            <h4 class="ui dividing header">Time Information</h4>         
+                   <div class="fields" style="padding-bottom:30px";>
+                        <div class="required field">
+                            <label>Start Time:</label>
+                            <div class="ui right icon input">
+                            <input type="time" name="startTime">
+                            <i class="hourglass start icon"></i>
+                         </div>
+                         </div>
+                         <div class=" field">
+                            <label>End Time:</label>
+                            <div class="ui right icon input">
+                            <input type="time" name="endTime">
+                            <i class="hourglass end icon"></i>
+                         </div>
+                         </div>
+                          <div class=" field">
+                            <label>Number of Spots</label>
+                            <input type="number" name="numberSpots" placeholder="Number of spots available">
+                         </div>
+                     </div>
+                   
+                   
+                      <div class="ui right floated  buttons">
+                          <button class="ui button">Cancel</button>
+                          <div class="or"></div>
+                          <button class="ui submit green button">Submit</button>
+                        </div>
+                    
+                </form>
+            </div>
+        </div>
+        
+         <% include ../partials/footer2 %>
+         
+         
+         <% } %>
+        <script type="text/javascript" src="/javascripts/calendar.js"></script> 
+        
+
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>SLIDE | Forms</title>
+
+        <% include ../partials/menu2 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+          
+             <h2 class="ui center aligned icon header">
+                  <i class=" file icon"></i>
+                  <div class="content">
+                    Forms
+                    <div class="sub header">All forms will be located here for you to complete.</div>
+                  </div>
+            </h2>
+            
+        <% forms.forEach(function(form){ %>
+            <h2 class="ui dividing center aligned header"><%=form.title.toUpperCase()%></h2>
+            <p style="text-align:center"> <iframe src="<%=form.link%>"style="border-width:0;position: absolute; top: 90%; left: 0;width: 100%;height: 270%;border: 0;" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe></p>
+            <div style="height:50px"></div>
+        <% }) %>    
+             
+        </div>
+        
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+         <% include ../partials/dashboard %>
+        
+        
+
+    </body>
+</html>

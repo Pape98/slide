@@ -1,0 +1,456 @@
+         <meta charset="utf-8" />
+         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+       
+        <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+          
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">   
+        <link href="https://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Yantramanav:100" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">   
+        <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/Semantic-UI-Alert.css">
+       
+        <link href="https://fonts.googleapis.com/css?family=ABeeZee:400i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+        <LINK REL="SHORTCUT ICON" HREF="https://image.ibb.co/fmud4w/download.jpg">
+        
+
+        <script> 
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
+     
+    
+        
+        <style>
+
+            html {
+                height: 100%;
+              }
+              body {
+                min-height: 100%;
+              }
+            
+            #footer{
+            	height:auto; 
+            	background:black; 
+            	text-align: center; 
+            	padding: 60px; 
+            	font-size: 20px; 
+            	color :white;
+            }
+            
+            .slide {display:none;}
+            
+           #pic{
+              width: 100%;
+              height: 65%;
+              -webkit-filter: brightness(60%); /* Safari */
+              filter: brightness(60%);
+           }
+           
+           .slideshow{
+              width: 100%;
+              height: 70%;
+           }
+
+           #sidebarIcon{
+
+           }
+
+           @media only screen and (min-width: 1025px) {
+              #menu2 {
+                display:none;
+              }
+
+              #title{
+                padding-top:1.6em;
+              }
+              #mygrid{
+                padding: 80px 0 60px 0;margin:0; 
+              }
+              
+           }
+           @media only screen and (max-width: 1024px) {
+              #menu1{
+                display:none;
+              }
+              #menu2{
+                display: block
+              }
+              #title{
+                padding-top:0.6em;
+              }
+              #pic{
+                height: 50%;
+              }
+              #mygrid{
+                padding: 35px 0 0px 0;margin:0; 
+              }
+           }
+
+           #menu2{
+             width:100%;
+             margin: 0px ;
+            }
+
+            .red-ft{
+              color:red !important;
+            }
+
+
+
+
+        </style>
+    </head> 
+    
+<!--=================================================================================================== -->    
+
+    <body>
+
+      <% if(failure && failure.length > 0){ %>  
+        <div class="ui container" style="padding-top:25px">
+            <div class="ui icon negative message">
+              <i class="times icon"></i>
+              <i class="close icon"></i>
+              <div class="content">
+                <div class="header">
+                  <%= failure %>
+                </div>
+              </div>
+            </div>
+        </div>
+        <% } %>
+        
+
+        <div class="ui left vertical menu sidebar" style="">
+        
+          <a class="item" style="background:#1b1c1d"><img class="ui centered image" src="https://image.ibb.co/nswoFd/slideeeee.png" alt="slideeeee" border="0"></a>
+        <a href="/" class =" item">Home</a>
+        
+            <a href="/about-slide"class ="item">About</a>  
+            <a href="/staff" class ="item"> Staff</a>
+
+             <a href="/committees" class ="item">Committees</a> 
+             <a href="/pictures" class ="item">Gallery</a> 
+             <a href="/admissions" class ="item">Apply</a>
+             <a href="/contact-us" class ="item">Contact Us</a> 
+      
+            
+      </div>
+
+       <!-- Page Contents -->
+       
+
+
+       <div class="pusher">
+     
+       <div class="ui inverted fixed borderless eight item menu" id="menu1" style="color:white;height:55px; font-size: 20px">
+            <div class="ui container">
+            
+           
+            <a href="/" class =" item"><i class="home large icon"></i></a>
+        
+            <a href="/about-slide"class ="item ">About</a>  
+            
+            <a href="/staff" class ="item "> Staff</a>
+
+             <a href="/committees" class ="item ">Committees</a> 
+                       
+             <a href="/pictures" class ="item ">Gallery</a> 
+        
+             <a href="/admissions" class ="item ">Apply</a>
+             
+             <a href="/contact-us" class ="item ">Contact us</a> 
+           
+             <a class ="item menuButton">Login</a> 
+                  
+                
+            </div>
+        </div> 
+   <!-- ---------------------------------------------------------------------------------------------------------- -->
+
+
+         <div class="ui big borderless five item menu" id="menu2" style="margin:0;">
+          <div class="ui container">
+             <a class="ui left aligned item"><i id="sidebarIcon" class="sidebar big icon" ></i> </a>
+             <a class="item"></a>
+             <a class="ui centered  item red-ft" style="text-align:center;letter-spacing: 0.2em;"><span style="font-family:'Yantramanav', sans-serif;">TAMU</span> <span style="font-weight: bolder; ">SLIDE</span> <span style="font-family:'Yantramanav', sans-serif;">.ORG</span></a>
+             <a class="item"></a>
+             <a class="item"></a>
+          </div>
+        </div>
+
+ 
+
+   <!-- ---------------------------------------------------------------------------------------------------------- -->
+      
+          
+        
+         <div class="ui mini basic modal login"  style="">
+          <div class=" ui center aligned grid">
+          <div class=" inverted column">
+              
+    
+    <form class="ui form" action="/login" method="POST">
+    
+          <div>
+             <h2 class="ui image header">
+              <div class="content">
+                  
+               <img src="https://image.ibb.co/nswoFd/slideeeee.png" alt="slideeeee" border="0">
+              </div>
+          </h2> 
+          </div>
+          
+          <h2 class="ui image header" style="color:white">
+              <div class="content">
+                 Log-in 
+              </div>
+          </h2>
+        <div class="field">
+            <div class="ui transparent input">
+              <div class="ui left icon input">
+                <i class="user icon" style="color:white"></i>
+                <input type="text" name="username" placeholder="UIN" style="color:white">
+              </div>
+            </div>
+        </div>
+        <div class="field">
+             <div class="ui transparent input">
+              <div class="ui left icon input">
+                <i class="lock icon" style="color:white"></i>
+                <input type="password" name="password" placeholder="Password" style="color:white">
+              </div>
+            </div>
+        </div>
+        <button class="ui  fluid tiny submit button">Login</button>
+    </form>
+
+    <div class="ui tiny message signup">
+      New to us? <a>Sign Up</a>
+    </div>
+  </div>
+</div> 
+</div> 
+
+<div class="ui basic modal choice center aligned">
+     
+  <div class="ui icon header">
+    <i class="question circle outline huge icon"></i>
+    Staff or Member or Big or Alumni?
+  </div>
+  <div class="content">
+    <p style="font-size:20px; text-align:center">Are you signing up as staff,member, big, or alumni?</p>
+  </div>
+   
+  <div class="ui justified header big buttons  ">
+    <a id="staffSignUp"><div class="ui inverted blue  button"> Staff</div></a>
+      
+    <a id="memberSignUp"><div class="ui inverted green button">Member</div></a>
+      
+    <a href=""><div class="ui inverted red button">Big</div></a>
+
+    <a href=""><div class="ui inverted yellow button">Alumni</div></a>
+  </div>
+   
+  
+</div>
+
+
+  <div class="ui basic modal center aligned member" >
+    <div class="ui container">
+     
+    
+      <div style=""></div>
+      
+      <div class="ui inverted header center aligned" style="font-size:35px;padding-top:0px">MEMBER ACCOUNT</div> 
+      <div class="ui inverted header center aligned" style="font-size:25px;">Make sure you get the access code from the webmaster beforehand. Thank You!</div> 
+      <p style="text-align:center;padding-bottom:20px;color:white">Please fill in this form to create an account.</p>
+      
+      <div class="ui container">
+      
+       <div class="ui equal width center aligned padded grid">
+          
+          <div class="column">
+              <form id="form1" class = "ui small form center aligned" action="/member-sign-up" method="POST"> 
+       <div class="two fields">
+        <div class="required field">
+            <label style="color:white" >First name</label>
+            <input id="firstName" name="firstName" type="text" placeholder="What's your first Name?">
+        </div>
+        <div class=" required field">
+            <label style="color:white" >Last name</label>
+            <input id="lastName" name="lastName" type="text" placeholder="What's your Last Name?">
+        </div>
+        </div>
+        
+        <div class="two fields">
+        <div class="required field">
+            <label style="color:white" >Email Address</label>
+            <input id="email" name="email" type="email" placeholder="What's your email?">
+        </div>
+        <div class="required field">
+            <label style="color:white" >Access Code</label>
+            <input id="accessCode" name="accessCode" type="number" placeholder="What's your Access Code?">
+        </div> 
+        </div>
+        
+        <div class="two fields">
+        <div class="required field">
+            <label style="color:white" >Password</label>
+            <input id="password" name="password" type="password" placeholder="Choose a password?">
+        </div>
+                  
+        <div class="required field">
+            <label style="color:white">UIN</label>
+            <input id="username" name="username" type="number" placeholder="What's your UIN?">
+        </div>
+        </div>
+        
+        <div class="two fields">
+         <div class="required   field">
+            <label style="color:white">Major</label>
+            <input id="major" name="major" type="text" placeholder="What's your Major?">
+        </div>
+        <div class="required field">
+            <label style="color:white">Phone Number</label>
+            <input id = "phoneNumber" name="phoneNumber" type="tel" placeholder="###-###-####">
+        </div>
+        </div>
+        
+        <div class="two fields">
+        <div class="required field">
+            <label style="color:white" >Subcommittee</label>
+            <select id="subcommittee" class="ui search dropdown" name="subcommittee">
+                <option value="">Select</option>
+                <option value="SAAM">SAAM</option>
+                <option value="DEVO">DEVO</option>
+                <option value="SHIP">SHIP</option>
+                <option value="RAMH">RAMH</option>
+            </select>
+        </div> 
+        <div class="required field">
+            <label style="color:white">Birthday</label>
+            <input id="birthday" name="birthday" type="date" placeholder="###-###-####">
+        </div>
+        </div> 
+        <p style="text-align:center;padding-top:18px">By clicking <span style="font-weight:bold;">Submit</span> you agree to our <a href="/terms-of-use"> terms and conditions.</a></p>
+        <div class="ui big buttons" style="padding:22px; ">
+              <button type="reset" class="ui reset button">Reset</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="submitbutton">Submit</button>
+            </div>
+        <div class="ui error message"></div>
+          </form> 
+           </div>
+            
+          </div> 
+          
+          
+          </div>
+      </div>
+  </div>
+
+   <div class="ui basic modal center aligned staff" >
+
+    <div class="ui container">
+    
+      <div class="ui inverted header center aligned" style="font-size:35px;padding-top:0px">STAFF ACCOUNT</div> 
+      <div class="uiinverted header center aligned" style="font-size:25px;">Make sure you get the access code from the webmaster beforehand. Thank You!</div> 
+      <p style="text-align:center;padding-bottom:20px">Please fill in this form to create an account.</p>
+      
+      <div class="ui container">
+      
+       <div class="ui equal width center aligned padded grid">
+          
+          <div class="column">
+              <form id="form2" class = "ui small form center aligned" action="/staff-sign-up" method="POST"> 
+       <div class="two fields">
+        <div class="required field">
+            <label style="color:white" >First name</label>
+            <input id="firstName" name="firstName" type="text" placeholder="What's your first Name?">
+        </div>
+        <div class=" required field">
+            <label style="color:white" >Last name</label>
+            <input id="lastName" name="lastName" type="text" placeholder="What's your Last Name?">
+        </div>
+        </div>
+        
+        <div class="two fields">
+        <div class="required field">
+            <label style="color:white" >Email Address</label>
+            <input id="email" name="email" type="email" placeholder="What's your email?">
+        </div>
+        <div class="required field">
+            <label style="color:white" >Access Code</label>
+            <input id="accessCode" name="accessCode" type="number" placeholder="What's your Access Code?">
+        </div> 
+        </div>
+        
+        <div class="two fields">
+        <div class="required field">
+            <label style="color:white" >Password</label>
+            <input id="password" name="password" type="password" placeholder="Choose a password?">
+        </div>
+                  
+        <div class="required field">
+            <label style="color:white">UIN</label>
+            <input id="username" name="username" type="number" placeholder="What's your UIN?">
+        </div>
+        </div>
+       
+        
+        <div class="two fields">
+        <div class="required field">
+            <label style="color:white" >Position</label>
+            <select id="subcommittee" class="ui search dropdown" name="position">
+                <option value="">Select</option>
+                <option value="DEVO Director">DEVO Director</option>
+                <option value="SAAM Director">SAAM Director</option>
+                <option value="SHIP Director">SHIP Director</option>
+                <option value="RAMH Director">RAMH Director</option>
+                <option value="DEVO Executive">DEVO Executive</option>
+                <option value="SAAM Executive">SAAM Executive</option>
+                <option value="SHIP Executive">SHIP Executive</option>
+                <option value="RAMH Executive">RAMH Executive</option>
+                <option value="Membership Executive">Membership Executive</option>
+                <option value="Vice President">Vice President </option>
+                <option value="President">President</option>
+            </select>
+        </div> 
+         <div class="required field">
+            <label style="color:white">Phone Number</label>
+            <input id = "phoneNumber" name="phoneNumber" type="tel" placeholder="###-###-####">
+        </div>
+        
+        </div> 
+        <p style="text-align:center;padding-top:18px">By clicking <span style="font-weight:bold;">Submit</span> you agree to our <a href="/terms-of-use"> terms and conditions.</a></p>
+        <div class="ui big buttons" style="padding:22px; ">
+              <button type="reset" class="ui reset button">Reset</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="submitbutton">Submit</button>
+            </div>
+        <div class="ui error message"></div>
+          </form> 
+           </div>
+            
+          </div> 
+          
+          
+          </div>
+      </div>
+   </div>
+    
+
+  
+  
+     <!-- ---------------------------------------------------------------------------------------------------------- -->
+  
+    

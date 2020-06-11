@@ -1,0 +1,246 @@
+<html>
+    <head>
+        <title>SLIDE | My Home Page</title>
+       
+       
+        <% include ../partials/menu2 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+          
+             <h2 class="ui center aligned icon header">
+                  <i class=" home icon"></i>
+                  <div class="content">
+                    Home Page
+                    <div class="sub header">You are logged in as, <%= user.firstName %>.</div>
+                  </div>
+            </h2>
+    <!-- ======================================================================================= -->       
+            <h2 class="ui dividing header">
+              <i class="bullhorn icon"></i>
+              <div class="content">
+               General Annoucements 
+              </div>
+            </h2>
+     <!-- ======================================================================================= -->
+        <!-- <div class="ui segment">
+        
+          <div class="ui divided unstackable items">
+
+          <% announcements.forEach(function(announcement){ %>
+            <div class="item">
+              <a class="ui tiny image">
+                <img src="https://cdn3.iconfinder.com/data/icons/social-media-campaign-glyph/160/campaign-announcement-2-512.png">
+              </a>
+              <div class="content">
+                <a class="ui red header"><%=announcement.title%><</a>
+                <div class="description">
+                  <p><%= announcement.text%></p>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+
+          </div>
+         
+        </div> -->
+
+        <table class="ui celled table">
+          <thead>
+            <tr><th>Upcoming Events</th>
+          </tr></thead>
+          <tbody>
+            <tr> <td>(NM) 2/3: Super Bowl watch party Location will be determined shortly (@Luke)</td> </tr>
+            <tr> <td>(NM) 2/4: President Application Due 5 pm </td></tr>
+            <tr> <td>(NM) 2/5: Gumby’s social 5:00-7:00 </td></tr>
+            <tr> <td>(NM) 2/7: Community Kitchen Serving 4 pm - 6 pm</td></tr>
+            <tr> <td>(NM) 2/9 - Gaming in MSC ~1:00pm</td></tr>
+            <tr> <td>(NM) 2/14 - Valentines social Late afternoon, location TBD</td></tr>
+            <tr> <td>(M)  3/4 - 3/8 Mental Health Week Tabling all week :)</td></tr>
+            <tr> <td>(NM) 3/30: Big Event Time to be there and groups tbd</td></tr>
+            <tr> <td>(M)  4/1 - 4/5 SAAW Tabling all week :)</td></tr>  
+            <tr> <td>(NM) 4/24: Banquet (tentative)</td></tr> 
+          </tbody>
+        </table>
+    <!-- ======================================================================================= -->
+            <!-- <h2 class="ui dividing header">
+              <i class="folder open icon"></i>
+              <div class="content">
+               My Points
+                
+              </div>
+            </h2> -->
+    
+         <!-- ======================================================================================= -->        
+            <!-- <div class="ui segment">
+               
+               
+                 <div class="ui  teal small  progress" data-value="<%=user.socialPoints %>" data-total="<%=goals[0]%>" id="socialPoints">
+                  <div class=" bar">
+                    <div class=" progress"></div>
+                  </div>
+                  <div class="label"></div>
+               </div> 
+               
+                <div class="ui  yellow small  progress" data-value="<%= user.servicePoints%>" data-total="<%=goals[1]%>" id="servicePoints">
+                  <div class="bar">
+                    <div class="progress"></div>
+                  </div>
+                  <div class="label"></div>
+               </div> 
+               
+                <div class="ui  purple small  progress" data-value="<%= user.programmingPoints %>" data-total="<%=goals[2]%>" id="programmingPoints">
+                  <div class="bar">
+                    <div class="progress"></div>
+                  </div>
+                  <div class="label"></div>
+               </div> 
+               
+               <div class="ui  pink small  progress" data-value="<%= user.meetingPoints %>" data-total="<%=goals[3]%>" id="meetingPoints">
+                  <div class="bar">
+                    <div class="progress"></div>
+                  </div>
+                  <div class="label"></div>
+               </div>
+            </div> -->
+            
+    <!-- ======================================================================================= -->
+        
+            <h2 class="ui dividing header">
+              <i class="users icon"></i>
+              <div class="content">
+               The Events
+                
+              </div>
+            </h2>
+            
+            
+            <div class="ui equal width grid">
+    <!-- ======================================================================================= -->
+    <div class=row>
+              <div class="column">
+                  <div class="ui  header">Somee current events are...</div>  
+                  <div class="ui  segments">
+                    
+                     
+                      <% var i = 0; %>
+                      <% var counter = 0 %>
+                      <% if(currentEvent.length > 0){ %>
+                         <% for(i; i < currentEvent.length ; i++){ %>
+                            
+                            
+                             
+                         <%   if (currentEvent[i].pointType == "Social" &&  counter < 4){ counter += 1;%>
+                            <div class="ui segment">
+                                <a href="/event" class="item" style="font-size:11px;color:black"> <div href="/my-events" class=" ui teal horizontal   label">Social</div>&nbsp; &nbsp; &nbsp;<span class="ui medium header"><%= currentEvent[i].eventName %>&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ui right floated header" style="font-size: 15px"><%=currentEvent[i].eventDate.toDateString() %></span> </a>
+                            </div>
+                         <%  } else if (currentEvent[i].pointType == "Service" &&  counter < 4){ counter += 1;  %> 
+                            <div class="ui segment">
+                                <a href="/event" class="item" style="font-size:11px;color:black"> <div href="/my-events" class=" ui yellow horizontal   label">Service</div>&nbsp; &nbsp; &nbsp;<span class="ui medium header"><%= currentEvent[i].eventName  %>&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ui right floated header" style="font-size: 15px"><%=currentEvent[i].eventDate.toDateString()%> </span></a>
+                            </div>
+                         <%  } else { %> 
+                                <% if( counter < 4){ counter += 1; %>
+                              <div class="ui segment">
+                                <a href="/event" class="item" style="font-size:11px;color:black"> <div href="/my-events" class=" ui purple horizontal   label">Programming</div>&nbsp; &nbsp; &nbsp;<span class="ui medium header"> <%= currentEvent[i].eventName %>&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ui right floated header" style="font-size: 15px"><%=currentEvent[i].eventDate.toDateString() %></span> </a>
+                            </div>
+                         <%  } } }%>
+                      
+                      <%  }%>
+                      
+                 </div>
+              
+             </div>
+             </div>
+     <!-- ======================================================================================= -->
+             <div class="row">
+              <div class="column">
+                  <div class="ui  header">You are signed up for...</div> 
+                  <div class="ui  segments">
+                     
+                    
+               
+                      
+                     <% var i = 0; %>
+                      <% var counter = 0 %>
+                      <% if(EEvents.events.length > 0){ %>
+                         <% for(i; i < EEvents.events.length ; i++){ %>
+                           
+                           <% var d = new Date(); %>
+                           <% var m = Date(); %>
+                           <% m = EEvents.events[i].eventDate %>
+                           <% d = d.getTime(); m = m.getTime(); %>
+                             
+                         <%   if (EEvents.events[i].pointType == "Social" && d < m && counter < 4){ counter += 1;%>
+                             <div class="ui segment">
+                             <a href="/my-events"class="item" style="font-size:11px;color:black">  <div href="/my-events" class=" ui teal horizontal   label">Social</div><img class="ui mini right floated circular image" src="<%=user.profilePicture%>"><span class="ui medium header"><%= EEvents.events[i].eventName %></span>  </a>
+                            </div>
+                         <%  } else if (EEvents.events[i].pointType == "Service" && d < m  && counter < 4){ counter += 1;  %> 
+                             <div class="ui segment">
+                             <a href="/my-events" class="item" style="font-size:11px;color:black"><img class="ui mini right floated circular image" src="<%=user.profilePicture%>"> <div href="/my-events" class=" ui yellow horizontal   label">Service</div><span class="ui medium header"><%= EEvents.events[i].eventName  %></span>  </a>
+                            </div>
+                         <%  } else { %> 
+                                <% if(d < m && counter < 4){ counter += 1; %>
+                            <div class="ui segment">                             
+                              <a href="my-events"class="item" style="font-size:11px;color:black"><img class="ui mini right floated circular image" src="<%=user.profilePicture%>"> <div href="/my-events" class=" ui purple horizontal   label">Programming</div><span class="ui medium header"> <%= EEvents.events[i].eventName %></span>  </a>
+                         </div>
+                         <%  } } }%>
+                      
+                      <%  }%>
+                      
+                </div>
+
+                    </div>
+                        
+             </div>
+              
+      <!-- ======================================================================================= -->
+      <div class="row">
+          
+      
+              <div class="column">
+                  <div class="ui  header">Need confirmation...</div>
+                  <div class="ui  segment">
+                      
+                      
+                      <div class="ui divided selection  list">
+                      
+                     <% var i = 0; %>
+                      <% var counter = 0 %>
+                      <% if(EEvents.events.length > 0){ %>
+                         <% for(i; i < EEvents.events.length ; i++){ %>
+                           
+                           <% var d = new Date(); %>
+                           <% var m = Date(); %>
+                           <% m = EEvents.events[i].eventDate %>
+                           <% d = d.getTime(); m = m.getTime(); %>
+                             
+                         <%   if (EEvents.events[i].pointType == "Social" && d > m && counter < 4){ counter += 1;%>
+                             <a href="/my-events" class="item" style="font-size:11px;color:black"> <div href="/my-events" class=" ui teal horizontal   label">Social</div><span class="ui medium header"> <%= EEvents.events[i].eventName %></span>   </a>
+                         <%  } else if (EEvents.events[i].pointType == "Service" && d > m  && counter < 4){ counter += 1;  %> 
+                             <a href="/my-events" class="item" style="font-size:11px;color:black"> <div href="/my-events" class=" ui yellow horizontal   label">Service</div><span class="ui medium header"> <%= EEvents.events[i].eventName  %></span>  </a>
+                         <%  } else { %> 
+                                <% if(d > m && counter < 4){ counter += 1; %>
+                              <a href="/my-events" class="item" style="font-size:11px;color:black"> <div href="/my-events" class=" ui purple horizontal   label">Programming</div><span class="ui medium header">  <%= EEvents.events[i].eventName %></span>  </a>
+                         <%  } } }%>
+                      
+                      <%  }%>
+                      
+                </div>
+                      
+            </div>      
+                      
+                    
+        
+                 </div>
+              </div>
+              
+  </div>
+     
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+         <% include ../partials/dashboard %>
+        
+        
+
+    </body>
+</html>

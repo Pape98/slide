@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>SLIDE | Appeals</title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+     
+          
+
+          
+             <h2 class="ui center aligned icon header">
+                  <i class="attention icon"></i>
+                  <div class="content">
+                    Appeals
+                    <div class="sub header">You can view and change the status of appeals on this page</div>
+                  </div>
+            </h2>
+
+
+             <div class="ui top attached tabular menu">
+                <a class="item active" data-tab="current">Current</a>
+                <a class="item" data-tab="old">Old</a>
+              </div>
+
+              <div class="ui bottom attached tab segment active" data-tab="current">
+
+
+                 <div class="ui divided items">
+
+                <% appeals.forEach(function(appeal){ %>
+
+                  <% if(appeal.staffDecision == null) { %>
+                  <div class="item ">
+                   <div class="ui small image">
+                    <% if (appeal.requesterPicture != null){%>
+                      <img  src="<%= appeal.requesterPicture %>">
+                      <%}%>
+                   </div>
+                       <div class=" ui middle aligned content">
+                        <h2 class="ui big header">
+                            <%= appeal.requesterName %> : &nbsp;<i class="fa fa-circle text-danger Blink"></i>&nbsp;Pending</h2>
+                            <div class="meta" style="font-size: 1.2em">
+                            <div class="">Appealing for: &nbsp; <b style="color:black"><%= appeal.eventName %></b></div>
+                            <% var submitDate = new Date(appeal.submissionDate);%>
+                            <% var eventDate = new Date(appeal.eventDate);%>
+
+                            <% if(eventDate.getTime() - submitDate.getTime() >= 432000000){ %>
+                              <div style="padding-top: 14px">Submitted on time:&nbsp; <span style="color:green"><b>Yes</b></span> </div>
+                            <% } else {%>  
+                                <div style="padding-top: 14px" class="">Submitted on time:&nbsp; <span style="color:red"><b>No</b></span> </div>
+                            <% } %>
+                            </div>
+                      
+                       <div class="extra">
+                        <a href="/staff/appeal/<%=appeal._id%>"><button class="ui secondary right floated button">View</button></a>
+                      </div>
+                    </div>
+                    </div>
+                  <%}})%>
+               </div>
+
+              </div>
+
+              <div class="ui bottom attached tab segment" data-tab="old">
+
+
+                 <div class="ui divided  items">
+
+                <% appeals.forEach(function(appeal){ %>
+                  <% if(appeal.staffDecision != null) { %>
+                  <div class="item ">
+                   <div class="ui small image">
+                      <% if (appeal.requesterPicture != null){%>
+                      <img  src="<%= appeal.requesterPicture %>">
+                      <%}%>
+                   </div>
+                       <div class="  middle aligned content">
+                        <h2 class="ui big header">
+                            <%= appeal.requesterName %> :  <% if(appeal.staffDecision == "Accepted"){ %>
+                            <span style="color:green"><%=appeal.staffDecision%> </span>
+                            <% } else { %>
+                            <span style="color:red"><%=appeal.staffDecision%> </span>
+                            <% } %>
+
+
+                          </h2>
+                            <div class="meta" style="font-size: 1.2em">
+                            <div class="">Appealing for: &nbsp; <b style="color:black"><%= appeal.eventName %></b></div>
+                            <% var submitDate = new Date(appeal.submissionDate);%>
+                            <% var eventDate = new Date(appeal.eventDate);%>
+
+                            <% if(eventDate.getTime() - submitDate.getTime() >= 432000000){ %>
+                              <div style="padding-top: 14px">Submitted on time:&nbsp; <span style="color:green"><b>Yes</b></span> </div>
+                            <% } else {%>  
+                                <div style="padding-top: 14px" class="">Submitted on time:&nbsp; <span style="color:red"><b>No</b></span> </div>
+                            <% } %>
+                            </div>
+                      
+                       <div class="extra">
+                        <a href="/staff/appeal/<%=appeal._id%>"><button class="ui secondary right floated button">View</button></a>
+                      </div>
+                    </div>
+                    </div>
+                  <%}})%>
+               </div>
+              </div>
+
+
+
+
+<!--  ------------------------------------------------------------------------------------------------------>
+        <% include ../partials/footer2 %>
+
+    </body>
+</html>

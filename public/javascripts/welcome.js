@@ -1,0 +1,11 @@
+$('.text')
+   .transition('horizontal flip')
+  .transition('horizontal flip')
+  .transition('horizontal flip') 
+  .transition('horizontal flip')
+  .transition('horizontal flip')
+  .transition('horizontal flip')
+  .transition('stop')
+  .transition('vertical flip') 
+  .transition('vertical flip') 
+;

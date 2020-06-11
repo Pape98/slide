@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>SLIDE | Annoucements</title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+     
+              
+             <h2 class="ui center aligned icon header">
+                  <i class="bullhorn icon"></i>
+                  <div class="content">
+                    Annoucements
+                    <div class="sub header">All the current annoucements are located on this page.</div>
+                    <div style="padding-top:20px">
+                        <button id="newAnnouncement" class="ui button">New Annoucement</button>
+                        
+                    </div>
+                  </div>
+            </h2>
+            
+            
+    
+            
+              <div class="ui divided unstackable items">
+
+            <% announcements.forEach(function(announcement){ %>
+              <div class="item">
+                <div class="ui tiny image">
+                  <img src="https://cdn3.iconfinder.com/data/icons/social-media-campaign-glyph/160/campaign-announcement-2-512.png">
+                </div>
+                <div class="middle aligned content">
+                  <a class="big header"><%=announcement.title%></a>
+                      <div class="description">
+                      <p><%= announcement.text%></p>
+                    </div>
+
+                       <div class="extra">
+                        <a href="/announcements/<%= announcement._id%>"><button class="ui negative right floated button">Delete</button></a>
+                      </div>
+                </div>
+              </div>
+           <% }) %>
+
+              
+            </div>
+
+
+        </div>
+        
+        <div  class="ui basic tiny modal">
+            
+            <h2 class="ui center aligned icon header">
+                  <i class="bullhorn icon"></i>
+                  <div class="content">
+                    New Annoucement
+                    <div class="sub header">Use this form to make a new annoucement</div>
+                    
+                  </div>
+            </h2>
+            
+            <form class=" ui equal width tiny centered form" action="/announcements" method="POST" >
+                     <h4 class="ui dividing header" style="color:white">Announcement Information</h4>
+                          
+                         
+                        <div class="required field">
+                            <label style="color:white">Title Name</label>
+                            <input type="text" name="title" placeholder="Annoucement Title">
+                        </div>
+                          
+                           <div class="required field" style="padding-bottom:30px">
+                                <label style="color:white">Annoucement Text</label>
+                                <textarea name="text"></textarea>
+                            </div>
+                    
+                   
+                        <div class="ui right floated  buttons">
+                          <button class="ui button">Cancel</button>
+                          <div class="or"></div>
+                          <button class="ui submit green button">Submit</button>
+                        </div>
+              </form>
+                
+            
+        </div>
+       
+
+    
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+         <% include ../partials/footer2 %>
+
+    </body>
+</html>

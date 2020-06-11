@@ -1,0 +1,271 @@
+<html>
+    <head>
+        <title>SLIDE | <%= member.firstName%> <%= member.lastName%></title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+       
+          
+             <h2 class="ui center aligned icon header">
+                  <i class="user icon"></i>
+                  <div class="content">
+                    <%= member.firstName%> <%= member.lastName%>
+                    <div class="sub header"><%= member.subcommittee%></div>
+                    <div style="padding:20px">
+                        <a href="/members"><button class="ui button">View all Members</button></a>
+                    </div>
+                  </div>
+            </h2>
+            
+            <% var colors = ["olive", "orange", "brown","teal","red","yellow","purple","violet","blue","pink"]; %>
+            <% var index = Math.floor((Math.random() * 9) + 0); %>
+            <% var color = colors[index]; %>
+            
+            <div class="ui grid" style="padding-right:30px">
+                
+            <div class="four wide column"> 
+                <div class="ui sticky">
+                <div class="ui  segment">
+                    <img class="ui centered big image" src="<%=member.profilePicture%>">
+                    
+                    <div class="ui divided selection list">
+                      <a class="item">
+                        <div class="ui <%=color%> horizontal label" >First Name</div>
+                         <span style="color:black"><%= member.firstName %></span> 
+                      </a>
+                      <a class="item">
+                        <div class="ui <%=color%> horizontal label">Last Name</div>
+                        <span style="color:black"><%= member.lastName %></span>
+                      </a>
+                      <a class="item">
+                        <div class="ui <%=color%> horizontal label">Subcommittee</div>
+                        <span style="color:black"><%= member.subcommittee %></span>
+                      </a>
+                      <a class="item">
+                        <div class="ui <%=color%> horizontal label">Major</div>
+                        <span style="color:black"><%= member.major %></span>
+                      </a>
+                      <a class="item">
+                        <div class="ui <%=color%> horizontal label">Birthday</div>
+                        <span style="color:black"><%= member.birthday %></span>
+                      </a>
+                      <a class="item">
+                        <div class="ui <%=color%> horizontal label">Email</div>
+                        <span style="color:black"><%= member.email %></span>
+                      </a>
+                      <a class="item">
+                        <div class="ui <%=color%> horizontal label">Phone Number</div>
+                        <span style="color:black"><%= member.phoneNumber %></span>
+                      </a>
+                      
+                      
+                    </div>
+                </div>
+                 </div>  
+                </div>
+                
+                <div class="twelve wide column"> 
+                    <div class="ui  segment">
+                       
+                              
+                            <h2 class="ui center aligned header">
+                              <i class="checkmark green icon"></i>
+                              <div class="content">
+                                <%=member.firstName%> HAS BEEN TO ...
+                              </div>
+                            </h2>
+                              
+                          
+                      <div class="ui equal width grid">
+                         
+                          <div class="row">
+                              <div class=" column">
+                                  
+                                 <table class="ui celled center aligned compact mini table">
+                                  <thead>
+                                    <tr>
+                                      <th><div class="ui teal horizontal large label">Social Events</div></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    
+                                    <% member.socialEvents.forEach(function(event){ %>
+                                        <tr>
+                                          <td><%=event.eventName%></td>
+                                        </tr>
+                                    <% }); %>
+                                    
+                                  </tbody>
+                                  <tfoot>
+                                    <tr><th><%= member.socialEvents.length %> Point(s)</th></tr>
+                                </tfoot>
+                                </table>
+                                
+                              </div>
+                              <div class=" column">
+                                  
+                                  <table class="ui celled center aligned compact mini table">
+                                  <thead>
+                                    <tr>
+                                      <th><div class="ui yellow horizontal large label">Service Events</div></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                      
+                                     <% member.serviceEvents.forEach(function(event){ %>
+                                        <tr>
+                                          <td><%=event.eventName%></td>
+                                        </tr>
+                                    <% }); %>
+                                    
+                                  </tbody>
+                                  <tfoot>
+                                    <tr><th><%= member.serviceEvents.length %> Point(s)</th></tr>
+                                </tfoot>
+                                </table>
+                                  
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class=" column">
+                                  
+                                  <table class="ui celled center aligned compact mini table">
+                                  <thead>
+                                    <tr>
+                                      <th><div class="ui purple horizontal large label">Programming Events</div></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                      
+                                     <% member.programmingEvents.forEach(function(event){ %>
+                                        <tr>
+                                          <td><%=event.eventName%></td>
+                                        </tr>
+                                    <% }); %>
+                                    
+                                  </tbody>
+                                  <tfoot>
+                                    <tr><th><%= member.programmingEvents.length %> Point(s)</th></tr>
+                                </tfoot>
+                                </table>
+                                
+                              </div>
+                              <div class=" column">
+                                  
+                                  <table class="ui celled center aligned compact mini table">
+                                  <thead>
+                                    <tr>
+                                      <th><div class="ui pink horizontal large label">Meetings</div></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    
+                                <% var i = 0; %>
+                                <% for(i ; i < member.meetingPoints; ++i){ %>
+                                    <tr>
+                                      <td>Meeting</td>
+                                    </tr>
+                                 <% }  %>
+                                  </tbody>
+                                  <tfoot>
+                                    <tr><th><%= member.meetingPoints %> Point(s)</th></tr>
+                                </tfoot>
+                                </table>
+                                  
+                              </div>
+                          </div>
+                          
+                          <div class="row">
+                            <h2 class="ui center aligned header">
+                              <i class="hourglass start yellow icon"></i>
+                              <div class="content">
+                                <%=member.firstName%> IS SIGNED UP FOR ...
+                              </div>
+                            </h2>
+                          </div>
+                          <div class="row">
+                            <div class="column" style="padding-left:110px;padding-right:110px;">
+                            <table class="ui center aligned celled compact mini table">
+                              <thead>
+                                <tr>
+                                  <th>Event Name</th>
+                                  <th>Event Type</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                            
+                            <% member.events.forEach(function(event){ %>
+                                <tr>
+                                  <td><%=event.eventName%></td>
+                                  
+                                  <% if(event.pointType == "Social"){ %>
+                                  <td><div class="ui teal horizontal large label">Social</div></td> <% } %>
+                                   <% if(event.pointType == "Service"){ %>
+                                  <td><div class="ui yellow horizontal large label">Service</div></td> <% } %>
+                                   <% if(event.pointType == "Programming"){ %>
+                                  <td><div class="ui purple horizontal large label">Programming</div></td> <% } %>
+                      
+                                </tr>
+                            <% }) %>
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <th><%= member.events.length%> &nbsp;  Events</th>
+                                  <th></th>
+                              </tr>
+                              </tfoot>
+                            </table>
+                          </div>
+                          </div>
+                          
+                          <div class="row">
+                            <h2 class="ui center aligned header">
+                              <i class="edit red icon"></i>
+                              <div class="content">
+                                <%=member.firstName%> 'S APPEALS ...
+                              </div>
+                            </h2>
+                          </div>
+                          
+                          <div class="row">
+                             <div class="column">
+                            <table class="ui center aligned celled compact mini table">
+                              <thead>
+                                <tr>
+                                  <th>Event Name</th>
+                                  <th>Reason</th>
+                                  <th>Description</th>
+                                  <th>Status</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                            
+                            <% member.appeals.forEach(function(appeal){ %>
+                                <tr>
+                                  <td><%=appeal.eventName %></td>
+                                  
+                                  <td><%=appeal.reason %></td>
+                                  <td><%=appeal.reasonDescription %></td>
+                                  <td><%=appeal.staffDecision %></td>
+                                </tr>
+                            <% }) %>
+                              </tbody>
+                              
+                            </table>
+                          </div>
+                          </div>
+                          
+                          
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+<!--  ------------------------------------------------------------------------------------------------------>
+        <% include ../partials/footer2 %>
+
+    </body>
+</html>

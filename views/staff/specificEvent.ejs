@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <title>SLIDE | <%= event.eventName%></title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+         
+    
+    
+          <div class="ui container">
+             <h2 class="ui center aligned icon header">
+                  <i class="calendar  icon"></i>
+                  <div class="content">
+                    <%= event.eventName%>
+                    <div class="sub header"></div>
+                    <div style="padding:15px">
+                        <a href="/event"><button class="ui button">View all Events</button></a>
+                    </div>
+                  </div>
+            </h2>
+            
+            <div class="ui segment">
+                <div class="ui container">
+                <div class="ui stackable doubling grid">
+                  
+                  <div class="five wide  column">
+                        <div class="ui sticky">
+                        <% if(event.pointType == "Programming"){ %>
+                            <img class="ui centered medium image" style="padding:20px;"src="http://laoblogger.com/images/super-mario-maker-clipart-4.jpg">
+                            <a class="ui purple ribbon label">Programming</a> 
+                        <% } else if (event.pointType == "Social"){ %>
+                            <img class="ui centered medium image" style="padding:20px;" src="http://www.chcfdca.org/wp-content/uploads/2013/10/Little-Rascals-Logo.jpg">
+                            <a class="ui teal ribbon label">Social</a> 
+                        <% } else { %>
+                            <img class="ui centered medium image" style="padding:20px;" src="http://www.justharvest.org/wp-content/uploads/2016/02/volunteers-illustration.png">
+                            <a class="ui yellow ribbon label">Service</a> 
+                        <% } %>
+                        <span> <%= event.pointShift%> Point(s)</span>
+                        <div class= "ui header"> <%= event.eventName %> </div>
+                        <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toDateString()  %> </span>  </p>
+                        <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>  </p>
+                        <p><i class="hourglass start icon"></i> Started at : <span style="font-weight:bold"> <%= event.startTime %> </span> </p> 
+                        <p><i class="hourglass end icon"></i> Ended at :  <span style="font-weight:bold"><%=event.endTime %></span> </p>
+                          <% if(event.numberSpots != null) { %>
+                        <p> <i class="sort numeric down icon"></i>Number of spots left:&ensp; <span style="font-weight:bold; color:red"><%= event.numberSpots %></span> </p>
+                        <% } if(event.numberSpots == null) { %>
+                         <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold; color:red"> Everyone was invited</span> </p>
+                        <% } %>
+                        </div>
+                    </div>
+                  
+                  
+                  <div class="eleven wide  column">
+                      <h1 class="ui centered header">List of People</h1>
+                      <table class="ui celled center aligned table">
+                      <thead>
+                        <tr>
+                      
+                          <th>Name</th>
+                          <th >Missed</th>
+                          <th >Went</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       <% var d = new Date(); %>
+                       <% var m = new Date(); %>
+                       <% m = event.eventDate %>
+                       <% d = d.getTime();  m = m.getTime() %>
+                       <% var missed = 0; %>
+                       <% var went = 0; %>
+                       
+                       <% if( (m+86500000)  < d  ){ %>  
+                            <% signedUpUsers.forEach(function(user){ %>
+                            <tr>
+                                
+
+                              <td> <%= user.firstName %> <%= user.lastName %></td>
+                              <% if (user.role == "staff") {%>
+                                    <td class="ui center aligned warning">STAFF</td>
+                                      <td class="ui center aligned warning">STAFF</td>
+                                <%}%>
+                            
+                              <% var condition = false; %>
+                              <% user.wentEvents.forEach(function(wentEvent){ %>
+                                      <% if(wentEvent == eventID) condition = true; %>
+                                  <% }) %>
+                                  
+                                 <% if (condition == true && user.role != "staff" ){ %>
+                                      <td class="ui center aligned negative"><i class="icon large close"></i></td>
+                                      <td class="ui center aligned positive"><i class="icon large checkmark"></i></td>
+                                     <%  went = went + 1; %>
+                                      
+                                  <% } if(condition == false && user.role != "staff" ){ %>
+                                      <td class="ui center aligned positive"><i class="icon large checkmark"></i></td>
+                                      <td class="ui center aligned negative"><i class="icon large close"></i></td>
+                                      <%  missed = missed + 1; %>
+                                    
+                                  <% } %>
+                                  
+                              <% }) %> 
+                             </tr>
+                           
+                      
+                      <% } else { %>
+                          <% signedUpUsers.forEach(function(user){ %>
+                              <tr>
+                                  
+                                  <td> <%= user.firstName %> <%= user.lastName %></td>
+                                  <td class="ui center aligned warning"><i class=" icon large attention "></i></td>
+                                  <td class="ui center aligned warning"><i class=" icon large attention  "></i></td>
+                              <tr>
+                          <% }) %>
+                      
+                      <% } %>
+                          
+                    </tbody>
+                    <tfoot>
+                     <tr class="ui center aligned">
+                        
+                        <th><%= signedUpUsers.length %> &nbsp; Sign Ups</th>
+                        <th><%= missed %> &nbsp; Person(s) Missed</th>
+                        <th><%= went %> &nbsp; Person(s) Went</th>
+                      </tr>
+                    </tfoot>
+                      
+                    </table>
+                  </div>
+                  
+                  
+                </div>
+                </div>
+            </div>
+        </div>
+     </div>
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+         <% include ../partials/footer2 %>
+
+    </body>
+</html>

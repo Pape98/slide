@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>SLIDE | Contact Sheet</title>
+         
+       
+        
+
+<!--  ------------------------------------------------------------------------------------------------------>
+        <% if(user.role == "member"){ %>
+        
+            <% include ../partials/menu2 %>
+        
+          
+              
+                 <h2 class="ui center aligned icon header">
+                      <i class=" phone icon"></i>
+                      <div class="content">
+                       Contact Sheet
+                        <div class="sub header">This spreadsheet contains the phone numbers,emails ,and social media names of all members including staff.</div>
+                      </div>
+                </h2>
+                
+              <p style="text-align:center"> <iframe style="border-width:0;position: absolute; top: 90%; left: 0;width: 100%;height: 270%;border: 0;"; src="https://docs.google.com/spreadsheets/d/1nomT1alSeLQoycFk07lKen7ChGDBdTxWITRRQq14RGk/edit?usp=sharing"></iframe></p> 
+            </div>
+    
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+         <% include ../partials/dashboard %>
+        
+        <% } else { %>
+        
+            <% include ../partials/menu3 %>
+        
+             <div class="thirteen wide column" id ="secondcolumn">
+              
+                 <h2 class="ui center aligned icon header">
+                      <i class=" phone icon"></i>
+                      <div class="content">
+                       Contact Sheet
+                        <div class="sub header">This spreadsheet contains the phone numbers, emails, and social media names of all members including staff.</div>
+                      </div>
+                </h2>
+                
+              <p style="text-align:center"> <iframe style="border-width:0;position: absolute; top: 90%; left: 0;width: 97%;height: 270%;border: 0;" src="https://docs.google.com/spreadsheets/d/1nomT1alSeLQoycFk07lKen7ChGDBdTxWITRRQq14RGk/edit?usp=sharing"></iframe></p> 
+            </div>
+            
+            <% include ../partials/footer2 %>
+            
+        <% } %>
+
+    </body>
+</html>

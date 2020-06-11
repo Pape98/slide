@@ -1,0 +1,104 @@
+html,body{margin:0;padding:0;height:100%;}
+
+#bg_img{
+  background:white;
+}
+
+
+#logospot {
+	background: url('https://image.ibb.co/ftVssG/slidelogo.png'); 
+    background-size: 130px ;
+    background-position: center; 
+    background-repeat: no-repeat;  
+    padding-left:120px ;   
+ 
+} 
+
+@media screen and (max-width: 600px) {
+  #logospot {
+    background-size: 80px ; 
+    
+  }
+}
+.centering{  
+    float: none;
+    display: block;
+    margin: 0 auto;
+}
+.trial{
+  opacity: 0.85;
+    filter: alpha(opacity=85); /* For IE8 and earlier */
+}
+/*---------------------------------------------------------------------------------------------------*/
+
+
+.description{
+  font-size: 12px;
+}
+img{
+height: 70%;
+ width: 100%;
+
+}
+
+#bigpic{
+      position: relative;
+    text-align: center;
+    color: white;
+    width: 100%;
+
+ 
+}
+
+#pic{
+  -webkit-filter: brightness(60%); /* Safari */
+    filter: brightness(60%);
+    
+}
+
+#meet{
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#p{
+  font-size: 70px;
+  font-family: 'Arial';
+  font-weight: bold;
+
+ 
+   color: white;
+
+}
+
+.class{
+ 
+
+  font-weight: bold; 
+  text-align: center;
+  height: 45px;
+}
+
+.divider-column {
+  position: relative;
+
+}
+/*=======================================================================*/
+
+ /*===================================*/ 
+.search{
+  border-width: 5px; 
+  color: red;
+}
+
+#footer{
+  height:auto; 
+  background:#202021; 
+  text-align: center; 
+  margin: 10px 0 0 0;
+  padding: 60px; 
+  font-size: 20px; 
+  color :white;
+}

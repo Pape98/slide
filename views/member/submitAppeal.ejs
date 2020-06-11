@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <title>SLIDE | Submit Appeal</title>
+         
+       
+      <% if(user.role == "member"){%>
+
+
+        <% include ../partials/menu2 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+             <h2 class="ui center aligned icon header">
+                  <i class=" edit  icon"></i>
+                  <div class="content">
+                    Submit an Appeal
+                    <div class="sub header">Use this form to submit an appeal at least 5 days before.</div>
+                  </div>
+            </h2>
+          
+            
+            <form action="/appeals" method="POST" class=" ui equal width tiny form">
+                     <h4 class="ui dividing header">Event Information</h4>
+                    
+                    
+                    <div class="fields">
+                         <div class="required field">
+                            <label>Event Name</label>
+                            <input type="text" name="eventName" placeholder="Which event will you be missing?">
+                         </div>  
+                         <div class="required field">
+                            <label>Event Date (ex: mm/dd/yyyy)</label>
+                            <div class="ui right icon input">
+                            <input type="date" name="eventDate" placeholder="Event Name">
+                            <i class="calendar  icon"></i>
+                         </div> 
+                         </div> 
+                    </div>
+                
+                    <div class="fields">
+                         <div class="required field">
+                            <label>You are appealing for...</label>
+                            <div class="ui selection dropdown">
+                                  <input type="hidden" name="eventType">
+                                  <i class="dropdown icon"></i>
+                                  <div class="default text">-- Select Event </div>
+                                  <div class="menu">
+                                      <div class="item" data-value="DMs">Wednesday Meeting</div>
+                                      <div class="item" data-value="Subco">Subco Meeting</div>
+                                      <div class="item" data-value="Mandatory">Mandatory Event</div>
+                                  </div>
+                              </div>
+                         </div>  
+                         <div class="required field">
+                            <label>Reason for missing event...</label>
+                            <div class="ui selection dropdown">
+                                  <input type="hidden" name="reason">
+                                  <i class="dropdown icon"></i>
+                                  <div class="default text">-- Select a reason</div>
+                                  <div class="menu">
+                                      <div class="item" data-value="Tutoring">Tutoring</div>
+                                      <div class="item" data-value="Illness">Illness</div>
+                                      <div class="item" data-value="Conflict">Exam/Class Conflict</div>
+                                      <div class="item" data-value="Emergency">Family Emergency</div>
+                                      <div class="item" data-value="Other">Other</div>
+                                  </div>
+                              </div>
+                         </div> 
+                         </div> 
+                
+                
+                    
+                
+                    
+                    <div class="required field" style="padding-bottom:30px">
+                        <label>Reason for Missing</label>
+                        <textarea name="reasonDescription"></textarea>
+                    </div>
+                    
+                   
+                        <div class="ui right floated  buttons">
+                          <button class="ui button">Cancel</button>
+                          <div class="or"></div>
+                          <button class="ui submit green button">Submit</button>
+                        </div>
+                    
+            </form> 
+
+                    </div>
+    
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+         <% include ../partials/dashboard %>
+
+
+            <%} else {%>
+
+              <% include ../partials/menu3 %>
+
+                 <h2 class="ui center aligned icon header">
+                  <i class=" edit  icon"></i>
+                  <div class="content">
+                    Submit an Appeal
+                    <div class="sub header">Use this form to submit an appeal at least 5 days before.</div>
+                  </div>
+            </h2>
+
+            <form action="/appeals" method="POST" class=" ui equal width tiny form" style="padding: 30px;">
+                     <h4 class="ui dividing header">Event Information</h4>
+                    
+                    
+                    <div class="fields">
+                         <div class="required field">
+                            <label>Event Name</label>
+                            <input type="text" name="eventName" placeholder="Which event will you be missing?">
+                         </div>  
+                         <div class="required field">
+                            <label>Event Date (ex: mm/dd/yyyy)</label>
+                            <div class="ui right icon input">
+                            <input type="date" name="eventDate" placeholder="Event Name">
+                            <i class="calendar  icon"></i>
+                         </div> 
+                         </div> 
+                    </div>
+                
+                    <div class="fields">
+                         <div class="required field">
+                            <label>You are appealing for...</label>
+                            <div class="ui selection dropdown">
+                                  <input type="hidden" name="eventType">
+                                  <i class="dropdown icon"></i>
+                                  <div class="default text">-- Select Event </div>
+                                  <div class="menu">
+                                      <div class="item" data-value="DMs">Wednesday Meeting</div>
+                                      <div class="item" data-value="Subco">Subco Meeting</div>
+                                      <div class="item" data-value="Mandatory">Mandatory Event</div>
+                                  </div>
+                              </div>
+                         </div>  
+                         <div class="required field">
+                            <label>Reason for missing event...</label>
+                            <div class="ui selection dropdown">
+                                  <input type="hidden" name="reason">
+                                  <i class="dropdown icon"></i>
+                                  <div class="default text">-- Select a reason</div>
+                                  <div class="menu">
+                                      <div class="item" data-value="Tutoring">Tutoring</div>
+                                      <div class="item" data-value="Illness">Illness</div>
+                                      <div class="item" data-value="Conflict">Exam/Class Conflict</div>
+                                      <div class="item" data-value="Emergency">Family Emergency</div>
+                                      <div class="item" data-value="Other">Other</div>
+                                  </div>
+                              </div>
+                         </div> 
+                         </div> 
+                
+                
+                    
+                
+                    
+                    <div class="required field" style="padding-bottom:30px">
+                        <label>Reason for Missing</label>
+                        <textarea name="reasonDescription"></textarea>
+                    </div>
+                    
+                   
+                        <div class="ui right floated  buttons">
+                          <button class="ui button">Cancel</button>
+                          <div class="or"></div>
+                          <button class="ui submit green button">Submit</button>
+                        </div>
+                    
+            </form> 
+
+
+              <% include ../partials/footer2 %>
+
+               </div>
+            <%}%>
+        
+
+    </body>
+</html>

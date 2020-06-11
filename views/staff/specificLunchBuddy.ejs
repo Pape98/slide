@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>SLIDE | Lunch Buddies</title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+     
+          
+             <h2 class="ui center aligned icon header">
+                  <i class="handshake outline icon"></i>
+                  <div class="content">
+                   <%=lunchBuddy.title%>
+                    <div class="sub header">You can set up lunch buddies here by pairing people</div>
+                    <div style="padding-top: 20px">
+                     <% if(lunchBuddy.groupA.length == 0){ %>
+                        <a href="/staff/lunch-buddy/<%=lunchBuddy._id%>/pair"><button class="ui secondary button"> Pair people! </button></a>
+                    <%}%>
+                        <a href="/staff/lunch-buddy/"><button class="ui secondary button"> All LunchBuddy</button></a>
+                    
+                    </div>
+
+                  </div>
+            </h2>
+       <% if (formattedLunchBuddy !=  undefined) {%>
+
+          <div class="ui container centered grid" style="padding-top: 30px;padding-left: 30px">
+            <% formattedLunchBuddy.forEach(function(users){ %>
+              <div class="ui row">
+                <div class="left floated center aligned seven wide column">
+                  <div class="item">
+                  <div class="ui left floated small image">
+                    <img src="<%=users[0].profilePicture%>">
+                  </div>
+                  <div class="middle aligned content">
+                    <div class="ui big header"><%=users[0].firstName%>&nbsp; <%=users[0].lastName%></div>
+                    
+                    <% if(users[0].subcommittee == "SAAM"){ %>
+                     <!--  <div class="ui teal big label">SAAM</div> -->
+                    <% }%>
+
+                    <% if(users[0].subcommittee == "DEVO"){ %>
+                      <!-- <div class="ui purple big label">DEVO</div> -->
+                    <%}%>
+
+                    <% if(users[0].subcommittee == "SHIP"){ %>
+                      <div class="ui red big label">SHIP</div>
+                    <%}%>
+
+                    <% if(users[0].subcommittee == "RAMH"){ %>
+                      <!-- <div class="ui green big label">RAMH</div> -->
+                    <%}%>
+                    <% if(users[0].subcommittee == undefined && users[0] != undefined ){ %>
+                      <!-- <div class="ui inverted black big label"><%=users[0].role.toUpperCase()%></div> -->
+                    <%}%> 
+                  </div>
+                </div>
+                </div>
+                <div class="right floated center aligned seven wide column">
+                  <% if(users[1] != undefined){%>
+                  <div class="item">
+
+                  <div class="ui right floated small image">
+                    <img src="<%=users[1].profilePicture%>">
+                    
+                  </div>
+                  <div class="middle aligned content">
+                    <div class="ui big header"><%=users[1].firstName%>&nbsp; <%=users[1].lastName%></div>
+
+                    <% if(users[1].subcommittee == "SAAM"){ %>
+                   <!--    <div class="ui teal big label">SAAM</div> -->
+                    <% }%>
+
+                    <% if(users[1].subcommittee == "DEVO"){ %>
+                      <!-- <div class="ui purple big label">DEVO</div> -->
+                    <%}%>
+
+                    <% if(users[1].subcommittee == "SHIP"){ %>
+                      <!-- <div class="ui red big label">SHIP</div> -->
+                    <%}%>
+
+                    <% if(users[1].subcommittee == "RAMH"){ %>
+                      <!-- <div class="ui green big label">RAMH</div> -->
+                    <%}%>
+
+                    <% if(users[1].subcommittee == undefined && users[1] != undefined){ %>
+                      <!-- <div class="ui inverted black big label"><%=users[1].role.toUpperCase()%></div> -->
+                    <%}%> 
+                  </div>
+                </div>
+                <%}%>
+                </div>
+              </div>
+            <%})%>
+
+            
+          </div> 
+
+          <%}%>
+        </div>
+    
+<!--  ------------------------------------------------------------------------------------------------------>
+        <% include ../partials/footer2 %>
+
+    </body>
+</html>

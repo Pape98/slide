@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>SLIDE | Sliders</title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+          
+             <h2 class="ui center aligned icon header">
+                  <i class="users icon"></i>
+                  <div class="content">
+                    SLIDE Members
+                    <div class="sub header">All Slide members are listed on this page for you to view.</div>
+                  </div>
+            </h2>
+            
+            
+      
+            <div class="ui divided items" style="padding-top: 40px">
+
+           <% members.forEach(function(member){ %>
+              
+              <div class="item">
+                <div class="ui image" >
+                  <img src="<%=member.profilePicture%>" style="height: 150px; width: 150px;">
+                </div>
+                <div class="middle aligned content">
+                  <div class="header"><%=member.firstName + " " + member.lastName%> </div>
+                  <div class="meta">
+
+                    <% if(member.subcommittee == "SAAM"){ %>
+                      <span class="ui teal small label">SAAM</span>
+                    <% }%>
+
+                    <% if(member.subcommittee == "DEVO"){ %>
+                      <span class="ui purple small label">DEVO</span>
+                    <%}%>
+
+                    <% if(member.subcommittee == "SHIP"){ %>
+                      <span class="ui red small label">SHIP</span>
+                    <%}%>
+
+                    <% if(member.subcommittee == "RAMH"){ %>
+                      <span class="ui green small label">DEVO</span>
+                    <%}%>
+
+                    <span><a href="/members/<%= member._id%>" ><button class="ui secondary right floated button">More Info</button></a></span>
+                  </div>
+                  <div class="description">
+                    <p></p>
+                  </div>
+                </div>
+              </div>
+
+             <% }) %>
+
+            </div>
+
+            
+       
+        
+<!--  ------------------------------------------------------------------------------------------------------>
+
+
+
+
+        
+         <% include ../partials/footer2 %>
+
+    </body>
+</html>

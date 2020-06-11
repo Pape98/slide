@@ -1,0 +1,344 @@
+<html>
+    <head>
+        <title>SLIDE | My Settings</title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+    
+             
+
+             <h2 class="ui center aligned icon header">
+                  <i class="wrench icon"></i>
+                  <div class="content">
+                    My Settings
+                    <div class="sub header">You can edit your biography on this page</div>
+                  </div>
+            </h2>
+
+
+            <div class="ui container clearing vertical segment">
+              <h3 class="ui header">
+                Biography <button class="ui right floated secondary button" id="biographyButton"><i class="icon edit "></i>Edit</button>
+                <div class="sub header">Edit my biography that is located on the staff page.</div>
+              </h3>
+            </div>
+
+          <% if(user.position == "President"){%>
+            <div class="ui container clearing vertical segment">
+              <h3 class="ui header">
+                 President Message<button class="ui right floated  secondary button" id="presidentButton"><i class="icon edit "></i>Edit</button>
+                <div class="sub header">Edit President Message that is located on the home page.</div>
+              </h3>
+            </div>
+            <%}%>
+
+          <% if(user.position == "Vice President"){%>
+            <div class="ui container clearing vertical segment">
+              <h3 class="ui header">
+                Vice President Message<button class="ui right floated  secondary button" id="vpButton"><i class="icon edit "></i>Edit</button>
+                <div class="sub header">Edit VP message that is located on the home page.</div>
+              </h3>
+          </div>
+
+          <%}%>
+
+          <% if(user.position.includes("Executive")){%>
+          <div class="ui container clearing vertical segment">
+              <h3 class="ui header">
+                Executive Message<button class="ui right floated  secondary button" id="execButton"><i class="icon edit "></i>Edit</button>
+                <div class="sub header">Edit Executive message that is located on my subco's page.</div>
+              </h3>
+          </div>
+          <%}%>
+
+          <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+            <div class="ui container clearing vertical segment">
+                <h3 class="ui header">
+                  Change Profile Pics
+                  
+                    <button class="ui right floated  secondary button" id="pictureButton"><i class="plus icon "></i>Add</button>
+                
+                  <div class="sub header">Use the following form to change profile pics of both members and staff</div>
+                </h3>
+            </div>
+          <%}%>
+
+          
+          <form class="ui container clearing vertical segment" action="/staff/change-my-profile" method="POST">
+              
+
+                 
+                <h3 class="ui header">
+                  Change My Profile Pic
+                   <button class="ui right floated  secondary button"><i class="icon edit "></i>Change</button>
+                  
+                   <div class="sub header">Change the link of the application so that people can access it. 
+                  <p>Follow these steps:</p>
+                  <p>1. Change the name of your pic to your first name and last name (EX: PapeTraore).</p>
+                  <p>2. Go to www.imgbb.com.</p>
+                  <p>3. Upload the picture.</p>
+                  <p>4. Instead the of "viewer links", select "HTML Full Linked".</p>
+                  <p>5. Now here is the tricky part: it will show you some code LOL. </p>
+                  <p>6. Copy the whole thing and paste on a word document or something. </p>
+                  <p>7. Now, only copy the link that's inside src. So for me <b>src="https://image.ibb.co/ki3Yq9/Pape_Traore.png"</b></p>
+                  <p>8. Just copy <b>https://image.ibb.co/ki3Yq9/Pape_Traore.png</b> </p>
+                  <p>9. Paste that in the input box and submit it!</p>
+                  <p>10. If it doesn't work, contact Pape!</p>
+                </div>
+
+
+                </h3>
+                  <div class="ui left icon input" >
+                    <input type="text" placeholder="Paste file link" name="link">
+                    <i class="linkify icon"></i>
+                  </div>
+                
+            
+              
+              
+
+          </form>
+           
+
+          <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+          <form class="ui container clearing vertical segment" action="/staff/settings/change-app" method="POST">
+              <h3 class="ui header">
+                Change Application
+                <a href="">
+                  <button class="ui right floated  secondary button"><i class="icon edit "></i>Change</button>
+                </a>
+                <div class="sub header">Change the link of the application so that people can access it. 
+                  <p>Follow these steps:</p>
+                  <p>1. Upload the file on google drive (Assuming it isn't there already)</p>
+                  <p>2. Open up the file and press "SHARE" button (top-right corner)</p>
+                  <p>3. A small window will come up and you will press " WHO HAS ACCESS" (left-bottom corner) </p>
+                  <p>4. Turn On link sharing and copy the link.</p>
+                  <p> NB: Make sure that it says "People at Texas A&M University with the link can view."</p>
+                </div>
+              </h3>
+              <div class="ui selection dropdown">
+                <input type="hidden" name="appType">
+                <i class="dropdown icon"></i>
+                <div class="default text">Application</div>
+                <div class="menu">
+                  
+                  <% if(user.position == "President") {%>
+                    <div class="item" data-value="President">President</div>
+                    <div class="item" data-value="VP">Vice-President</div>
+                    <div class="item" data-value="Executive">Executive</div>
+                    <div class="item" data-value="Director">Director</div>
+                  <%}%>
+                  
+                  <div class="item" data-value="Member">Member</div>
+                  <div class="item" data-value="Big">Big</div>
+                </div>
+              </div>
+              <div class="ui left icon input" >
+                <input type="text" placeholder="Paste file link" name="link">
+                <i class="linkify icon"></i>
+              </div>
+          </form>
+
+          <%}%>
+
+          <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+           <form class="ui container clearing vertical segment" action="/staff/settings/release-app" method="POST">
+              <h3 class="ui header">
+                Release Application
+                <a href="">
+                  <button class="ui positive right floated  secondary button"><i class="icon edit "></i>Release</button>
+                </a>
+                <div class="sub header">Release Application on the Admissions Page.</div>
+              </h3>
+              <div class="ui selection dropdown">
+                <input type="hidden" name="appType">
+                <i class="dropdown icon"></i>
+                <div class="default text">Application</div>
+                <div class="menu">
+                  <% if(user.position == "President") {%>
+                    <div class="item" data-value="President">President</div>
+                    <div class="item" data-value="VP">Vice-President</div>
+                    <div class="item" data-value="Executive">Executive</div>
+                    <div class="item" data-value="Director">Director</div>
+                  <%}%>
+                  <div class="item" data-value="Member">Member</div>
+                  <div class="item" data-value="Big">Big</div>
+                </div>
+              </div>
+          </form>
+
+          <%}%>
+
+          <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+          <form class="ui container clearing vertical segment" action="/staff/settings/remove-app" method="POST">
+              <h3 class="ui header">
+                Remove Application 
+                <a href="">
+                  <button class="ui right floated  negative button" id="execButton"><i class="icon edit "></i>Remove</button>
+                </a>
+                <div class="sub header">Remove Application from the Admissions Page.</div>
+              </h3>
+              <div class="ui selection dropdown">
+                <input type="hidden" name="appType">
+                <i class="dropdown icon"></i>
+                <div class="default text">Application</div>
+                <div class="menu">
+                  
+                  <% if(user.position == "President") {%>
+                    <div class="item" data-value="President">President</div>
+                    <div class="item" data-value="VP">Vice-President</div>
+                    <div class="item" data-value="Executive">Executive</div>
+                    <div class="item" data-value="Director">Director</div>
+                  <%}%>
+                  
+                  <div class="item" data-value="Member">Member</div>
+                  <div class="item" data-value="Big">Big</div>
+                </div>
+              </div>
+          </form>
+          <%}%>
+
+         
+          <div class="ui container clearing vertical segment">
+              <h3 class="ui header">
+                Delete My Account<button class="ui disabled right floated negative button" onclick="show(this)">Delete</button>
+                <div class="sub header">Delete your account. Remember that you won't be able to access the account after deletion.</div>
+              </h3>
+          </div>
+
+          <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+          <div class="ui container clearing vertical segment">
+              <h3 class="ui header">
+                Delete a Member's Account 
+
+                
+                <div class="sub header">Delete a member's account. Remember that they won't be able to access the account after deletion.</div>
+              </h3>
+              <form method="POST" action="/staff/settings/delete/member-account">
+                <select name="memberID" class="ui small dropdown">
+                   <option value="">Select Name</option>
+                  <% users.forEach(function(user){ %>
+                  <% if(user.role == "member"){%>
+                    <option value="<%=user._id%>"><%= user.firstName + " "+ user.lastName%></option>
+                 <%}}); %> 
+              </select>
+              <button class="ui right floated negative button" onclick="show(this)">Delete</button>
+              </form>
+
+              
+          </div>
+
+          <%}%>
+
+ <!--  ------------------------------------------------------------------------------------------------------>
+
+      <div  class="ui basic tiny modal one">
+            <h2 class="ui center aligned icon header">
+                  <i class="edit icon"></i>
+                  <div class="content">
+                    Edit Biography
+                    <div class="sub header" style="color:white">Located on the staff page.
+                  </div>
+            </h2>
+            <form class=" ui equal width tiny centered form" action="/staff/settings/biography" method="POST" >
+                          
+                           <div class="required field" style="padding-bottom:30px">
+                                <label style="color:white">Biography Text</label>
+                                <textarea name="biography"></textarea>
+                            </div>
+                          <button class="ui right floated   submit green button">Submit</button> 
+                </form>
+      </div> 
+  
+ <!--  ------------------------------------------------------------------------------------------------------>
+
+      <div  class="ui basic tiny modal two">
+            <h2 class="ui center aligned icon header">
+                  <i class="edit icon"></i>
+                  <div class="content">
+                    Edit President Message
+                    <div class="sub header" style="color:white">Located on the home page.
+                  </div>
+            </h2>
+            <form class=" ui equal width tiny centered form" action="/staff/settings/president-message" method="POST" >
+                          
+                           <div class="required field" style="padding-bottom:30px">
+                                <label style="color:white">President Message</label>
+                                <textarea name="presidentMessage"></textarea>
+                            </div>
+                          <button class="ui right floated   submit green button">Submit</button> 
+                </form>
+      </div>
+            
+ <!--  ------------------------------------------------------------------------------------------------------>
+
+      <div  class="ui basic tiny modal three">
+            <h2 class="ui center aligned icon header">
+                  <i class="edit icon"></i>
+                  <div class="content">
+                    Edit VP Message
+                    <div class="sub header" style="color:white">Located on the home page.
+                  </div>
+            </h2>
+            <form class=" ui equal width tiny centered form" action="/staff/settings/vp-message" method="POST" >
+                          
+                           <div class="required field" style="padding-bottom:30px">
+                                <label style="color:white">VP Message</label>
+                                <textarea name="vpMessage"></textarea>
+                            </div>
+                          <button class="ui right floated   submit green button">Submit</button> 
+                </form>
+      </div>
+            
+ <!--  ------------------------------------------------------------------------------------------------------>
+
+      <div  class="ui basic tiny modal four">
+            <h2 class="ui center aligned icon header">
+                  <i class="edit icon"></i>
+                  <div class="content">
+                    Edit Executive Message
+                    <div class="sub header" style="color:white">Located on the subco page.
+                  </div>
+            </h2>
+            <form class=" ui equal width tiny centered form" action="/staff/settings/executive-message" method="POST" >
+                          
+                           <div class="required field" style="padding-bottom:30px">
+                                <label style="color:white"> Executive Message</label>
+                                <textarea name="executiveMessage"></textarea>
+                            </div>
+                          <button class="ui right floated submit green button">Submit</button> 
+                </form>
+      </div>
+            
+ <!--  ------------------------------------------------------------------------------------------------------>
+
+
+      <div  class="ui basic tiny modal six">
+            <h2 class="ui center aligned icon header">
+                  <i class="image icon"></i>
+                  <div class="content">
+                    Change Profile Pics
+                    <div class="sub header" style="color:white">Use form for both members and staff.
+                  </div>
+            </h2>
+            <form class=" ui equal width tiny centered form" action="/staff/change-profile-pictures" method="POST" >
+                          
+                           <div class="required field" style="padding-bottom:30px">
+                                <label style="color:white"> Links</label>
+                                <textarea name="links"></textarea>
+                            </div>
+                          <button class="ui right floated submit green button">Submit</button> 
+                </form>
+      </div>
+
+ <!--  ------------------------------------------------------------------------------------------------------>
+ <!--  ------------------------------------------------------------------------------------------------------>
+ <!--  ------------------------------------------------------------------------------------------------------>
+ <!--  ------------------------------------------------------------------------------------------------------>     
+   
+<!--  ------------------------------------------------------------------------------------------------------>
+        <% include ../partials/footer2 %>
+
+    </body>
+</html>

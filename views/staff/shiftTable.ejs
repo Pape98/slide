@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>SLIDE | Shifts Table</title>
+       
+        
+        <% if (user.role == "staff"){%>
+          <% include ../partials/menu3 %>
+        <% } else {%>
+          <% include ../partials/menu2 %>
+        <%}%>
+        
+          
+         <h2 class="ui center aligned icon header">
+             <i class="users icon"></i>
+              <div class="content">
+                  Shift Table
+              <div class="sub header">All Slide members are listed on this page for you to view.</div>
+              <div style="padding-top: 20px">
+                <a href="/event"><button class="ui button"> All Events</button></a>
+              </div>
+             </div>
+         </h2>
+         <div style="padding-top: 15px"></div>
+         <table class="ui center aligned striped celled red small table" >
+          <thead>
+            <tr>
+             <th>Shift</th>
+             <th>Start Time</th>
+             <th>End Time</th>
+             <th>Participant 1</th>
+             <th>Participant 2</th>
+             <th>Participant 3</th>
+<!--              <th>Participant 4</th> -->
+   <!--           <th>Participant 5</th>
+             <th>Participant 6</th>
+             <th>Participant 7</th> -->
+          </tr></thead>
+          <tbody>
+            <%shifts.forEach(function(shift){%>
+              <tr>
+                <td><%= shift.eventName%></td>
+                <td><%= shift.startTime%></td>
+                <td><%= shift.endTime%></td>
+                
+                <% if (shift.userIDs[0] != null){%>
+                <td class="positive"></i><%= shift.userIDs[0].firstName%> <%= shift.userIDs[0].lastName%></td>
+                <%} else {%>
+                <td></td>
+                <%}%>
+
+                <% if (shift.userIDs[1] != null){%>
+                <td class="positive"><%= shift.userIDs[1].firstName%> <%= shift.userIDs[1].lastName%></td>
+                <%} else {%>
+                <td></td>
+                <%}%>
+
+                <% if (shift.userIDs[2] != null){%>
+                <td class="positive"><%= shift.userIDs[2].firstName%> <%= shift.userIDs[2].lastName%></td>
+                <%} else {%>
+                <td></td>
+                <%}%>
+
+
+             
+              </tr>
+            <%});%>
+            
+           
+          </tbody>
+        </table>
+ 
+        <% if (user.role == "staff"){%>
+          <% include ../partials/footer2 %>
+        <% } else {%>
+          <% include ../partials/dashboard %>
+        <%}%>
+
+    </body>
+</html>

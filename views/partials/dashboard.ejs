@@ -1,0 +1,228 @@
+        </div> 
+
+    </div> 
+  </div> 
+<div class="three wide column" id ="thirdcolumn" style="font-family: 'Yantramanav', sans-serif;">
+      
+      <div class="ui right fixed vertical inverted center aligned menu" style="background:black">
+        <div class="item">
+          <img class="ui small centered circular image" id="profilepic" src="<%=user.profilePicture%>">
+        </div>
+            <div class="item">
+                <div class ="ui inverted center aligned header"><%= user.firstName%> <%= user.lastName %></div>
+                
+            </div>
+            
+            <div class="item">
+                <div class="ui inverted centered tiny header">Points Summary</div>
+                <div class="menu">            
+                 
+                     
+                    <p style="text-align:center">
+                        <a class="ui teal circular label"><%=user.socialEvents.length%></a>
+                        <a class="ui yellow circular label"><%= user.serviceEvents.length %></a>
+                    </p>    
+                    <p style="text-align:center">
+                        <a class="ui teal circular label">Social</a>
+                        <a class="ui yellow circular label">Service</a> 
+                     </p>
+                    <p style="text-align:center">
+                        <a class="ui purple circular label"><%=user.programmingEvents.length%></a>
+                        <a class="ui pink circular label"><%= user.meetingPoints%></a>
+                    </p>
+                    <p style="text-align:center">
+                      <a class="ui purple circular label">Programming</a>
+                      <a class="ui pink circular label">Meeting</a> 
+                     </p>
+                  
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="ui inverted centered tiny header">Your Next Events </div>
+                <div class="menu">
+                 <p style="text-align:center">
+                  <% var i = 0; %>
+                  <% var counter = 0 %>
+                  <% if(EEvents.events.length > 0){ %>
+                     <% for(i; i < EEvents.events.length ; i++){ %>
+                       
+                       <% var d = new Date(); %>
+                       <% var m = Date(); %>
+                       <% m = EEvents.events[i].eventDate %>
+                       <% d = d.getTime(); m = m.getTime(); %>
+                         
+                     <%   if (EEvents.events[i].pointType == "Social" && d < m && counter < 3){ counter += 1;%>
+                          <a href="/my-events" class=" item"><span style="color:#008080"><%= EEvents.events[i].eventName %></span></a>
+                     <%  } else if (EEvents.events[i].pointType == "Service" && d < m  && counter < 3){ counter += 1;  %> 
+                          <a href="/my-events" class=" item"><span style="color:#FFD700"><%= EEvents.events[i].eventName  %></span></a>
+                     <%  } else { %> 
+                            <% if(d < m && counter < 3){ counter += 1; %>
+                          <a href="/my-events" class=" item"><span style="color:#B413EC"><%= EEvents.events[i].eventName %></span></a>
+                     <%  } } }%>
+                  
+                  <%  }%>
+                  
+                  
+                  
+                  </p>
+                </div>
+            </div> 
+            
+            <div class="item">
+                <div class="ui inverted centered tiny header">Shortcuts </div>
+                <div class=" menu">
+                <p style="text-align:center">
+                    <a href="/event/create"class="item">Create an Event</a>
+                      <a href="/event" class="item">View all Events</a>
+                      <a href="/my-events" class="item">View my Events</a>
+                      <a href="/points/new" class="item">Submit my Point</a>
+                      <a href="/appeals/new" class="item">Submit an Appeal</a>
+                </p>
+                  
+                </div>
+            </div> 
+            
+            
+        </div>   
+            
+      </div>
+
+</div>
+
+
+    <script 
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+        <script type="text/javascript" src="https://www.w3schools.com/w3css/4/w3.css"></script> 
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/circletype@2.2.0/dist/circletype.min.js"></script> 
+         <script type="text/javascript" src="javascripts/Semantic-UI-Alert.js"></script>
+                  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
+
+                  <script type="text/javascript">
+                    $('#constitution').click(function(){
+                      
+                        $(".modal").modal({
+
+                        blurring: false
+                      }).modal('setting', 'transition', 'Vertical Flip')
+                        .modal('show');
+                  });
+                  </script>
+
+        
+        <script type="text/javascript">
+          
+              $('.coursesForm').click(function(){
+            alert("worked");
+          });
+        </script>
+          <script>
+
+            
+
+            $('#addCourses').click(function(){
+            $(".ui.modal.courses").modal({
+                        blurring: false
+                      }).modal('setting', 'transition', 'Vertical Flip')
+                        .modal('show');
+                  });
+
+            $('.menu .item').tab();
+
+            jQuery(document).ready(function($) {
+                var alterClass = function() {
+                  var ww = document.body.clientWidth;
+                  if (ww <= 768) {
+                    $('#secondcolumn').removeClass('ten wide column');
+                    $('#secondcolumn').addClass('sixteen wide column');
+
+                  } else {
+                    $('#secondcolumn').removeClass(' sixteen  wide column');
+                    $('#secondcolumn').addClass('ten  wide column');
+                  };
+                };
+                $(window).resize(function(){
+                  alterClass();
+                });
+                //Fire it when the page first loads:
+                alterClass();
+              });
+          
+             $('#openMenu').click(function(){
+              $('.ui.sidebar')
+              .sidebar('toggle');
+            ;
+          })
+             // Wont re-appear unless cleared
+                $('.cookie.nag').nag('show');
+          
+          $('.message .close')
+              .on('click', function() {
+                $(this)
+                  .closest('.message')
+                  .transition('fade')
+                ;
+              })
+            ;
+
+            $('#servicePoints')
+              .progress({
+                text: {
+                  active  : 'Service Points',
+                  success : '{total} Service Points Completed!'
+                }
+              })
+            ;
+             $('#socialPoints')
+              .progress({
+                text: {
+                  active  : 'Social Points',
+                  success : '{total} Social Points Completed!'
+                }
+              })
+            ;
+            $('#programmingPoints')
+              .progress({
+                text: {
+                  active  : 'Programming Points',
+                  success : '{total} Programming Points Completed!'
+                }
+              })
+            ;
+            
+              $('#meetingPoints')
+              .progress({
+                text: {
+                  active  : 'Meeting Points',
+                  success : '{total} Meeting Points Completed!'
+                }
+              })
+            ;
+            
+            $('.ui.dropdown').dropdown({
+                on:'hover'
+              });
+              
+              $('select.dropdown').dropdown();
+              
+              
+              
+              $('.ui.accordion').accordion(); 
+              
+            
+              $('.basic').button();
+
+
+
+              
+              
+            
+                
+                  
+        </script>
+        
+        </body>
+</html>

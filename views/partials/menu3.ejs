@@ -1,0 +1,397 @@
+         <meta charset="utf-8" />
+         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+       
+        <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+          
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">   
+        <link href="https://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Yantramanav:100" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">   
+        <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/Semantic-UI-Alert.css">
+        
+
+        <LINK REL="SHORTCUT ICON" HREF="https://image.ibb.co/fmud4w/download.jpg">
+
+        <script 
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+       <style>
+
+
+          @media only screen and (max-width: 768px) {
+             #firstcolumn{
+              display:none;
+             }
+
+
+            #secondcolumn{
+              
+               width:100%;
+               padding-top:0px;
+               padding-right: 0px;
+            }
+           }
+
+            @media only screen and (min-width: 769px) {
+              #menu2, .sidebar {
+                display:none;
+              }
+
+               #secondcolumn{
+              
+               width:100%;
+               padding-bottom:23px;
+               padding-right:40px;
+               
+            }
+           }
+
+           .Blink {
+              animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;  
+            }
+            @keyframes blinker {  
+              from { color: white; }
+              to { color: orange; }
+            }
+            
+         
+           
+       </style>
+        <!--  ---------------------------------------------------------------------------------------------------- -->
+               
+     <body>
+         
+       
+
+
+
+           <div class="ui left fixed inverted  vertical menu  sidebar"   style="background:black">
+                      <div class="item">
+                        <img class="ui  image" src="https://image.ibb.co/nswoFd/slideeeee.png" alt="slideeeee" border="0">
+                      </div>
+                      
+                      <div class="item">
+                       <img class="tiny centered ui circular image " src="<%=user.profilePicture%>">
+                      </div>
+                      
+                      
+                      
+                      <a href="/home-page"class="item ">Home</a>
+                      
+                      
+                        <div class="ui left pointing dropdown item">
+                            Post
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                               <a  href="/staff/forms" class="item">Forms</a>
+                                <a class="item" href="/announcements">Announcements</a>
+                                <a href="/staff/guidelines"class="item">FAQs/Guidelines</a>
+                            </div>
+                         </div>
+                               
+                         
+                      
+                      
+                        <a class="item" href="/members">Members</a>
+                     
+                        <a href="/staff/submitted-points" class="item"> Points 
+                        <%  if(submittedPointsLength != 0){ %>
+                        <div class=" ui red left pointing label" style="margin-right:27px"><%=submittedPointsLength%></div>
+                        <% } %>
+                        </a>
+                      
+                        <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+                        <a href="/staff/appeals" class="item">Appeals
+                        <%  if(currentAppeals != 0){ %>
+                        <div class=" ui red left pointing label" style="margin-right:27px"><%= currentAppeals %></div>
+                        <% } %>
+                        </a>
+                        <%}%>
+                            
+                         
+                          <div class="ui right pointing dropdown item">
+                            Events 
+                            <i class=" dropdown icon"></i>
+                          <%  if(eventsLength != 0){ %>
+                            <div class=" ui red left pointing label"><%= eventsLength %></div>
+                          <% } %>
+                             
+                            <div class="menu">
+                                <a class="item" href="/event">View</a>
+                                <a href="/event/create" class="item">Create</a>
+                                 <a href="/meetings" class="item">DMs Attendance</a>
+                            </div>
+                         </div>
+
+                          <% if(user.position.includes("Director") || (user.position.includes("Executive") )) {%>
+                          <div class="ui left pointing dropdown item">
+                            My Appeals
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                              <a href="/appeals" class="item">View</a>
+                              <a href="/appeals/new" class="item">Submit</a>
+                            </div>
+                         </div>
+                      <%}%>
+                         
+                          
+                        <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+                         <div class="ui right pointing dropdown item">
+                            Activities
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                              <a href="/staff/lunch-buddy" class="item">Lunch Buddy</a>
+                              <a class="item">Assassins</a>
+                            </div>
+                         </div>
+                         <%} else {%>
+                        
+                          <div class="ui right pointing dropdown item">
+                            Activities
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                              <a href="/lunch-buddy" class="item">Lunch Buddy</a>
+                            </div>
+                         </div>
+                       
+                         
+                         <%}%>
+                         
+                       
+                  
+                         
+                         
+                         
+                         <div class="ui right pointing dropdown item">
+                            Miscellaneous
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                              <a href="/calendar"class="item">Calendar</a>
+                              <a href="/slide-google-drive" class="item">Google Drive</a>
+                              <a  href="/contact-sheet" class="item">Contact Sheet</a>
+                            </div>
+                         </div>
+
+                         <a href="/staff/settings"class="item">My Settings</a>
+                      
+
+                      
+                      
+                      
+                    </div>
+      
+        
+        
+
+
+
+              
+        <div class="ui centered grid" style="padding-top: 10px;"> 
+                <div class=" three wide column" id ="firstcolumn" >
+                  <div class="ui left fixed inverted  vertical menu"  id ="firstcolumn" style="background:black">
+                      <div class="item">
+                        <img class="ui  image" src="https://image.ibb.co/nswoFd/slideeeee.png" alt="slideeeee" border="0">
+                      </div>
+                      
+                      <div class="item">
+                        <img class="tiny ui centered circular image " src="<%=user.profilePicture%>">
+                      </div>
+                      
+                      
+                      
+                      <a href="/home-page"class="item ">Home</a>
+                      
+                       <div class="ui left pointing dropdown item">
+                            Post
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                               <a  href="/staff/forms" class="item">Forms</a>
+                                <a class="item" href="/announcements">Announcements</a>
+                                <a href="/staff/guidelines"class="item">FAQs/Guidelines</a>
+                            </div>
+                         </div>
+
+
+                       <div class="ui left pointing dropdown item">
+                            Members
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item" href="/members">List</a>
+                                 <% if(user.position.includes("Executive") || user.position.includes("President")) {%>
+                                  <a href="/staff/submitted-points" class="item"> Points 
+                                  <%  if(submittedPointsLength != 0){ %>
+                                  <div class=" ui red left pointing label" style="margin-right:27px"><%=submittedPointsLength%></div>
+                                  <% } %>
+                                  </a>
+                                <%}%>
+                            </div>
+                         </div>
+                               
+                         
+                      
+                      
+
+
+                      <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+                        <a href="/staff/appeals" class="item">Appeals
+                        <%  if(currentAppeals != 0){ %>
+                        <div class=" ui red left pointing label" style="margin-right:27px"><%= currentAppeals %></div>
+                        <% } %>
+                        </a>
+                        <%}%>
+                          
+                         
+                          <div class="ui left pointing dropdown item">
+                            Events 
+                            <i class=" dropdown icon"></i>
+                          <%  if(eventsLength != 0){ %>
+                            <div class=" ui red left pointing label"><%= eventsLength %></div>
+                          <% } %>
+                             
+                            <div class="menu">
+                                <a class="item" href="/event">View</a>
+                                <a href="/event/create" class="item">Create</a>
+                                 <a href="/meetings" class="item">DMs Attendance</a>
+                            </div>
+                         </div>
+
+                     <% if(user.position.includes("Director") || (user.position.includes("Executive"))) {%>
+                          <div class="ui left pointing dropdown item">
+                            My Appeals
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                              <a href="/appeals" class="item">View</a>
+                              <a href="/appeals/new" class="item">Submit</a>
+                            </div>
+                         </div>
+                      <%}%>
+                         
+                          
+                           
+                        <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+                         <div class="ui left pointing dropdown item">
+                            Activities
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                              <a href="/staff/lunch-buddy" class="item">Lunch Buddy</a>
+                              <a class="item">Assassins</a>
+                            </div>
+                         </div>
+                         <%} else {%>
+                        
+                          <div class="ui left pointing dropdown item">
+                            Activities
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                              <a href="/lunch-buddy" class="item">Lunch Buddy</a>
+                            </div>
+                         </div>
+                       
+                         
+                         <%}%>
+                        
+                         
+                      
+                         
+                         
+                         
+                         <div class="ui left pointing dropdown item">
+                            Miscellaneous
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                              <a href="/calendar"class="item">Calendar</a>
+                              <a href="/slide-google-drive" class="item">Google Drive</a>
+                              <a  href="/contact-sheet" class="item">Contact Sheet</a>
+                            </div>
+                         </div>
+
+
+                      
+                          <a href="/staff/settings"class="item">My Settings</a>
+                      
+                      
+                      <a href="/logout" class="item">Logout<i class="red sign in alternate icon"></i></a>
+                    </div>
+        </div>
+
+
+        <div class="thirteen wide column " id ="secondcolumn">
+          <div class="pusher" style="">
+
+          <div style="background: black; margin-bottom: 30px;width:100%">
+            
+              <div class="ui big borderless five item menu" id="menu2" style="background:rgba(0,0,0,0.8);;color:white">
+              <div class="ui container">
+                <a class="item" id="openMenu"><i id="sidebarIcon" style="padding:" class="inverted sidebar big icon" ></i></a>
+               <a class="item"></a>
+                <a class="item"><img class="ui small centered image" src="https://image.ibb.co/nswoFd/slideeeee.png" alt="slideeeee" border="0"></a>
+                <a class="item"></a>
+                <a href="/logout" class="item"><i class="red sign in alternate icon"></i></a> 
+              </div>
+            </div>
+        </div>
+
+          <div class="ui container">
+        
+        
+       <% if(success && check &&  success.length > 0){ %>   
+            <div class="ui icon positive message">
+              <i class="checkmark icon"></i>
+              <i class="close icon"></i>
+              <div class="content">
+                <div class="header">
+                  <%= success %>
+                </div>
+                <p><%=check%></p>
+              </div>
+            </div>
+        <% } %>
+        
+        <% if(success && success.length > 0 && !check){ %>   
+            <div class="ui icon positive message">
+              <i class="checkmark icon"></i>
+              <i class="close icon"></i>
+              <div class="content">
+                <div class="header">
+                  <%= success %>
+                </div>
+              </div>
+            </div>
+        <% } %>
+        
+         <% if(failure && failure.length > 0 && !check){ %>   
+            <div class="ui icon negative message">
+              <i class="frown icon"></i>
+              <i class="close icon"></i>
+              <div class="content">
+                <div class="header">
+                  <%= failure %>
+                </div>
+              </div>
+            </div>
+        <% } %>
+
+         <% if(failure && check &&  failure.length > 0){ %>   
+            <div class="ui icon negative message">
+              <i class="frown icon"></i>
+              <i class="close icon"></i>
+              <div class="content">
+                <div class="header">
+                  <%= failure %>
+                </div>
+                <p><%=check%></p>
+              </div>
+            </div>
+        <% } %>
+        
+        
+        
+        
+        
+    
+        

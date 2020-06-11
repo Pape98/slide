@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>SLIDE | Appeal</title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+    
+             <h2 class="ui center aligned icon header">
+                  <i class="attention icon"></i>
+                  <div class="content">
+                    <%=appeal.requesterName%>'s Appeal 
+                    <div class="sub header"></div>
+                    <div style="padding-top:20px">
+                        <a href="/staff/appeals"><button class="ui button"> View Appeals</button></a>
+                    </div>
+                  </div>
+            </h2>
+
+            <div class="ui container stackable small grid" style="padding-top: 10px">
+              <div class="row">
+                <div class="six wide column">
+                  
+                  <div class="ui  segments">
+                    <div class="ui black segment">
+                      <img class="ui centered medium  image" src="<%= appeal.requesterPicture %>" style="" >
+                    </div>
+                    <div class="ui  segment">
+                      <p><b>Appellant's Name:&nbsp;&nbsp;</b> <%= appeal.requesterName %></p>
+                    </div>
+                    <div class="ui  segment">
+                     <p><b>Event Name:&nbsp;&nbsp;</b> <%= appeal.eventName %></p>
+                    </div>
+                    <div class="ui  segment">
+                      <p><b>Event Type:&nbsp;&nbsp;</b> <%= appeal.eventType %></p>
+                    </div>
+                    <div class="ui  segment">
+                      <% if (appeal.eventDate != null){%>
+                      <p><b>Event Date:&nbsp;&nbsp;</b> <%= appeal.eventDate.toDateString() %></p>
+                      <%}%>
+                    </div>
+                    <div class="ui  segment">
+                      <p><b>Appeal Submission Date:&nbsp;&nbsp;</b> <%= appeal.submissionDate.toDateString() %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="ten wide column">
+                        <div class="ui segments">
+                    <div class="ui black segment">
+                      <p><b>Reason:&nbsp;&nbsp;</b> <%= appeal.reason %></p>
+                    </div>
+                    <div class="ui  segment">
+                      <p><b>Reason Description:&nbsp;&nbsp;</b> <%= appeal.reasonDescription %></p>
+                    </div>
+                    <div class="ui clearing secondary segment">
+                     <form class="ui small form" method="POST">
+                       
+                       <% if(appeal.comment == null){ %>
+
+                        <div class=" field">
+                          <label>Comment</label>
+                          <textarea name="comment"></textarea>
+                        </div>
+
+                        <div class="ui right floated  small buttons">
+                          <button class="positive ui button" type="submit" formaction="/appeals/<%=appeal._id %>/accepted">Approve</button><
+                          <div class="or"></div>
+                          <button class="ui negative button" type="submit"  formaction="/appeals/<%=appeal._id %>/denied">Deny</button>
+                      </div>
+
+
+                         <% } else { %>
+                              
+                        <div class=" field">
+                          <label>Comment</label>
+                          <textarea rows="4" name="comment" placeholder="<%=appeal.comment%>" readonly="" type="text"></textarea>
+                        </div>
+
+                         <div class=" field">
+                          <label>Decision</label>
+                          <input placeholder="<%=appeal.staffDecision%>" readonly="" type="text">
+
+                        </div>
+                       
+                        <% } %>
+
+                   </form>
+                    </div>
+                     
+                    </div>
+                  
+                </div>
+                </div>
+
+              </div>
+
+            
+
+
+            
+            
+      
+   
+<!--  ------------------------------------------------------------------------------------------------------>
+        <% include ../partials/footer2 %>
+
+    </body>
+</html>

@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title>SLIDE | Appeal</title>
+       
+        <% include ../partials/menu3 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+    
+             <h2 class="ui center aligned icon header">
+                  <i class="attention icon"></i>
+                  <div class="content">
+                    <%=event.creatorName%>'s Point Submission 
+                    <div class="sub header"></div>
+                    <div style="padding-top:20px">
+                        <a href="/staff/submitted-points"><button class="ui button"> View Points</button></a>
+                    </div>
+                  </div>
+            </h2>
+
+            <div class="ui container stackable small grid" style="padding-top: 10px">
+              <div class="row">
+                <div class="six wide column">
+                  
+                  <div class="ui  segments">
+                    <div class="ui black segment">
+                      <img class="ui centered medium  image" src="<%= event.creatorPicture %>" style="" >
+                    </div>
+                    <div class="ui  segment">
+                      <p><b>Member's Name:&nbsp;&nbsp;</b> <%= event.creatorName %></p>
+                    </div>
+                    <div class="ui  segment">
+                     <p><b>Event Name:&nbsp;&nbsp;</b> <%= event.eventName %></p>
+                    </div>
+                    <div class="ui  segment">
+
+
+                      <p>Event Type:&nbsp;&nbsp;
+
+                              <% if(event.pointType == "Social"){ %>
+                                <span class="ui teal small label">Social</span>
+                              <% }%>
+
+                              <% if(event.pointType == "Service"){ %>
+                                <span class="ui yellow small label">Service</span>
+                              <%}%>
+
+                              <% if(event.pointType == "Programming"){ %>
+                                <span class="ui purple small label">Programming</span>
+                              <%}%>
+
+                              <% if(event.pointType == "Meeting"){ %>
+                                <span class="ui pink small label">Meeting</span>
+                              <%}%>
+
+                        </p>
+
+
+                    </div>
+                    <div class="ui  segment">
+                      <p><b>Event Date:&nbsp;&nbsp;</b> <%= event.eventDate.toDateString() %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="ten wide column">
+                        <div class="ui segments">
+                   
+                    <div class="ui  black segment">
+                      <p><b>Event Description:&nbsp;&nbsp;</b> <%= event.Description %></p>
+                    </div>
+                    <div class="ui clearing secondary segment">
+                     <form class="ui small form" method="POST">
+                       
+                       <% if(event.comment == null){%>
+
+                        <div class=" field">
+                          <label>Comment</label>
+                          <textarea name="comment"></textarea>
+                        </div>
+
+                        <div class="ui right floated  small buttons">
+                          <button class="positive ui button" type="submit" formaction="/point/<%=event.creatorID%>/<%=event._id%>/<%=event.pointType%>/accept">Approve</button><
+                          <div class="or"></div>
+                          <button class="ui negative button" type="submit"  formaction="/point/<%=event.creatorID%>/<%=event._id%>/<%=event.pointType%>/deny"">Deny</button>
+                      </div>
+
+
+                         <% } else { %>
+                              
+                        <div class=" field">
+                          <label>Comment</label>
+                          <textarea rows="4" name="comment" placeholder="<%=event.comment%>" readonly="" type="text"></textarea>
+                        </div>
+
+                         <div class=" field">
+                          <label>Decision</label>
+                          <input placeholder="<%=event.status%>" readonly="" type="text">
+
+                        </div>
+                       
+                        <% } %>
+
+                   </form>
+                    </div>
+                     
+                    </div>
+                  
+                </div>
+                </div>
+
+              </div>
+
+   
+<!--  ------------------------------------------------------------------------------------------------------>
+        <% include ../partials/footer2 %>
+
+    </body>
+</html>

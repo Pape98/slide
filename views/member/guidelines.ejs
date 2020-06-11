@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>SLIDE | Guidelines</title>
+       
+        <% include ../partials/menu2 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+          
+             <h2 class="ui center aligned icon header">
+                  <i class="question icon"></i>
+                  <div class="content">
+                     Guidelines
+                    <div class="sub header">This is to help you understand our guidelines.</div>
+                  </div>
+            </h2>
+
+
+            <div class="ui secondary pointing menu">
+              <a class=" active red item" data-tab="first">Points</a>
+              <a class="orange item" data-tab="second">Appeals</a>
+              <a class="green item " data-tab="third">Drinking</a>
+            </div>
+           
+            
+            <div class="ui bottom attached tab active " data-tab="first">
+                <div class="ui accordion">
+                  
+                <%pointsGuidelines.forEach(function(guideline){%>
+
+                  <div class="title" style="color:#B03060">
+                    <i class="dropdown icon"></i>
+                      <%=guideline.title%>
+                  </div>
+                  <div class="content">
+                    <p><%=guideline.text%></p>
+                  </div>
+                <%})%>
+                </div>
+            </div>
+            
+
+            <div class="ui bottom attached tab  " data-tab="second">
+              <div class="ui accordion">
+                  
+                <%appealsGuidelines.forEach(function(guideline){%>
+
+                  <div class="title" style="color:#FE9A76">
+                    <i class="dropdown icon"></i>
+                      <%=guideline.title%>
+                  </div>
+                  <div class="content">
+                    <p><%=guideline.text%></p>
+                  </div>
+                <%})%>
+                </div>
+            </div>
+            
+
+            <div class="ui bottom attached tab  " data-tab="third">
+              <div class="ui accordion">
+                  
+                <%drinkingGuidelines.forEach(function(guideline){%>
+
+                  <div class="title" style="color:#32CD32">
+                    <i class="dropdown icon"></i>
+                      <%=guideline.title%>
+                  </div>
+                  <div class="content">
+                    <p><%=guideline.text%></p>
+                  </div>
+                <%})%>
+                </div>
+            </div>
+
+
+            
+    
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+         <% include ../partials/dashboard %>
+
+    </body>
+</html>

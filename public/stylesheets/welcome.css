@@ -1,0 +1,40 @@
+ .top {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   
+}
+
+  #pic-container {
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+	.slide {
+       width: 100%;
+       height: auto; 
+      -webkit-filter: brightness(30%); /* Safari */
+      filter: brightness(30%);
+    }
+    
+    .button-bottom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text{
+  font-size: 55px;
+  font-family: 'IM Fell Double Pica';
+}
+
+    .title {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <title>SLIDE | My Events </title>
+         
+        <% include ../partials/menu2 %>
+
+<!--  ------------------------------------------------------------------------------------------------------>
+       
+          
+             <h2 class="ui center aligned icon header">
+                  <i class=" user icon"></i>
+                  <div class="content">
+                    My Events
+                    <div class="sub header">This is a list of the events that you've signed up for.</div>
+                    <div style="padding-top:20px">
+                        <a href="/event"><button class="ui button"> All Events</button></a>
+                        <a href="/points/view"><button class="ui button">My Points</button></a>
+                    </div>
+                  </div>
+            </h2>
+            
+             <h4 class="ui dividing header">My Current Events</h4>
+            
+          
+            
+            <div class="ui centered cards">
+                <% events.forEach(function(event){ %>
+                
+              <div class="ui card">
+                  <div class="ui content">
+                    
+                    <div class="ui centered image small " style="padding-bottom: 20px">
+                              
+
+                              
+
+                    <% if(event.pointType == "Social"){ %>
+                      <img class="ui centered  small image"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVHkFDPBUz_LdYeAQ2bTjDQSjMHAE3dmEFC0H6iNOhV7oXf2Ef">
+                    <% } else if (event.pointType == "Service"){ %>
+                      <img class="ui small image" src="http://artreachredwing.org/wp-content/uploads/2012/03/servlet.jpg">
+                     <% } else { %>
+                      <img class="ui small image" src="http://unitedhandymanassociation.org/wp-content/uploads/2012/09/uha-all-hands-in-1.jpg">
+                     <% } %>
+                    
+                    </div>
+                    <div class="ui raised content ">
+                        
+                   <% if(event.pointType == "Social"){ %>
+                      <a class="ui teal right ribbon label">Social</a>
+                    <% } else if (event.pointType == "Service"){ %>
+                      <a class="ui yellow right ribbon label">Service</a> 
+                     <% } else { %>
+                      <a class="ui purple right ribbon label">Programming</a> 
+                     <% } %>
+                     
+                </div>
+                    <div class="header"><%= event.eventName %></div>
+                    <div class="meta"> <span><%=event.pointShift%> Point(s)</span></div>
+                    <div class="description">
+                      <p style="font-size:11px"><%= event.Description%></p>
+                     <p style="font-size:11px"><i class="calendar icon"></i> <span style="font-weight:bold"><%= event.eventDate%></span></p>
+                      <p style="font-size:12px"><i class="clock icon"></i> <span style="font-weight:bold"><%= event.startTime%></span> to <span style="font-weight:bold"><%= event.endTime%></span></p>
+                      <p style="font-size:12px"><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span></p> 
+                      
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="extra content">
+                    <div class="ui bottom attached buttons">
+                       <% var d = new Date(); %>
+                       <% var m = new Date(); %>
+                       <% m = event.eventDate %>
+                       <% d = d.getTime(); m = m.getTime(); %>
+                          
+                       
+                       <% if( d > (m+86500000)){ %>
+                            <a href="#" class="ui  blue  button">Missed</a>
+                            <a href="/my-events/<%=event._id%>/went" class="ui  green button">Went </a>
+                        <% }  else if( d < (m+86500000))  { %>
+                            <a href="/my-events/<%=event._id%>/cancel" class="ui red button">Cancel</a>
+                           
+                        <% } %>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+              <% }) %>    
+            </div>
+              
+    <%/* ====================================================================================================*/ %>
+            
+            <h4 class="ui dividing header">My Old Events</h4>
+             
+              
+             <table class="ui single line striped celled table">
+                  <thead>
+                    <tr>
+                      <th>Point Type</th>
+                      <th>Event Name</th>
+                      <th>Event Date</th>
+                      <th>Number of Points</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    
+              
+                 <% wentEvents.forEach(function(event){  %> 
+                  
+                   
+
+                    <tr>
+                      
+                    <% if(event.pointType == "Social"){ %> 
+                        <td> <div class="ui teal horizontal large label">Social</div> </td>
+                        <% } %>
+                    <%  if(event.pointType == "Service"){ %> 
+                        <td> <div class="ui yellow horizontal large label">Service</div> </td> 
+                        <%  }%>
+                    <% if (event.pointType == "Programming"){ %> 
+                    <td> <div class="ui purple horizontal large label">Programming</div> </td> 
+                        <% } %>
+                      
+                      
+                      <td> <%= event.eventName %> </td>
+                      <% if(event.eventDate != undefined){%>
+                        <td> <%= event.eventDate.toDateString() %> </td>
+                      <%}%>
+                      <td> <%= event.pointShift %> </td>
+                    </tr>
+                  
+                 <% }); %> 
+                 
+                  </tbody>
+              
+                </table>
+                  
+            </div>
+              
+              <div style="height:30px"></div>
+             
+        </div>
+    
+   
+<!--  ------------------------------------------------------------------------------------------------------>
+        
+
+         <% include ../partials/dashboard %>
+
+        
+
+    </body>
+</html>
