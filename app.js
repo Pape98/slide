@@ -23,11 +23,11 @@ var express               = require("express"),
 var url = process.env.DATABASEURL || "mongodb://localhost/slide";
 
 //mongoose.connect(url);
-// mongoose.set('useNewUrlParser', true);
-// mongoose.set('useFindAndModify', false);
-// mongoose.set('useCreateIndex', true);
-// mongoose.set('useUnifiedTopology', true);
-// mongoose.connect("mongodb://slide:SLide2017@ds235401.mlab.com:35401/heroku_5vtnr9kc");
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
+mongoose.connect("mongodb+srv://pape98:221298@cluster0-kpu2c.mongodb.net/slide?retryWrites=true&w=majority");
 
  
 var app = express();
@@ -104,10 +104,12 @@ app.get('/.well-known/acme-challenge/AkplRW-XS0PXqwWLaVFs4V3FaykUC_ztXvlr6f9ZPno
 // -------------------------------- HOME PAGE-----------------------------------
 
 app.get("/", function(req, res){
+
     res.redirect('/home');
 }); 
 
 app.get("/home", function(req, res){
+    
   User.findOne({position:"President"},function(err,president){
     if(err) console.log(err);
     else{
@@ -121,10 +123,6 @@ app.get("/home", function(req, res){
     }
     
   });
-  // Event.findById("5be8a4a356adb6001f1d01a8",function(err,events){
-    
-  //   res.send(events);
-  // });
 });
 // -------------------------------- STAFF PAGE-----------------------------------
 
@@ -2509,10 +2507,12 @@ console.log(link[0]);
 
 // =============================== LISTENING PORT===============================
 
-app.listen(process.env.PORT || 3000, function(){
-    console.log("SERVER IS RUNNING!");
+var port = process.env.PORT || 3000;
+app.listen(port, function(){
+    console.log("SERVER IS RUNNING on port " + port);
 });
 
 
-// ================================ CONNECTION ==================================
 
+// ================================ CONNECTION ==================================
+module.exports = app;
