@@ -1065,32 +1065,32 @@ app.post('/appeals',function(req, res) {
                                       User.find({position:"Membership Executive"},function(err,membershipExecs){
                                         if(err) console.log(err);
                                         else{
-                                          var membershipEmail1 = membershipExecs[0].email;
+                                        //   var membershipEmail1 = membershipExecs[0].email;
                                           
-                                          var membershipEmail2; 
-                                          if(membershipExecs[1] != undefined) membershipEmail2 = membershipExecs[1].email; 
+                                        //   var membershipEmail2; 
+                                        //   if(membershipExecs[1] != undefined) membershipEmail2 = membershipExecs[1].email; 
                                           
 
-                                        var mytext = "<h1>APPEAL NOTIFICATION<h1> <p>This is to let you know that the following appeal was submitted:</p>" +
-                                         "<p> Requester Name:&nbsp;" + requesterName+ "</p>" +
-                                         "<p> Event Name:&nbsp;" + eventName + "</p>" +
-                                         "<p> Event Date:&nbsp; " + eventDate + "</p>" +
-                                         "<p> Event Type:&nbsp; " + eventType + "</p>" + 
-                                         "<p> Reason:&nbsp; " + reason  + "</p>" + 
-                                         "<p> Reason Description:&nbsp; " + reasonDescription + "</p>";
+                                        // var mytext = "<h1>APPEAL NOTIFICATION<h1> <p>This is to let you know that the following appeal was submitted:</p>" +
+                                        //  "<p> Requester Name:&nbsp;" + requesterName+ "</p>" +
+                                        //  "<p> Event Name:&nbsp;" + eventName + "</p>" +
+                                        //  "<p> Event Date:&nbsp; " + eventDate + "</p>" +
+                                        //  "<p> Event Type:&nbsp; " + eventType + "</p>" + 
+                                        //  "<p> Reason:&nbsp; " + reason  + "</p>" + 
+                                        //  "<p> Reason Description:&nbsp; " + reasonDescription + "</p>";
                                       
 
-                                        let mailOptions = {
-                                            from: 'TAMU SLIDE<tamuslide@gmail.com>', // sender address
-                                            to: membershipEmail1+','+ membershipEmail1+','+'jdsingleton16@tamu.edu, taylorsoukup96@tamu.edu', // list of receivers
-                                            subject: "Slide Appeal Notification ", // Subject line
-                                            text: 'Hello to myself!',
-                                            html: mytext // html body
-                                        };
+                                        // let mailOptions = {
+                                        //     from: 'TAMU SLIDE<tamuslide@gmail.com>', // sender address
+                                        //     to: membershipEmail1+','+ membershipEmail1+','+'jdsingleton16@tamu.edu, taylorsoukup96@tamu.edu', // list of receivers
+                                        //     subject: "Slide Appeal Notification ", // Subject line
+                                        //     text: 'Hello to myself!',
+                                        //     html: mytext // html body
+                                        // };
 
 
 
-                                        transporter.sendMail(mailOptions);
+                                        // transporter.sendMail(mailOptions);
 
 
 
