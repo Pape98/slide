@@ -23,11 +23,11 @@ var express               = require("express"),
 var url = process.env.DATABASEURL || "mongodb://localhost/slide";
 
 //mongoose.connect(url);
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
-mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://slide:SLide2017@ds235401.mlab.com:35401/heroku_5vtnr9kc");
+// mongoose.set('useNewUrlParser', true);
+// mongoose.set('useFindAndModify', false);
+// mongoose.set('useCreateIndex', true);
+// mongoose.set('useUnifiedTopology', true);
+// mongoose.connect("mongodb://slide:SLide2017@ds235401.mlab.com:35401/heroku_5vtnr9kc");
 
  
 var app = express();
