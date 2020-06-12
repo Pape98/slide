@@ -23,7 +23,12 @@ var express               = require("express"),
 var url = process.env.DATABASEURL || "mongodb://localhost/slide";
 
 //mongoose.connect(url);
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 mongoose.connect("mongodb://slide:SLide2017@ds235401.mlab.com:35401/heroku_5vtnr9kc");
+
  
 var app = express();
 app.use(express.static("public")); // To allow static files
@@ -42,38 +47,6 @@ app.use(require("express-session")({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-// var goals = {
-//   socialGoal : "10",
-//   serviceGoal: "3",
-//   programmingGoal:"5",
-//   meetingGoal: "14",
-// }
-
-// Goal.create(goals,function(err,goals){
-//   if(err) console.log(err);
-// })
-
-// User.find({},function(err,users){
-//   if(err) console.log(err);
-//   else{
-//     users.forEach(function(user){
- 
-//         user.meetingPoints = 0;
-//         user.save();
-//         console.log(user.meetingPoints);
-      
-//     })
-//   }
-// })
-
-// User.findOne({lastName:'Salinas'},function(err,user){
-//   if(err) console.log(err);
-//   else{
-//     user.meetingPoints = 5;
-//     user.save();
-//   }
-// });
 
 // Passing variable to all routes
 app.use(function(req,res,next){
