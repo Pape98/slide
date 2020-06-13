@@ -1,68 +1,84 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	    <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-
-		body{
-			background: black ;
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			background: black;
 		}
+
 		.loader {
-		  border: 16px solid #f3f3f3;
-		  border-radius: 50%;
-		  border-top: 16px solid black;
-		  border-bottom: 16px solid black;
-		  width: 250px;
-		  height: 250px;
-		   position: absolute;
-		  top: 0; right: 0; left: 0; bottom: 0;
-		  margin: auto;
-		  -webkit-animation: spin 2s linear infinite;
-		  animation: spin 2s linear infinite;
-		  
+			border: 16px solid #f3f3f3;
+			border-radius: 50%;
+			border-top: 16px solid black;
+			border-bottom: 16px solid black;
+			width: 250px;
+			height: 250px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			margin: auto;
+			-webkit-animation: spin 2s linear infinite;
+			animation: spin 2s linear infinite;
+
 		}
 
-		img{
-			
-		  position: relative;top: 50%;transform: translateY(-50%);
-		  margin: auto;
+		img {
+
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			margin: auto;
 		}
 
 
 		@-webkit-keyframes spin {
-		  0% { -webkit-transform: rotate(0deg); }
-		  100% { -webkit-transform: rotate(360deg); }
+			0% {
+				-webkit-transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(360deg);
+			}
 		}
 
 		@keyframes spin {
-		  0% { transform: rotate(0deg); }
-		  100% { transform: rotate(360deg); }
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
 		}
+	</style>
+</head>
 
-			
+<body>
 
-		</style>
-		</head>
-		<body>
 
-			
-			<img class="ui centered small image" src="https://image.ibb.co/nswoFd/slideeeee.png" alt="slideeeee" border="0"></a>
-				<div class="loader">
-					
-				</div>
-			
+	<img class="ui centered small image" src="https://image.ibb.co/nswoFd/slideeeee.png" alt="slideeeee" border="0"></a>
+	<div class="loader">
 
-			
+	</div>
 
-		<script type="text/javascript">
-			var myrole = <%- JSON.stringify(role) %>
-			  setTimeout(function () {
-			    if(myrole == "staff") window.location = "/home-page";
-			    else window.location = "/my-home-page";
-			     
-			  }, 500)
-			</script>
 
-		</body>
+
+
+	<script type="text/javascript">
+		var myrole = < % -JSON.stringify(role) % >
+			setTimeout(function () {
+				if (myrole == "staff") window.location = "/home-page";
+				else window.location = "/my-home-page";
+
+			}, 500)
+	</script>
+
+</body>
+
 </html>

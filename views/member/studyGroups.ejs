@@ -1,297 +1,301 @@
 <html>
-    <head>
-        <title>SLIDE | Study Groups</title>
 
-        <% include ../partials/menu2 %>
+<head>
+  <title>SLIDE | Study Groups</title>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-          
-             <h2 class="ui center aligned icon header">
-                  <i class=" book icon"></i>
-                  <div class="content">
-                    Study Groups
-                    <div class="sub header" style="padding: 20px">These all the courses taken current Sliders. You can use this to see who's taking the same classes as you.</div>
-                    <button id="addCourses" class="ui secondary button"> Add my Courses</button>
-                  </div>
-            </h2>
+  <% include ../partials/menu2 %>
 
-            <h3 class="ui dividing header">
-              My Current Courses
-            </h3>
+  <!--  ------------------------------------------------------------------------------------------------------>
 
-            <div class="ui items">
 
-            <%user.courses.forEach(function(course){%>
-                <div class="item">
-                  <div class="ui tiny image">
-                    <img src="http://www.thebalochnews.com/wp-content/uploads/2017/07/canstockphoto7049160.jpg">
-                  </div>
-                  <div class="middle aligned content">
-                    <a class="header"><%=course%></a>
-                    <a href="/study-groups/delete/<%=course%>"><button class="ui right floated negative button"><i class="cancel icon "></i>Delete Course</button></a>
-                  </div>
-                </div>
-                <%})%>
+  <h2 class="ui center aligned icon header">
+    <i class=" book icon"></i>
+    <div class="content">
+      Study Groups
+      <div class="sub header" style="padding: 20px">These all the courses taken current Sliders. You can use this to see
+        who's taking the same classes as you.</div>
+      <button id="addCourses" class="ui secondary button"> Add my Courses</button>
+    </div>
+  </h2>
 
+  <h3 class="ui dividing header">
+    My Current Courses
+  </h3>
+
+  <div class="ui items">
+
+    <%user.courses.forEach(function(course){%>
+    <div class="item">
+      <div class="ui tiny image">
+        <img src="http://www.thebalochnews.com/wp-content/uploads/2017/07/canstockphoto7049160.jpg">
+      </div>
+      <div class="middle aligned content">
+        <a class="header"><%=course%></a>
+        <a href="/study-groups/delete/<%=course%>"><button class="ui right floated negative button"><i
+              class="cancel icon "></i>Delete Course</button></a>
+      </div>
+    </div>
+    <%})%>
+
+  </div>
+
+
+  <h3 class="ui dividing header">
+    List of people taking my courses
+  </h3>
+
+  <% if(user.courses.length == 1){ %>
+  <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
+    <div class="one column row">
+      <%user.courses.forEach(function(course){ %>
+      <div class="column">
+        <div class="ui big header"><%=course%></div>
+        <div class="ui middle aligned animated center aligned  list">
+
+          <%allCourses.forEach(function(existingCourse){%>
+
+
+          <% if(course == existingCourse.courseID){%>
+          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
+          <div class="item">
+            <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
+            <div class="content">
+              <div class="header"><%=existingCourse.users[i].name%></div>
             </div>
-
-
-            <h3 class="ui dividing header">
-                List of people taking my courses
-            </h3>
-
-             <% if(user.courses.length == 1){ %>
-              <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
-              <div class="one column row">
-                <%user.courses.forEach(function(course){ %>
-                  <div class="column">
-                    <div class="ui big header"><%=course%></div>
-                    <div class="ui middle aligned animated center aligned  list">
-                      
-                      <%allCourses.forEach(function(existingCourse){%>
-
-
-                        <% if(course == existingCourse.courseID){%>
-                          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
-                            <div class="item">
-                              <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
-                              <div class="content">
-                                <div class="header"><%=existingCourse.users[i].name%></div>
-                              </div>
-                            </div>
-
-                        <% }}});%>
-                    </div>
-                  </div>
-                <%});%>
-
-              </div>
-            </div>
-            <% }%>
-
-            <% if(user.courses.length == 2){ %>
-              <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
-              <div class="two column row">
-                <%user.courses.forEach(function(course){ %>
-                  <div class="column">
-                    <div class="ui big header"><%=course%></div>
-                    <div class="ui middle aligned animated center aligned  list">
-                      
-                      <%allCourses.forEach(function(existingCourse){%>
-
-
-                        <% if(course == existingCourse.courseID){%>
-                          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
-                            <div class="item">
-                              <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
-                              <div class="content">
-                                <div class="header"><%=existingCourse.users[i].name%></div>
-                              </div>
-                            </div>
-
-                        <% }}});%>
-                    </div>
-                  </div>
-                <%});%>
-
-              </div>
-            </div>
-            <% }%>
-
-            <% if(user.courses.length == 3){ %>
-              <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
-              <div class="three column row">
-                <%user.courses.forEach(function(course){ %>
-                  <div class="column">
-                    <div class="ui big header"><%=course%></div>
-                    <div class="ui middle aligned animated center aligned  list">
-                      
-                      <%allCourses.forEach(function(existingCourse){%>
-
-
-                        <% if(course == existingCourse.courseID){%>
-                          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
-                            <div class="item">
-                              <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
-                              <div class="content">
-                                <div class="header"><%=existingCourse.users[i].name%></div>
-                              </div>
-                            </div>
-
-                        <% }}});%>
-                    </div>
-                  </div>
-                <%});%>
-
-              </div>
-            </div>
-            <% }%>
-
-         
-
-            <% if(user.courses.length == 4){ %>
-              <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
-              <div class="four column row">
-                <%user.courses.forEach(function(course){ %>
-                  <div class="column">
-                    <div class="ui big header"><%=course%></div>
-                    <div class="ui middle aligned animated center aligned  list">
-                      
-                      <%allCourses.forEach(function(existingCourse){%>
-
-
-                        <% if(course == existingCourse.courseID){%>
-                          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
-                            <div class="item">
-                              <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
-                              <div class="content">
-                                <div class="header"><%=existingCourse.users[i].name%></div>
-                              </div>
-                            </div>
-
-                        <% }}});%>
-                    </div>
-                  </div>
-                <%});%>
-
-              </div>
-            </div>
-            <% }%>
-
-            <% if(user.courses.length == 5){ %>
-              <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
-              <div class="five column row">
-                <%user.courses.forEach(function(course){ %>
-                  <div class="column">
-                    <div class="ui big header"><%=course%></div>
-                    <div class="ui middle aligned animated center aligned  list">
-                      
-                      <%allCourses.forEach(function(existingCourse){%>
-
-
-                        <% if(course == existingCourse.courseID){%>
-                          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
-                            <div class="item">
-                              <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
-                              <div class="content">
-                                <div class="header"><%=existingCourse.users[i].name%></div>
-                              </div>
-                            </div>
-
-                        <% }}});%>
-                    </div>
-                  </div>
-                <%});%>
-
-              </div>
-            </div>
-            <% }%>
-
-            <% if(user.courses.length == 6){ %>
-              <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
-              <div class="six column row">
-                <%user.courses.forEach(function(course){ %>
-                  <div class="column">
-                    <div class="ui big header"><%=course%></div>
-                    <div class="ui middle aligned animated center aligned  list">
-                      
-                      <%allCourses.forEach(function(existingCourse){%>
-
-
-                        <% if(course == existingCourse.courseID){%>
-                          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
-                            <div class="item">
-                              <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
-                              <div class="content">
-                                <div class="header"><%=existingCourse.users[i].name%></div>
-                              </div>
-                            </div>
-
-                        <% }}});%>
-                    </div>
-                  </div>
-                <%});%>
-
-              </div>
-            </div>
-            <% }%>
-
-            <% if(user.courses.length == 7){ %>
-              <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
-              <div class="seven column row">
-                <%user.courses.forEach(function(course){ %>
-                  <div class="column">
-                    <div class="ui big header"><%=course%></div>
-                    <div class="ui middle aligned animated center aligned  list">
-                      
-                      <%allCourses.forEach(function(existingCourse){%>
-
-
-                        <% if(course == existingCourse.courseID){%>
-                          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
-                            <div class="item">
-                              <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
-                              <div class="content">
-                                <div class="header"><%=existingCourse.users[i].name%></div>
-                              </div>
-                            </div>
-
-                        <% }}});%>
-                    </div>
-                  </div>
-                <%});%>
-
-              </div>
-            </div>
-            <% }%>
-
-
-
-<!--  ------------------------------------------------------------------------------------------------------>
-
-
-          <div  class="ui basic tiny modal courses">
-            <h2 class="ui center aligned icon header">
-                  <i class="plus circle icon"></i>
-                  <div class="content">
-                    My Courses
-                    <div class="sub header" style="color:white">Add your current courses here. Example: CSCE 312.
-                  </div>
-            </h2>
-            <form class=" ui equal width tiny centered form"  action="study-groups" method="POST" >
-            
-            
-              <div class="two fields">
-                <div class="field">
-                  <label style="color:white">Course Code</label>
-                  <input type="text" name="courseCode" placeholder="@@@@">
-                </div>
-                <div class="field">
-                  <label style="color:white">Course Number</label>
-                  <input type="text" name="courseNumber" placeholder="###">
-                </div>
-              </div>
-            
-            <button class="ui right floated submit green button" class="coursesForm">Submit</button> 
-        
-                          
-                </form>
           </div>
-            
-         
-             
+
+          <% }}});%>
         </div>
-        
-<!--  ------------------------------------------------------------------------------------------------------>
+      </div>
+      <%});%>
 
-    <script type="text/javascript">
-      
-    </script>
-        
-         <% include ../partials/dashboard %>
-        
-        
+    </div>
+  </div>
+  <% }%>
 
-    </body>
+  <% if(user.courses.length == 2){ %>
+  <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
+    <div class="two column row">
+      <%user.courses.forEach(function(course){ %>
+      <div class="column">
+        <div class="ui big header"><%=course%></div>
+        <div class="ui middle aligned animated center aligned  list">
+
+          <%allCourses.forEach(function(existingCourse){%>
+
+
+          <% if(course == existingCourse.courseID){%>
+          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
+          <div class="item">
+            <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
+            <div class="content">
+              <div class="header"><%=existingCourse.users[i].name%></div>
+            </div>
+          </div>
+
+          <% }}});%>
+        </div>
+      </div>
+      <%});%>
+
+    </div>
+  </div>
+  <% }%>
+
+  <% if(user.courses.length == 3){ %>
+  <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
+    <div class="three column row">
+      <%user.courses.forEach(function(course){ %>
+      <div class="column">
+        <div class="ui big header"><%=course%></div>
+        <div class="ui middle aligned animated center aligned  list">
+
+          <%allCourses.forEach(function(existingCourse){%>
+
+
+          <% if(course == existingCourse.courseID){%>
+          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
+          <div class="item">
+            <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
+            <div class="content">
+              <div class="header"><%=existingCourse.users[i].name%></div>
+            </div>
+          </div>
+
+          <% }}});%>
+        </div>
+      </div>
+      <%});%>
+
+    </div>
+  </div>
+  <% }%>
+
+
+
+  <% if(user.courses.length == 4){ %>
+  <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
+    <div class="four column row">
+      <%user.courses.forEach(function(course){ %>
+      <div class="column">
+        <div class="ui big header"><%=course%></div>
+        <div class="ui middle aligned animated center aligned  list">
+
+          <%allCourses.forEach(function(existingCourse){%>
+
+
+          <% if(course == existingCourse.courseID){%>
+          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
+          <div class="item">
+            <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
+            <div class="content">
+              <div class="header"><%=existingCourse.users[i].name%></div>
+            </div>
+          </div>
+
+          <% }}});%>
+        </div>
+      </div>
+      <%});%>
+
+    </div>
+  </div>
+  <% }%>
+
+  <% if(user.courses.length == 5){ %>
+  <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
+    <div class="five column row">
+      <%user.courses.forEach(function(course){ %>
+      <div class="column">
+        <div class="ui big header"><%=course%></div>
+        <div class="ui middle aligned animated center aligned  list">
+
+          <%allCourses.forEach(function(existingCourse){%>
+
+
+          <% if(course == existingCourse.courseID){%>
+          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
+          <div class="item">
+            <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
+            <div class="content">
+              <div class="header"><%=existingCourse.users[i].name%></div>
+            </div>
+          </div>
+
+          <% }}});%>
+        </div>
+      </div>
+      <%});%>
+
+    </div>
+  </div>
+  <% }%>
+
+  <% if(user.courses.length == 6){ %>
+  <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
+    <div class="six column row">
+      <%user.courses.forEach(function(course){ %>
+      <div class="column">
+        <div class="ui big header"><%=course%></div>
+        <div class="ui middle aligned animated center aligned  list">
+
+          <%allCourses.forEach(function(existingCourse){%>
+
+
+          <% if(course == existingCourse.courseID){%>
+          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
+          <div class="item">
+            <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
+            <div class="content">
+              <div class="header"><%=existingCourse.users[i].name%></div>
+            </div>
+          </div>
+
+          <% }}});%>
+        </div>
+      </div>
+      <%});%>
+
+    </div>
+  </div>
+  <% }%>
+
+  <% if(user.courses.length == 7){ %>
+  <div class="ui centered center aligned stackable doubling  grid" style="padding: 25px;">
+    <div class="seven column row">
+      <%user.courses.forEach(function(course){ %>
+      <div class="column">
+        <div class="ui big header"><%=course%></div>
+        <div class="ui middle aligned animated center aligned  list">
+
+          <%allCourses.forEach(function(existingCourse){%>
+
+
+          <% if(course == existingCourse.courseID){%>
+          <% for(var i = 0; i < existingCourse.users.length; ++i){%>
+          <div class="item">
+            <img class="ui avatar circular image" src="<%=existingCourse.users[i].profilePicture%>">
+            <div class="content">
+              <div class="header"><%=existingCourse.users[i].name%></div>
+            </div>
+          </div>
+
+          <% }}});%>
+        </div>
+      </div>
+      <%});%>
+
+    </div>
+  </div>
+  <% }%>
+
+
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+
+  <div class="ui basic tiny modal courses">
+    <h2 class="ui center aligned icon header">
+      <i class="plus circle icon"></i>
+      <div class="content">
+        My Courses
+        <div class="sub header" style="color:white">Add your current courses here. Example: CSCE 312.
+        </div>
+    </h2>
+    <form class=" ui equal width tiny centered form" action="study-groups" method="POST">
+
+
+      <div class="two fields">
+        <div class="field">
+          <label style="color:white">Course Code</label>
+          <input type="text" name="courseCode" placeholder="@@@@">
+        </div>
+        <div class="field">
+          <label style="color:white">Course Number</label>
+          <input type="text" name="courseNumber" placeholder="###">
+        </div>
+      </div>
+
+      <button class="ui right floated submit green button" class="coursesForm">Submit</button>
+
+
+    </form>
+  </div>
+
+
+
+  </div>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+  <script type="text/javascript">
+
+  </script>
+
+  <% include ../partials/dashboard %>
+
+
+
+  </body>
+
 </html>

@@ -1,93 +1,90 @@
 <html>
-    <head>
-        <title>SLIDE | Forms</title>
-       
-        <% include ../partials/menu3 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-   
-         
-          
-             <h2 class="ui center aligned icon header">
-                  <i class="file alternate icon"></i>
-                  <div class="content">
-                    Forms
-                    <div class="sub header">You can post forms and delete forms here</div>
-                     <div style="padding-top:20px">
-                        <button id="newAnnouncement" class="ui button">New Form</button>
-                        
-                    </div>
-                  </div>
-            </h2>
-            
-            
+<head>
+  <title>SLIDE | Forms</title>
+
+  <% include ../partials/menu3 %>
+  
+  <h2 class="ui center aligned icon header">
+    <i class="file alternate icon"></i>
+    <div class="content">
+      Forms
+      <div class="sub header">You can post forms and delete forms here</div>
+      <div style="padding-top:20px">
+        <button id="newAnnouncement" class="ui button">New Form</button>
+
+      </div>
+    </div>
+  </h2>
 
 
-            <div class="ui divided unstackable items">
+  <div class="ui divided unstackable items">
 
-            <% forms.forEach(function(form){ %>
-              <div class="item">
-                <div class="ui tiny image">
-                  <img src="https://dsrs.ksu.edu.sa/sites/dsrs.ksu.edu.sa/files/imce_images/form-icon.png">
-                </div>
-                <div class="middle aligned content">
-                  <a class="big header"><%=form.title%></a>
-                 
-                       <div class="extra">
-                        <a href="/staff/forms/<%=form._id%>/delete"><button class="ui negative right floated button">Delete</button></a>
-                      </div>
-                </div>
-              </div>
-           <% }) %>
+    <% forms.forEach(function(form){ %>
+    <div class="item">
+      <div class="ui tiny image">
+        <img src="https://dsrs.ksu.edu.sa/sites/dsrs.ksu.edu.sa/files/imce_images/form-icon.png">
+      </div>
+      <div class="middle aligned content">
+        <a class="big header"><%=form.title%></a>
 
-              
-            </div>
-            
-
-
-
+        <div class="extra">
+          <a href="/staff/forms/<%=form._id%>/delete"><button
+              class="ui negative right floated button">Delete</button></a>
         </div>
-        <!-- -------------------------------------------------------------------------------------------- -->
-        <div  class="ui basic tiny modal">
-            
-            <h2 class="ui center aligned icon header">
-                  <i class="file alternate icon"></i>
-                  <div class="content">
-                    Forms
-                    <div class="sub header">Use this form to post a new form</div>
-                    
-                  </div>
-            </h2>
-            
-            <form class=" ui equal width tiny centered form" action="/staff/forms" method="POST" >
-                     <h4 class="ui dividing header" style="color:white">Form Information</h4>
-                          
-                         
-                        <div class="required field">
-                            <label style="color:white">Title</label>
-                            <input type="text" name="title" placeholder="Title">
-                        </div>
-                          
-                        <div class="required field">
-                            <label style="color:white">Link</label>
-                            <input type="text" name="link" placeholder="Link">
-                        </div>
-                    
-                   
-                        <div class="ui right floated  buttons" style="padding-top:20px">
-                          <button class="ui button">Cancel</button>
-                          <div class="or"></div>
-                          <button class="ui submit green button">Submit</button>
-                        </div>
-                </form>
-                
-            
-        </div>
-            
-        </div>
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        <% include ../partials/footer2 %>
+      </div>
+    </div>
+    <% }) %>
 
-    </body>
+
+  </div>
+
+
+
+
+  </div>
+  <!-- -------------------------------------------------------------------------------------------- -->
+  <div class="ui basic tiny modal">
+
+    <h2 class="ui center aligned icon header">
+      <i class="file alternate icon"></i>
+      <div class="content">
+        Forms
+        <div class="sub header">Use this form to post a new form</div>
+
+      </div>
+    </h2>
+
+    <form class=" ui equal width tiny centered form" action="/staff/forms" method="POST">
+      <h4 class="ui dividing header" style="color:white">Form Information</h4>
+
+
+      <div class="required field">
+        <label style="color:white">Title</label>
+        <input type="text" name="title" placeholder="Title">
+      </div>
+
+      <div class="required field">
+        <label style="color:white">Link</label>
+        <input type="text" name="link" placeholder="Link">
+      </div>
+
+
+      <div class="ui right floated  buttons" style="padding-top:20px">
+        <button class="ui button">Cancel</button>
+        <div class="or"></div>
+        <button class="ui submit green button">Submit</button>
+      </div>
+    </form>
+
+
+  </div>
+
+  </div>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+  <% include ../partials/footer2 %>
+
+  </body>
+
 </html>

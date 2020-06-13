@@ -1,183 +1,185 @@
 <html>
-    <head>
-        <title>SLIDE | Guidelines</title>
-       
-        <% include ../partials/menu3 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-          
-             <h2 class="ui center aligned icon header" style="padding-bottom: 30px">
-                  <i class="question icon"></i>
-                  <div class="content">
-                     Guidelines
-                    <div class="sub header">This is to help you understand our guidelines.</div>
-                    <div style="padding-top:20px">
-                        <button id="newGuideline" class="ui secondary button">New Guideline</button>
-                    </div>
-                  </div>
-            </h2>
+<head>
+  <title>SLIDE | Guidelines</title>
 
-          
-         <div class="ui container">
-            <div class="ui top attached tabular inverted menu">
-            <div class="right menu">
-            <a class="active red item" data-tab="first">FAQs</a>
-            <a class="orange item" data-tab="second">Points</a>
-            <a class="yellow item" data-tab="third">Appeals</a>
-            <a class="olive item" data-tab="fourth">Drinking</a>
+  <% include ../partials/menu3 %>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+
+  <h2 class="ui center aligned icon header" style="padding-bottom: 30px">
+    <i class="question icon"></i>
+    <div class="content">
+      Guidelines
+      <div class="sub header">This is to help you understand our guidelines.</div>
+      <div style="padding-top:20px">
+        <button id="newGuideline" class="ui secondary button">New Guideline</button>
+      </div>
+    </div>
+  </h2>
+
+
+  <div class="ui container">
+    <div class="ui top attached tabular inverted menu">
+      <div class="right menu">
+        <a class="active red item" data-tab="first">FAQs</a>
+        <a class="orange item" data-tab="second">Points</a>
+        <a class="yellow item" data-tab="third">Appeals</a>
+        <a class="olive item" data-tab="fourth">Drinking</a>
+      </div>
+    </div>
+
+    <div class="ui bottom attached active tab segment" data-tab="first">
+
+      <div class="ui divided items">
+
+        <%guidelines.forEach(function(guideline){%>
+        <%if(guideline.category == "FAQs"){%>
+        <div class="item">
+          <div class="content">
+            <a class="ui red header"><%=guideline.title%></a>
+            <div class="description">
+              <p><%=guideline.text%></p>
             </div>
-          </div>  
-
-          <div class="ui bottom attached active tab segment" data-tab="first">
-        
-            <div class="ui divided items">
-              
-              <%guidelines.forEach(function(guideline){%>
-                <%if(guideline.category == "FAQs"){%>
-                  <div class="item">
-                    <div class="content">
-                      <a class="ui red header"><%=guideline.title%></a>
-                      <div class="description">
-                        <p><%=guideline.text%></p>
-                      </div>
-                      <div class="extra">
-                        <i class="red question icon"></i>
-                        FAQs
-                      </div>
-                    </div>
-                </div>
-                <%} %>
-              <%});%>
-
-            </div>
-          
-          </div>
-
-
-          <div class="ui bottom attached tab segment" data-tab="second">
-            <div class="ui divided items">
-              
-              <%guidelines.forEach(function(guideline){%>
-                <%if(guideline.category == "Points"){%>
-                  <div class="item">
-                    <div class="content">
-                      <a class="ui orange header"><%=guideline.title%></a>
-                      <div class="description">
-                        <p><%=guideline.text%></p>
-                      </div>
-                      <div class="extra">
-                        <i class="orange circle icon"></i>
-                        Points
-                      </div>
-                    </div>
-                </div>
-                <%} %>
-              <%});%>
-
+            <div class="extra">
+              <i class="red question icon"></i>
+              FAQs
             </div>
           </div>
+        </div>
+        <%} %>
+        <%});%>
 
-
-          <div class="ui bottom attached tab segment" data-tab="third">
-            <div class="ui divided items">
-              
-              <%guidelines.forEach(function(guideline){%>
-                <%if(guideline.category == "Appeals"){%>
-                  <div class="item">
-                    <div class="content">
-                      <a class="ui yellow header"><%=guideline.title%></a>
-                      <div class="description">
-                        <p><%=guideline.text%></p>
-                      </div>
-                      <div class="extra">
-                        <i class="yellow edit icon"></i>
-                        Appeals
-                      </div>
-                    </div>
-                </div>
-                <%} %>
-              <%});%>
-
-            </div>
-          </div>
-
-
-          <div class="ui bottom attached tab segment" data-tab="fourth">
-            <div class="ui divided items">
-              
-              <%guidelines.forEach(function(guideline){%>
-                <%if(guideline.category == "Drinking"){%>
-                  <div class="item">
-                    <div class="content">
-                      <a class="ui olive header"><%=guideline.title%></a>
-                      <div class="description">
-                        <p><%=guideline.text%></p>
-                      </div>
-                      <div class="extra">
-                        <i class="olive beer icon"></i>
-                        Drinking
-                      </div>
-                    </div>
-                </div>
-                <%} %>
-              <%});%>
-
-            </div>
-          </div>
-
-          
-
-         </div>
-
-        <!--  ------------------------------------------------------------------------------------------------------>
-
-      <div  class="ui basic tiny modal five">
-            <h2 class="ui center aligned icon header">
-                  <i class="edit icon"></i>
-                  <div class="content">
-                    Create a New Guideline
-                    <div class="sub header" style="color:white">Members will be able to see it through their portal.
-                  </div>
-            </h2>
-            <form class=" ui equal width tiny centered form" action="/staff/guidelines" method="POST" >
-                        
-                      <div class="fields">
-                         <div class="required field">
-                            <label style="color:white">Title / Question</label>
-                            <input type="text" name="title" placeholder="Can I miss an event? Number of points required.">
-                         </div>
-                          <div class="required field">
-                              <label style="color:white">Guideline Category Type</label>
-                              <div class="ui selection dropdown">
-                                  <input type="hidden" name="category">
-                                  <i class="dropdown icon"></i>
-                                  <div class="default text">-- Select Category</div>
-                                  <div class="menu">
-                                      <div class="item" data-value="FAQs">FAQs</div>
-                                      <div class="item" data-value="Points">Points</div>
-                                      <div class="item" data-value="Appeals">Appeals</div>
-                                      <div class="item" data-value="Drinking">Drinking</div>
-                                  </div>
-                              </div>
-                          </div>
-                          
-                     </div>
-
-                           <div class="required field" style="padding-bottom:30px">
-                                <label style="color:white"> Text</label>
-                                <textarea name="text"></textarea>
-                            </div>
-                          <button class="ui right floated submit green button">Submit</button> 
-                </form>
       </div>
 
-        
+    </div>
 
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-         <% include ../partials/footer2 %>
 
-    </body>
+    <div class="ui bottom attached tab segment" data-tab="second">
+      <div class="ui divided items">
+
+        <%guidelines.forEach(function(guideline){%>
+        <%if(guideline.category == "Points"){%>
+        <div class="item">
+          <div class="content">
+            <a class="ui orange header"><%=guideline.title%></a>
+            <div class="description">
+              <p><%=guideline.text%></p>
+            </div>
+            <div class="extra">
+              <i class="orange circle icon"></i>
+              Points
+            </div>
+          </div>
+        </div>
+        <%} %>
+        <%});%>
+
+      </div>
+    </div>
+
+
+    <div class="ui bottom attached tab segment" data-tab="third">
+      <div class="ui divided items">
+
+        <%guidelines.forEach(function(guideline){%>
+        <%if(guideline.category == "Appeals"){%>
+        <div class="item">
+          <div class="content">
+            <a class="ui yellow header"><%=guideline.title%></a>
+            <div class="description">
+              <p><%=guideline.text%></p>
+            </div>
+            <div class="extra">
+              <i class="yellow edit icon"></i>
+              Appeals
+            </div>
+          </div>
+        </div>
+        <%} %>
+        <%});%>
+
+      </div>
+    </div>
+
+
+    <div class="ui bottom attached tab segment" data-tab="fourth">
+      <div class="ui divided items">
+
+        <%guidelines.forEach(function(guideline){%>
+        <%if(guideline.category == "Drinking"){%>
+        <div class="item">
+          <div class="content">
+            <a class="ui olive header"><%=guideline.title%></a>
+            <div class="description">
+              <p><%=guideline.text%></p>
+            </div>
+            <div class="extra">
+              <i class="olive beer icon"></i>
+              Drinking
+            </div>
+          </div>
+        </div>
+        <%} %>
+        <%});%>
+
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+  <div class="ui basic tiny modal five">
+    <h2 class="ui center aligned icon header">
+      <i class="edit icon"></i>
+      <div class="content">
+        Create a New Guideline
+        <div class="sub header" style="color:white">Members will be able to see it through their portal.
+        </div>
+    </h2>
+    <form class=" ui equal width tiny centered form" action="/staff/guidelines" method="POST">
+
+      <div class="fields">
+        <div class="required field">
+          <label style="color:white">Title / Question</label>
+          <input type="text" name="title" placeholder="Can I miss an event? Number of points required.">
+        </div>
+        <div class="required field">
+          <label style="color:white">Guideline Category Type</label>
+          <div class="ui selection dropdown">
+            <input type="hidden" name="category">
+            <i class="dropdown icon"></i>
+            <div class="default text">-- Select Category</div>
+            <div class="menu">
+              <div class="item" data-value="FAQs">FAQs</div>
+              <div class="item" data-value="Points">Points</div>
+              <div class="item" data-value="Appeals">Appeals</div>
+              <div class="item" data-value="Drinking">Drinking</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="required field" style="padding-bottom:30px">
+        <label style="color:white"> Text</label>
+        <textarea name="text"></textarea>
+      </div>
+      <button class="ui right floated submit green button">Submit</button>
+    </form>
+  </div>
+
+
+
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+  <% include ../partials/footer2 %>
+
+  </body>
+
 </html>

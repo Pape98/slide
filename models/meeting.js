@@ -3,12 +3,12 @@ var mongoose = require("mongoose");
 var MeetingSchema = new mongoose.Schema({
     meetingDate: String,
     // People that went
-    presentIDs: [{         
+    presentIDs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }],
     // People that didn't go
-    absentIDs: [{                                 
+    absentIDs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }],

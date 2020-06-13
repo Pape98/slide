@@ -1,366 +1,412 @@
 <html>
-    <head>
-        <title>SLIDE | View Events</title>
+
+<head>
+  <title>SLIDE | View Events</title>
 
 
-        
-      <% if(user.role == "member"){ %> 
-      
-        <% include ../partials/menu2 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-           <p><%=events.date%></p>
-             <h2 class="ui center aligned icon header">
-                  <i class=" users icon"></i>
-                  <div class="content">
-                    View Events
-                    <div class="sub header">All events are posted here for you to sign up</div>
-                    <div style="padding-top:20px">
-                        <a href="/my-events"><button class="ui button"> My Events</button></a>
-                        <a href="/event/create"><button class="ui button">Create new Event</button></a>
-                        <a href="/points/view"><button class="ui button"> My Points</button></a>
-                    </div>
-                  </div>
-            </h2>
+  <% if(user.role == "member"){ %>
 
-      <div class="ui piled segments">
-          <% events.forEach(function(event){ %>
-           <% var condition = 1; %>
-           <% var userEvent; %>
-            <%  userEvents.forEach(function(userEvent){ %>
-                <%  if(String(event._id) ==  String(userEvent)) condition = 0; }) %>
-                
-                <% var d = new Date(); %>
-                       <% var m = new Date(); %>
-                       <% m = event.eventDate %>
-                       <% d = d.getTime();  m = m.getTime() %>
-        
-        <%  if((event.numberSpots > 0 || event.numberSpots == null )){ %>
-        
-              
-            <div class="ui clearing teal raised segment" style="font-size:12px">
-              <% if (event.slots == "Yes"){%>
-                    <a href="/event/shifts/<%= event._id%>" class="ui right floated green button">Sign Up</a>
-                   <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View Sign Ups</a>
-              <%} else {%>
-                 <% if(condition == 1) { %>
-                <a href="/event/<%= event._id%>" class="ui right floated green button">Sign Up</a>
-                <% } else if(condition == 0) { %>
-                 <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
-                <% } %>
-              <%}%>
-              
-              <a class="ui teal ribbon label">Social</a> <span> <%= event.pointShift%> Point(s)</span>
-                <div class= "ui header"> <%= event.eventName %> </div>
-                <p ><%= event.Description%></p>
-                <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString() %> </span>  </p>
-                <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>  </p>
-                <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %> </span> </p> 
-                <p><i class="hourglass end icon"></i> Ends at :  <span style="font-weight:bold"><%=event.endTime %></span> </p>
-                <% if(event.numberSpots != null && event.slots != "Yes") { %>
-                <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold;color:red"><%= event.numberSpots %></span> </p>
-                <% } if (event.numberSpots == null) { %> 
-                 <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold;color:red"> Everyone is invited</span> </p>
-                <% } %>
-            </div>
-               
-             
-            
-        <%  } else if(event.pointType == "Service" && d < (m+86500000) &&  event.wasSubmitted == false   && (event.numberSpots > 0 || event.numberSpots == null )){ %>
-        
-        
-                
-            <div class="ui clearing yellow raised segment" style="font-size:12px">
-               <% if (event.slots == "Yes"){%>
-                    <a href="/event/shifts/<%= event._id%>" class="ui right floated green button">Sign Up</a>
-                    <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View Sign Ups</a>
-              <%} else {%>
-                 <% if(condition == 1) { %>
-                <a href="/event/<%= event._id%>" class="ui right floated green button">Sign Up</a>
-                <% } else if(condition == 0) { %>
-                 <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
-                <% } %>
-              <%}%>
-              <a class="ui yellow ribbon label">Service</a> <span> <%= event.pointShift%> Point(s)</span>
-                <div class= "ui header"> <%= event.eventName %> </div>
-                <p><%= event.Description%></p> 
-                <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString() %> </span>  </p>
-                <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>  </p>
-                <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %> </span> </p> 
-                <p><i class="hourglass end icon"></i> Ends at :  <span style="font-weight:bold"><%=event.endTime %></span> </p>
-                <% if(event.numberSpots != null && event.slots != "Yes") { %>
-                <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span style="font-weight:bold;color:red"><%= event.numberSpots %></span> </p>
-                <% } if  (event.numberSpots == null) { %>
-                 <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span style="font-weight:bold;color:red"> Everyone is invited</span> </p>
-                <% } %>
-            </div>
-               
-                  
-          
-       <%   } else if(event.pointType == "Programming" &&  d < (m+86500000)  && event.wasSubmitted == false  && (event.numberSpots > 0 || event.numberSpots == null )){  %>
- 
-             <div class="ui clearing purple raised segment" style="font-size:12px">
-                <% if (event.slots == "Yes"){%>
-                    <a href="/event/shifts/<%= event._id%>" class="ui right floated green button">Sign Up</a>
-                    <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View Sign Ups</a>
-              <%} else {%>
-                 <% if(condition == 1) { %>
-                <a href="/event/<%= event._id%>" class="ui right floated green button">Sign Up</a>
-                <% } else if(condition == 0) { %>
-                 <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
-                <% } %>
-              <%}%>
-              <a class="ui purple ribbon label">Programming</a> <span> <%= event.pointShift%> Point(s)</span>
-                <div class= "ui header"> <%= event.eventName %> </div>
-                <p><%= event.Description%></p> 
-                <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString()  %> </span>  </p>
-                <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>  </p>
-                <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %> </span> </p> 
-                <p><i class="hourglass end icon"></i> Ends at :  <span style="font-weight:bold"><%=event.endTime %></span> </p>
-                  <% if(event.numberSpots != null && event.slots != "Yes") { %>
-                <p> <i class="sort numeric down icon"></i>Number of spots left:&ensp; <span style="font-weight:bold; color:red"><%= event.numberSpots %></span> </p>
-                <% } if(event.numberSpots == null) { %>
-                 <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold; color:red"> Everyone is invited</span> </p>
-                <% } %>
-            </div>
-               
-                  
-            <%  }; %> 
-              
-        <%  }); %> 
-              
-              
-              
+  <% include ../partials/menu2 %>
+
+
+  <p><%=events.date%></p>
+  <h2 class="ui center aligned icon header">
+    <i class=" users icon"></i>
+    <div class="content">
+      View Events
+      <div class="sub header">All events are posted here for you to sign up</div>
+      <div style="padding-top:20px">
+        <a href="/my-events"><button class="ui button"> My Events</button></a>
+        <a href="/event/create"><button class="ui button">Create new Event</button></a>
+        <a href="/points/view"><button class="ui button"> My Points</button></a>
+      </div>
     </div>
-</div>
-    
+  </h2>
 
-         <% include ../partials/dashboard %>
-         
-         <% } else { %>
-             
-            <% include ../partials/menu3 %>
-            
-            
-             <div class="thirteen wide column" id ="secondcolumn" style="padding-right:40px">
-                 <h2 class="ui center aligned icon header">
-                  <i class=" users icon"></i>
-                  <div class="content">
-                    View Events
-                    <div class="sub header">All events are posted here for you to view information</div>
-                  </div>
-            </h2>
-            <h4 class="ui dividing header">Current Events</h4>
+  <div class="ui piled segments">
+    <% events.forEach(function(event){ %>
+    <% var condition = 1; %>
+    <% var userEvent; %>
+    <%  userEvents.forEach(function(userEvent){ %>
+    <%  if(String(event._id) ==  String(userEvent)) condition = 0; }) %>
+
+    <% var d = new Date(); %>
+    <% var m = new Date(); %>
+    <% m = event.eventDate %>
+    <% d = d.getTime();  m = m.getTime() %>
+
+    <%  if((event.numberSpots > 0 || event.numberSpots == null )){ %>
 
 
-
-                    <div class="ui top attached tabular menu">
-                      <a class="item active" data-tab="first">Sign Up</a>
-                      <a class="item" data-tab="second">All</a>
-                   
-                    </div>
-                    <div class="ui bottom attached tab segment " data-tab="second">
-                      <h4 class="ui dividing header">Current Events</h4>
-                     <table class="ui center aligned celled compact small table">
-                      <thead>
-                        <tr>
-                          <th>Event Type</th>
-                          <th>Event Name</th>
-                          <th>Date</th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody class="ui center aligned item">
-                        
-                    <% events.forEach(function(event){ %>   
-                    
-                       
-                       <% var d = new Date(); %>
-                       <% var m = new Date(); %>
-                       <% m = event.eventDate %>
-                       <% d = d.getTime();  m = m.getTime() %>
-                        
-                        <% if( d < (m+86500000)  && event.wasSubmitted == false ){ %>
-                        <tr>
-                            <% if(event.pointType == "Social"){ %>
-                                    <td><div class="ui Teal horizontal  label">Social</div></td>
-                            <% } else if (event.pointType == "Service") { %>
-                                    <td><div class="ui yellow horizontal  label">Service</div></td>
-                            <% } else { %>
-                                    <td><div class="ui purple horizontal  label">Programming</div></td>
-                            <% } %>
-                            
-                          <td> <%= event.eventName %> </td>
-                          <td> <%= event.eventDate.toUTCString() %> </td>
-                          <td> <a href="/event/delete/<%=event._id %>"><button class="negative ui mini compact button"> Delete</button></a></td>
-                          <td> <a href="/event/view/<%=event._id %>" ><button class="ui primary mini compact button"> More info </button></a></td>
-                         <% } %>
-                        </tr>
-                    <% }) %>
-                    
-                      </tbody>
-                    </table>
-                    
-                    
-            
-            <h4 class="ui dividing header">Past Events</h4>
-                <table class="ui center aligned celled compact small table">
-                      <thead>
-                        <tr>
-                          <th>Event Type</th>
-                          <th>Event Name</th>
-                          <th>Date</th>
-                          <th></th>
-                          
-                        </tr>
-                      </thead>
-                      <tbody class="ui center aligned item">
-                        
-                    <% events.forEach(function(event){ %>   
-
-                       
-                       <% var d = new Date(); %>
-                       <% var m = new Date(); %>
-                       <% m = event.eventDate %>
-                       <% d = d.getTime();  m = m.getTime() %>
-                        
-                        <% if( d > (m+86500000)   && event.wasSubmitted == false ){ %>
-                        <tr>
-                            <% if(event.pointType == "Social"){ %>
-                                    <td><div class="ui Teal horizontal  label">Social</div></td>
-                            <% } else if (event.pointType == "Service") { %>
-                                    <td><div class="ui yellow horizontal  label">Service</div></td>
-                            <% } else { %>
-                                    <td><div class="ui purple horizontal  label">Programming</div></td>
-                            <% } %>
-                            
-                          <td> <%= event.eventName %> </td>
-                          <td> <%= event.eventDate.toUTCString() %> </td>
-                          <td> <a href="/event/view/<%=event._id %>" ><button class="ui primary mini compact button"> More info </button></a></td>
-                         <% } %>
-                        </tr>
-                    <% }) %>
-                    
-                      </tbody>
-                    </table>
-                    </div>
-
-
-                    <div class="ui bottom attached tab segment active" data-tab="first">
-                            <div class="ui piled segments">
-          <% events.forEach(function(event){ %>
-           <% var condition = 1; %>
-           <% var userEvent; %>
-            <%  userEvents.forEach(function(userEvent){ %>
-                <%  if(String(event._id) ==  String(userEvent)) condition = 0; }) %>
-                
-                <% var d = new Date(); %>
-                       <% var m = new Date(); %>
-                       <% m = event.eventDate %>
-                       <% d = d.getTime();  m = m.getTime() %>
-        
-        <%  if(event.pointType == "Social"&&  d < (m+86500000) && (event.numberSpots > 0 || event.numberSpots == null )){ %>
-        
+    <div class="ui clearing teal raised segment" style="font-size:12px">
+      <% if (event.slots == "Yes"){%>
+      <a href="/event/shifts/<%= event._id%>" class="ui right floated green button">Sign Up</a>
+      <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View Sign Ups</a>
+      <%} else {%>
+      <% if(condition == 1) { %>
+      <a href="/event/<%= event._id%>" class="ui right floated green button">Sign Up</a>
+      <% } else if(condition == 0) { %>
+      <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
+      <% } %>
+      <%}%>
               
-            <div class="ui clearing teal raised segment" style="font-size:12px">
-               <% if (event.slots == "Yes"){%>
-                    <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View</a>
-              <%} else {%>
-                 <% if(condition == 1) { %>
-                <a href="/event/<%= event._id%>/staff" class="ui right floated green button">Sign Up</a>
-                <% } else if(condition == 0) { %>
-                  <a href="/my-events/<%= event._id%>/cancel" class="ui right floated red button">Cancel</a>
-                <% } %>
-              <%}%>
               <a class="ui teal ribbon label">Social</a> <span> <%= event.pointShift%> Point(s)</span>
-                <div class= "ui header"> <%= event.eventName %> </div>
-                <p ><%= event.Description%></p>
-                <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString()  %> </span>  </p>
-                <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>  </p>
-                <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %> </span> </p> 
-                <p><i class="hourglass end icon"></i> Ends at :  <span style="font-weight:bold"><%=event.endTime %></span> </p>
-                <% if(event.numberSpots != null && event.slots != "Yes") { %>
-                <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold;color:red"><%= event.numberSpots %></span> </p>
-                <% } if (event.numberSpots == null) { %> 
-                 <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold;color:red"> Everyone is invited</span> </p>
-                <% } %>
-            </div>
-               
-             
-            
-        <%  } else if(event.pointType == "Service" && d < (m+86500000)  &&  event.wasSubmitted == false   && (event.numberSpots > 0 || event.numberSpots == null )){ %>
-        
-        
-                
-            <div class="ui clearing yellow raised segment" style="font-size:12px">
-               <% if (event.slots == "Yes"){%>
-                    <a href="/event/shifts/<%= event._id%>/table"  class="ui right floated primary button">View</a>
-              <%} else {%>
-                 <% if(condition == 1) { %>
-                <a href="/event/<%= event._id%>/staff" class="ui right floated green button">Sign Up</a>
-                <% } else if(condition == 0) { %>
-                  <a href="/my-events/<%= event._id%>/cancel" class="ui right floated red button">Cancel</a>
-                <% } %>
-              <%}%>
+      <div class="ui header"> <%= event.eventName %> </div>
+      <p><%= event.Description%></p>
+      <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString() %>
+        </span> </p>
+      <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>
+      </p>
+      <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %> </span>
+      </p>
+      <p><i class="hourglass end icon"></i> Ends at : <span style="font-weight:bold"><%=event.endTime %></span> </p>
+      <% if(event.numberSpots != null && event.slots != "Yes") { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span
+          style="font-weight:bold;color:red"><%= event.numberSpots %></span> </p>
+      <% } if (event.numberSpots == null) { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold;color:red">
+          Everyone is invited</span> </p>
+      <% } %>
+    </div>
+
+
+
+    <%  } else if(event.pointType == "Service" && d < (m+86500000) &&  event.wasSubmitted == false   && (event.numberSpots > 0 || event.numberSpots == null )){ %>
+
+
+
+    <div class="ui clearing yellow raised segment" style="font-size:12px">
+      <% if (event.slots == "Yes"){%>
+      <a href="/event/shifts/<%= event._id%>" class="ui right floated green button">Sign Up</a>
+      <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View Sign Ups</a>
+      <%} else {%>
+      <% if(condition == 1) { %>
+      <a href="/event/<%= event._id%>" class="ui right floated green button">Sign Up</a>
+      <% } else if(condition == 0) { %>
+      <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
+      <% } %>
+      <%}%>
               <a class="ui yellow ribbon label">Service</a> <span> <%= event.pointShift%> Point(s)</span>
-                <div class= "ui header"> <%= event.eventName %> </div>
-                <p><%= event.Description%></p> 
-                <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString() %> </span>  </p>
-                <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>  </p>
-                <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %> </span> </p> 
-                <p><i class="hourglass end icon"></i> Ends at :  <span style="font-weight:bold"><%=event.endTime %></span> </p>
-                <% if(event.numberSpots != null && event.slots != "Yes") { %>
-                <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span style="font-weight:bold;color:red"><%= event.numberSpots %></span> </p>
-                <% } if  (event.numberSpots == null) { %>
-                 <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span style="font-weight:bold;color:red"> Everyone is invited</span> </p>
-                <% } %>
-            </div>
-               
-                  
-          
-       <%   } else if(event.pointType == "Programming" &&  d < (m+86500000)  && event.wasSubmitted == false  && (event.numberSpots > 0 || event.numberSpots == null )){  %>
- 
-             <div class="ui clearing purple raised segment" style="font-size:12px">
-                <% if (event.slots == "Yes"){%>
-                    <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View</a>
-              <%} else {%>
-                 <% if(condition == 1) { %>
-                <a href="/event/<%= event._id%>/staff" class="ui right floated green button">Sign Up</a>
-                <% } else if(condition == 0) { %>
-                  <a href="/my-events/<%= event._id%>/cancel" class="ui right floated red button">Cancel</a>
-                <% } %>
-              <%}%>
+      <div class="ui header"> <%= event.eventName %> </div>
+      <p><%= event.Description%></p>
+      <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString() %>
+        </span> </p>
+      <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>
+      </p>
+      <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %> </span>
+      </p>
+      <p><i class="hourglass end icon"></i> Ends at : <span style="font-weight:bold"><%=event.endTime %></span> </p>
+      <% if(event.numberSpots != null && event.slots != "Yes") { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span
+          style="font-weight:bold;color:red"><%= event.numberSpots %></span> </p>
+      <% } if  (event.numberSpots == null) { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span style="font-weight:bold;color:red">
+          Everyone is invited</span> </p>
+      <% } %>
+    </div>
+
+
+
+    <%   } else if(event.pointType == "Programming" &&  d < (m+86500000)  && event.wasSubmitted == false  && (event.numberSpots > 0 || event.numberSpots == null )){  %>
+
+    <div class="ui clearing purple raised segment" style="font-size:12px">
+      <% if (event.slots == "Yes"){%>
+      <a href="/event/shifts/<%= event._id%>" class="ui right floated green button">Sign Up</a>
+      <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View Sign Ups</a>
+      <%} else {%>
+      <% if(condition == 1) { %>
+      <a href="/event/<%= event._id%>" class="ui right floated green button">Sign Up</a>
+      <% } else if(condition == 0) { %>
+      <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
+      <% } %>
+      <%}%>
               <a class="ui purple ribbon label">Programming</a> <span> <%= event.pointShift%> Point(s)</span>
-                <div class= "ui header"> <%= event.eventName %> </div>
-                <p><%= event.Description%></p> 
-                <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString()  %> </span>  </p>
-                <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>  </p>
-                <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %> </span> </p> 
-                <p><i class="hourglass end icon"></i> Ends at :  <span style="font-weight:bold"><%=event.endTime %></span> </p>
-                  <% if(event.numberSpots != null && event.slots != "Yes") { %>
-                <p> <i class="sort numeric down icon"></i>Number of spots left:&ensp; <span style="font-weight:bold; color:red"><%= event.numberSpots %></span> </p>
-                <% } if(event.numberSpots == null) { %>
-                 <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold; color:red"> Everyone is invited</span> </p>
-                <% } %>
-            </div>
-               
-                  
-            <%  }; %> 
-              
+      <div class="ui header"> <%= event.eventName %> </div>
+      <p><%= event.Description%></p>
+      <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString()  %>
+        </span> </p>
+      <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>
+      </p>
+      <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %> </span>
+      </p>
+      <p><i class="hourglass end icon"></i> Ends at : <span style="font-weight:bold"><%=event.endTime %></span> </p>
+      <% if(event.numberSpots != null && event.slots != "Yes") { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left:&ensp; <span
+          style="font-weight:bold; color:red"><%= event.numberSpots %></span> </p>
+      <% } if(event.numberSpots == null) { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold; color:red">
+          Everyone is invited</span> </p>
+      <% } %>
+    </div>
+
+
+    <%  }; %>
+
+    <%  }); %>
+
+
+
+  </div>
+  </div>
+
+
+  <% include ../partials/dashboard %>
+
+  <% } else { %>
+
+  <% include ../partials/menu3 %>
+
+
+  <div class="thirteen wide column" id="secondcolumn" style="padding-right:40px">
+    <h2 class="ui center aligned icon header">
+      <i class=" users icon"></i>
+      <div class="content">
+        View Events
+        <div class="sub header">All events are posted here for you to view information</div>
+      </div>
+    </h2>
+    <h4 class="ui dividing header">Current Events</h4>
+
+
+
+    <div class="ui top attached tabular menu">
+      <a class="item active" data-tab="first">Sign Up</a>
+      <a class="item" data-tab="second">All</a>
+
+    </div>
+    <div class="ui bottom attached tab segment " data-tab="second">
+      <h4 class="ui dividing header">Current Events</h4>
+      <table class="ui center aligned celled compact small table">
+        <thead>
+          <tr>
+            <th>Event Type</th>
+            <th>Event Name</th>
+            <th>Date</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="ui center aligned item">
+
+          <% events.forEach(function(event){ %>
+
+
+          <% var d = new Date(); %>
+          <% var m = new Date(); %>
+          <% m = event.eventDate %>
+          <% d = d.getTime();  m = m.getTime() %>
+
+          <% if( d < (m+86500000)  && event.wasSubmitted == false ){ %>
+          <tr>
+            <% if(event.pointType == "Social"){ %>
+            <td>
+              <div class="ui Teal horizontal  label">Social</div>
+            </td>
+            <% } else if (event.pointType == "Service") { %>
+            <td>
+              <div class="ui yellow horizontal  label">Service</div>
+            </td>
+            <% } else { %>
+            <td>
+              <div class="ui purple horizontal  label">Programming</div>
+            </td>
+            <% } %>
+
+            <td> <%= event.eventName %> </td>
+            <td> <%= event.eventDate.toUTCString() %> </td>
+            <td> <a href="/event/delete/<%=event._id %>"><button class="negative ui mini compact button">
+                  Delete</button></a></td>
+            <td> <a href="/event/view/<%=event._id %>"><button class="ui primary mini compact button"> More info
+                </button></a></td>
+            <% } %>
+          </tr>
+          <% }) %>
+
+        </tbody>
+      </table>
+
+
+
+      <h4 class="ui dividing header">Past Events</h4>
+      <table class="ui center aligned celled compact small table">
+        <thead>
+          <tr>
+            <th>Event Type</th>
+            <th>Event Name</th>
+            <th>Date</th>
+            <th></th>
+
+          </tr>
+        </thead>
+        <tbody class="ui center aligned item">
+
+          <% events.forEach(function(event){ %>
+
+
+          <% var d = new Date(); %>
+          <% var m = new Date(); %>
+          <% m = event.eventDate %>
+          <% d = d.getTime();  m = m.getTime() %>
+
+          <% if( d > (m+86500000)   && event.wasSubmitted == false ){ %>
+          <tr>
+            <% if(event.pointType == "Social"){ %>
+            <td>
+              <div class="ui Teal horizontal  label">Social</div>
+            </td>
+            <% } else if (event.pointType == "Service") { %>
+            <td>
+              <div class="ui yellow horizontal  label">Service</div>
+            </td>
+            <% } else { %>
+            <td>
+              <div class="ui purple horizontal  label">Programming</div>
+            </td>
+            <% } %>
+
+            <td> <%= event.eventName %> </td>
+            <td> <%= event.eventDate.toUTCString() %> </td>
+            <td> <a href="/event/view/<%=event._id %>"><button class="ui primary mini compact button"> More info
+                </button></a></td>
+            <% } %>
+          </tr>
+          <% }) %>
+
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="ui bottom attached tab segment active" data-tab="first">
+      <div class="ui piled segments">
+        <% events.forEach(function(event){ %>
+        <% var condition = 1; %>
+        <% var userEvent; %>
+        <%  userEvents.forEach(function(userEvent){ %>
+        <%  if(String(event._id) ==  String(userEvent)) condition = 0; }) %>
+
+        <% var d = new Date(); %>
+        <% var m = new Date(); %>
+        <% m = event.eventDate %>
+        <% d = d.getTime();  m = m.getTime() %>
+
+        <%  if(event.pointType == "Social"&&  d < (m+86500000) && (event.numberSpots > 0 || event.numberSpots == null )){ %>
+
+
+        <div class="ui clearing teal raised segment" style="font-size:12px">
+          <% if (event.slots == "Yes"){%>
+          <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View</a>
+          <%} else {%>
+          <% if(condition == 1) { %>
+          <a href="/event/<%= event._id%>/staff" class="ui right floated green button">Sign Up</a>
+          <% } else if(condition == 0) { %>
+          <a href="/my-events/<%= event._id%>/cancel" class="ui right floated red button">Cancel</a>
+          <% } %>
+          <%}%>
+              <a class="ui teal ribbon label">Social</a> <span> <%= event.pointShift%> Point(s)</span>
+          <div class="ui header"> <%= event.eventName %> </div>
+          <p><%= event.Description%></p>
+          <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString()  %>
+            </span> </p>
+          <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>
+          </p>
+          <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %>
+            </span> </p>
+          <p><i class="hourglass end icon"></i> Ends at : <span style="font-weight:bold"><%=event.endTime %></span> </p>
+          <% if(event.numberSpots != null && event.slots != "Yes") { %>
+          <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span
+              style="font-weight:bold;color:red"><%= event.numberSpots %></span> </p>
+          <% } if (event.numberSpots == null) { %>
+          <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span
+              style="font-weight:bold;color:red"> Everyone is invited</span> </p>
+          <% } %>
+        </div>
+
+
+
+        <%  } else if(event.pointType == "Service" && d < (m+86500000)  &&  event.wasSubmitted == false   && (event.numberSpots > 0 || event.numberSpots == null )){ %>
+
+
+
+        <div class="ui clearing yellow raised segment" style="font-size:12px">
+          <% if (event.slots == "Yes"){%>
+          <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View</a>
+          <%} else {%>
+          <% if(condition == 1) { %>
+          <a href="/event/<%= event._id%>/staff" class="ui right floated green button">Sign Up</a>
+          <% } else if(condition == 0) { %>
+          <a href="/my-events/<%= event._id%>/cancel" class="ui right floated red button">Cancel</a>
+          <% } %>
+          <%}%>
+              <a class="ui yellow ribbon label">Service</a> <span> <%= event.pointShift%> Point(s)</span>
+          <div class="ui header"> <%= event.eventName %> </div>
+          <p><%= event.Description%></p>
+          <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString() %>
+            </span> </p>
+          <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>
+          </p>
+          <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %>
+            </span> </p>
+          <p><i class="hourglass end icon"></i> Ends at : <span style="font-weight:bold"><%=event.endTime %></span> </p>
+          <% if(event.numberSpots != null && event.slots != "Yes") { %>
+          <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span
+              style="font-weight:bold;color:red"><%= event.numberSpots %></span> </p>
+          <% } if  (event.numberSpots == null) { %>
+          <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span
+              style="font-weight:bold;color:red"> Everyone is invited</span> </p>
+          <% } %>
+        </div>
+
+
+
+        <%   } else if(event.pointType == "Programming" &&  d < (m+86500000)  && event.wasSubmitted == false  && (event.numberSpots > 0 || event.numberSpots == null )){  %>
+
+        <div class="ui clearing purple raised segment" style="font-size:12px">
+          <% if (event.slots == "Yes"){%>
+          <a href="/event/shifts/<%= event._id%>/table" class="ui right floated primary button">View</a>
+          <%} else {%>
+          <% if(condition == 1) { %>
+          <a href="/event/<%= event._id%>/staff" class="ui right floated green button">Sign Up</a>
+          <% } else if(condition == 0) { %>
+          <a href="/my-events/<%= event._id%>/cancel" class="ui right floated red button">Cancel</a>
+          <% } %>
+          <%}%>
+              <a class="ui purple ribbon label">Programming</a> <span> <%= event.pointShift%> Point(s)</span>
+          <div class="ui header"> <%= event.eventName %> </div>
+          <p><%= event.Description%></p>
+          <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= event.eventDate.toUTCString()  %>
+            </span> </p>
+          <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= event.Location %> </span>
+          </p>
+          <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= event.startTime %>
+            </span> </p>
+          <p><i class="hourglass end icon"></i> Ends at : <span style="font-weight:bold"><%=event.endTime %></span> </p>
+          <% if(event.numberSpots != null && event.slots != "Yes") { %>
+          <p> <i class="sort numeric down icon"></i>Number of spots left:&ensp; <span
+              style="font-weight:bold; color:red"><%= event.numberSpots %></span> </p>
+          <% } if(event.numberSpots == null) { %>
+          <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span
+              style="font-weight:bold; color:red"> Everyone is invited</span> </p>
+          <% } %>
+        </div>
+
+
+        <%  }; %>
+
         <%  }); %>
-                    </div>
+      </div>
 
 
-                    
-            
-            
-             </div>
-         <% include ../partials/footer2 %>
-         <% } %>
-        
-        
+
+
+
+    </div>
+    <% include ../partials/footer2 %>
+    <% } %>
+
+
 
     </body>
+
 </html>

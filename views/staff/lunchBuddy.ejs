@@ -1,100 +1,101 @@
 <html>
-    <head>
-        <title>SLIDE | Lunch Buddies</title>
-       
-        <% include ../partials/menu3 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-     
-          
-             <h2 class="ui center aligned icon header">
-                  <i class="handshake outline icon"></i>
-                  <div class="content">
-                    Lunch Buddies
-                    <div class="sub header">You view all LunchBuddies on this page.</div>
-                    <div style="padding-top: 20px">
-                     
-                        <a id="createMeeting"><button class="ui secondary button"> New LunchBuddy </button></a>
-                    
-                    </div>
-                  </div>
-            </h2>
+<head>
+  <title>SLIDE | Lunch Buddies</title>
+
+  <% include ../partials/menu3 %>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
 
 
+  <h2 class="ui center aligned icon header">
+    <i class="handshake outline icon"></i>
+    <div class="content">
+      Lunch Buddies
+      <div class="sub header">You view all LunchBuddies on this page.</div>
+      <div style="padding-top: 20px">
 
-            <div class="ui centered cards" style="padding:20px;">
-                
-               
-            <% lunchBuddies.forEach(function(lunchBuddy){ %>
-            
-                <div class="ui small  card">
+        <a id="createMeeting"><button class="ui secondary button"> New LunchBuddy </button></a>
 
-                    <div class="ui center aligned content">
-              
-                            <a href="/staff/lunch-buddy/<%= lunchBuddy._id %>/delete"><i class="right floated mini ui icon red large close delete" data-content="Click to delete"></i></a>
-                        
-                      <div class="header"><%= lunchBuddy.title%></div>
-                     
-                    </div>
-                   <div class="ui center aligned extra content">
-                       <a href="/staff/lunch-buddy/<%= lunchBuddy._id %>"><div class="ui fluid orange button">View</div> </a> 
-                    </div>
-                  </div>
-            
-            <% }); %>
-              
-             </div>
+      </div>
+    </div>
+  </h2>
 
-<!--  ------------------------------------------------------------------------------------------------------>
+  <div class="ui centered cards" style="padding:20px;">
+
+    <% lunchBuddies.forEach(function(lunchBuddy){ %>
+
+    <div class="ui small  card">
+
+      <div class="ui center aligned content">
+
+        <a href="/staff/lunch-buddy/<%= lunchBuddy._id %>/delete"><i
+            class="right floated mini ui icon red large close delete" data-content="Click to delete"></i></a>
+
+        <div class="header"><%= lunchBuddy.title%></div>
+
+      </div>
+      <div class="ui center aligned extra content">
+        <a href="/staff/lunch-buddy/<%= lunchBuddy._id %>">
+          <div class="ui fluid orange button">View</div>
+        </a>
+      </div>
+    </div>
+
+    <% }); %>
+
+  </div>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
 
 
-           <div class="ui basic tiny modal">
+  <div class="ui basic tiny modal">
 
 
-              <h2 class="ui center aligned icon header">
-                    <i class="handshake icon"></i>
-                    <div class="content">
-                      New LunchBuddy
-                      <div class="sub  header" style="color:white">Use this form to make a new annoucement</div>
-                      
-                    </div>
-              </h2>
+    <h2 class="ui center aligned icon header">
+      <i class="handshake icon"></i>
+      <div class="content">
+        New LunchBuddy
+        <div class="sub  header" style="color:white">Use this form to make a new annoucement</div>
 
-              <form class=" ui equal width tiny centered form" action="/staff/lunch-buddy" method="POST" >
-                     
-                          
-                         
-                        <div class="required field">
-                            <label style="color:white">Enter Week or Date</label>
-                            <input type="text" name="title" placeholder="Ex: Week 1">
-                        </div>
-                        
-                   
-                        <div class="ui right floated  buttons">
-                    
-                          
-                          <button class="ui submit green button">Submit</button>
-                        </div>
-              </form>
-           </div>
+      </div>
+    </h2>
 
-              <script type="text/javascript">
-              
-                $('button').click(function(){
-                  $(".ui.modal").modal({
-                              blurring: false
-                            }).modal('setting', 'transition', 'Vertical Flip')
-                              .modal('show');
-                        });
-              </script>
+    <form class=" ui equal width tiny centered form" action="/staff/lunch-buddy" method="POST">
 
 
 
-      
-        </div>
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        <% include ../partials/footer2 %>
+      <div class="required field">
+        <label style="color:white">Enter Week or Date</label>
+        <input type="text" name="title" placeholder="Ex: Week 1">
+      </div>
 
-    </body>
+
+      <div class="ui right floated  buttons">
+
+
+        <button class="ui submit green button">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    $('button').click(function () {
+      $(".ui.modal").modal({
+          blurring: false
+        }).modal('setting', 'transition', 'Vertical Flip')
+        .modal('show');
+    });
+  </script>
+
+
+
+
+  </div>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+  <% include ../partials/footer2 %>
+
+  </body>
+
 </html>

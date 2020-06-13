@@ -1,148 +1,153 @@
 <html>
-    <head>
-        <title>SLIDE | Submitted Points</title>
-       
-        <% include ../partials/menu3 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-          
-             <h2 class="ui center aligned icon header">
-                  <i class="file icon"></i>
-                  <div class="content">
-                    Submitted Points
-                    <div class="sub header">These are the points submitted by individual members</div>
-                    <% if(staff.position == "Membership Executive" || staff.position == "President"|| staff.position == "Vice President"  ){ %>
-                     <div style="padding:15px">
-                        <a href="/staff/points/view"><button id="changePoints"class="ui button">Points Summary</button></a>
-                    </div>
-                    <% } %>
-                  </div>
-            </h2>
-            
-             
-              <div class="ui top attached tabular menu">
-                <a class="item active" data-tab="current">Current</a>
-                <a class="item" data-tab="old">Old</a>
-              </div>
+<head>
+  <title>SLIDE | Submitted Points</title>
 
-              <div class="ui bottom attached tab segment active" data-tab="current">
+  <% include ../partials/menu3 %>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
 
 
-                 <div class="ui divided items">
+  <h2 class="ui center aligned icon header">
+    <i class="file icon"></i>
+    <div class="content">
+      Submitted Points
+      <div class="sub header">These are the points submitted by individual members</div>
+      <% if(staff.position == "Membership Executive" || staff.position == "President"|| staff.position == "Vice President"  ){ %>
+      <div style="padding:15px">
+        <a href="/staff/points/view"><button id="changePoints" class="ui button">Points Summary</button></a>
+      </div>
+      <% } %>
+    </div>
+  </h2>
 
-                <% submittedEvents.forEach(function(event){ %>
-                  <% if(event.status == "pending") { %>
-                  <div class="item ">
-                   <div class="ui small image">
-                      <% if (event.creatorPicture  != null){%>
-                      <img  src="<%= event.creatorPicture %>">
-                      <%}%>
+
+  <div class="ui top attached tabular menu">
+    <a class="item active" data-tab="current">Current</a>
+    <a class="item" data-tab="old">Old</a>
+  </div>
+
+  <div class="ui bottom attached tab segment active" data-tab="current">
+
+
+    <div class="ui divided items">
+
+      <% submittedEvents.forEach(function(event){ %>
+      <% if(event.status == "pending") { %>
+      <div class="item ">
+        <div class="ui small image">
+          <% if (event.creatorPicture  != null){%>
+          <img src="<%= event.creatorPicture %>">
+          <%}%>
                    </div>
                        <div class=" ui middle aligned content">
                         <h2 class="ui big header">
-                            <%= event.creatorName %> : &nbsp;<i class="fa fa-circle text-danger Blink"></i>&nbsp;Pending</h2>
-                            <div class="meta" style="font-size: 1.2em">
-                            <div class="">Event Name: &nbsp; <b style="color:black"><%= event.eventName %></b></div>
+                            <%= event.creatorName %> : &nbsp;<i
+            class="fa fa-circle text-danger Blink"></i>&nbsp;Pending</h2>
+          <div class="meta" style="font-size: 1.2em">
+            <div class="">Event Name: &nbsp; <b style="color:black"><%= event.eventName %></b></div>
 
-                            <div class="" style="padding-top: 15px">Point Type: &nbsp; 
-                            
-                              <% if(event.pointType == "Social"){ %>
-                                <span class="ui teal small label">Social</span>
-                              <% }%>
+            <div class="" style="padding-top: 15px">Point Type: &nbsp;
 
-                              <% if(event.pointType == "Service"){ %>
-                                <span class="ui yellow small label">Service</span>
-                              <%}%>
+              <% if(event.pointType == "Social"){ %>
+              <span class="ui teal small label">Social</span>
+              <% }%>
+
+              <% if(event.pointType == "Service"){ %>
+              <span class="ui yellow small label">Service</span>
+              <%}%>
 
                               <% if(event.pointType == "Programming"){ %>
-                                <span class="ui purple small label">Programming</span>
-                              <%}%>
+              <span class="ui purple small label">Programming</span>
+              <%}%>
 
                               <% if(event.pointType == "Meeting"){ %>
-                                <span class="ui pink small label">Meeting</span>
-                              <%}%>
+              <span class="ui pink small label">Meeting</span>
+              <%}%>
 
                             </div>
 
                       
                        <div class="extra">
-                        <a href="/staff/submitted-points/<%=event._id%>"><button class="ui secondary right floated button">View</button></a>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                  <%}})%>
-               
-
-              </div>
-              </div>
-
-              <div class="ui bottom attached tab segment" data-tab="old">
+                        <a href="/staff/submitted-points/<%=event._id%>"><button
+                class="ui secondary right floated button">View</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%}})%>
 
 
+    </div>
+  </div>
 
-                 <div class="ui divided items">
+  <div class="ui bottom attached tab segment" data-tab="old">
 
-                <% submittedEvents.forEach(function(event){ %>
-                  <% if(event.status != "pending") { %>
-                  <div class="item ">
-                   <div class="ui small image">
-                      <% if (event.creatorPicture  != null){%>
-                      <img  src="<%= event.creatorPicture %>">
-                      <%}%>
+
+
+    <div class="ui divided items">
+
+      <% submittedEvents.forEach(function(event){ %>
+      <% if(event.status != "pending") { %>
+      <div class="item ">
+        <div class="ui small image">
+          <% if (event.creatorPicture  != null){%>
+          <img src="<%= event.creatorPicture %>">
+          <%}%>
                    </div>
                        <div class=" ui middle aligned content">
                         <h2 class="ui big header">
                             <%= event.creatorName %> : <% if(event.status == "Approved"){ %>
-                            <span style="color:green">Approved</span>
-                            <% } else { %>
-                            <span style="color:red">Denied </span>
-                            <% } %></h2>
-                            <div class="meta" style="font-size: 1.2em">
-                            <div class="">Event Name: &nbsp; <b style="color:black"><%= event.eventName %></b></div>
+          <span style="color:green">Approved</span>
+          <% } else { %>
+          <span style="color:red">Denied </span>
+          <% } %></h2>
+          <div class="meta" style="font-size: 1.2em">
+            <div class="">Event Name: &nbsp; <b style="color:black"><%= event.eventName %></b></div>
 
-                            <div class="" style="padding-top: 15px">Point Type: &nbsp; 
-                            
-                              <% if(event.pointType == "Social"){ %>
-                                <span class="ui teal small label">Social</span>
-                              <% }%>
+            <div class="" style="padding-top: 15px">Point Type: &nbsp;
 
-                              <% if(event.pointType == "Service"){ %>
-                                <span class="ui yellow small label">Service</span>
-                              <%}%>
+              <% if(event.pointType == "Social"){ %>
+              <span class="ui teal small label">Social</span>
+              <% }%>
+
+              <% if(event.pointType == "Service"){ %>
+              <span class="ui yellow small label">Service</span>
+              <%}%>
 
                               <% if(event.pointType == "Programming"){ %>
-                                <span class="ui purple small label">Programming</span>
-                              <%}%>
+              <span class="ui purple small label">Programming</span>
+              <%}%>
 
                               <% if(event.pointType == "Meeting"){ %>
-                                <span class="ui pink small label">Meeting</span>
-                              <%}%>
+              <span class="ui pink small label">Meeting</span>
+              <%}%>
 
                             </div>
 
                       
                        <div class="extra">
-                        <a href="/staff/submitted-points/<%=event._id%>"><button class="ui secondary right floated button">View</button></a>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                  <%}})%>
-               
-
-              </div>
- 
-              </div>
+                        <a href="/staff/submitted-points/<%=event._id%>"><button
+                class="ui secondary right floated button">View</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%}})%>
 
 
+    </div>
+
+  </div>
 
 
 
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        <% include ../partials/footer2 %>
 
-    </body>
+
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+  <% include ../partials/footer2 %>
+
+  </body>
+
 </html>

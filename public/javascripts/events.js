@@ -1,7 +1,4 @@
-/* global $ */
-// Sidebar 
-
-$('img').mouseenter(function(){
+ $('img').mouseenter(function(){
     $(this).transition('pulse');
 });
 

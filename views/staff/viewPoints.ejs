@@ -1,269 +1,283 @@
 <html>
-    <head>
-        <title>SLIDE | Points</title>
-       
-        <% include ../partials/menu3 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
+<head>
+  <title>SLIDE | Points</title>
 
-          <div class="ui container">
-             <h2 class="ui center aligned icon header">
-                  <i class="users icon"></i>
-                  <div class="content">
-                     Points
-                    <div class="sub header">Summary of points for individual members.</div>
-                    <% if(staff.position == "Membership Executive" || staff.position == "President"|| staff.position == "Vice President"  ){ %>
-                     <div style="padding:15px">
-                        <button id="changePoints"class="ui button">Change points goal</button>
-                        <a href="/staff/submitted-points"><button id="changePoints"class="ui button">Points Submission</button></a>
-                    </div>
-                    <% } %>
-                  </div>
-            </h2>
+  <% include ../partials/menu3 %>
 
-            <div class="ui container" style="padding-bottom:30px"> 
-          <div class="ui  inverted small segment">
-            <div class="ui centered header" style=""> Points Goal </div>
-            <div class="ui container">
-              <div class="ui equal width center aligned grid">
-                <div class="column">
-                  <div class="ui medium teal statistic">
-                    <div class="value">
-                      <i class="birthday cake icon"></i> <%= goals[0] %>
-                    </div>
-                    <div class="label" style="color:white">
-                      Social 
-                    </div>
-                  </div>
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+  <div class="ui container">
+    <h2 class="ui center aligned icon header">
+      <i class="users icon"></i>
+      <div class="content">
+        Points
+        <div class="sub header">Summary of points for individual members.</div>
+        <% if(staff.position == "Membership Executive" || staff.position == "President"|| staff.position == "Vice President"  ){ %>
+        <div style="padding:15px">
+          <button id="changePoints" class="ui button">Change points goal</button>
+          <a href="/staff/submitted-points"><button id="changePoints" class="ui button">Points Submission</button></a>
+        </div>
+        <% } %>
+      </div>
+    </h2>
+
+    <div class="ui container" style="padding-bottom:30px">
+      <div class="ui  inverted small segment">
+        <div class="ui centered header" style=""> Points Goal </div>
+        <div class="ui container">
+          <div class="ui equal width center aligned grid">
+            <div class="column">
+              <div class="ui medium teal statistic">
+                <div class="value">
+                  <i class="birthday cake icon"></i> <%= goals[0] %>
                 </div>
-              
-                <div class="column">
-                  <div class="ui medium yellow statistic">
-                    <div class="value">
-                      <i class="heart icon"></i> <%= goals[1] %>
-                    </div>
-                    <div class="label" style="color:white">
-                      Service 
-                    </div>
-                  </div>
+                <div class="label" style="color:white">
+                  Social
                 </div>
-               
-                <div class="column">
-                  <div class="ui medium purple statistic">
-                    <div class="value">
-                      <i class="cogs icon"></i> <%= goals[2] %>
-                    </div>
-                    <div class="label" style="color:white">
-                      Programming 
-                    </div>
-                  </div>
-                </div>
-           
-                  <div class="column">
-                  <div class="ui medium pink statistic">
-                    <div class="value">
-                      <i class="calendar icon"></i> <%= goals[3] %>
-                    </div>
-                    <div class="label" style="color:white">
-                      Meeting 
-                    </div>
-                  </div>
-                </div>
-             
               </div>
             </div>
+
+            <div class="column">
+              <div class="ui medium yellow statistic">
+                <div class="value">
+                  <i class="heart icon"></i> <%= goals[1] %>
+                </div>
+                <div class="label" style="color:white">
+                  Service
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui medium purple statistic">
+                <div class="value">
+                  <i class="cogs icon"></i> <%= goals[2] %>
+                </div>
+                <div class="label" style="color:white">
+                  Programming
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui medium pink statistic">
+                <div class="value">
+                  <i class="calendar icon"></i> <%= goals[3] %>
+                </div>
+                <div class="label" style="color:white">
+                  Meeting
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-            
-     <div class="ui grid">
+      </div>
+    </div>
+
+    <div class="ui grid">
       <div class="row">
-      <div class="sixteen wide column">
-        <div class="ui container">
-          <table class="ui celled center aligned structured compact mini table">
-                  <thead>
-                    <tr>
-                      <th rowspan="2"></th>
-                      <th rowspan="2">Last Name</th>
-                      <th rowspan="2">First Name</th>
-                      <th rowspan="2">Subcommittee</th>
-                      <th colspan="4">Points</th>
-                    </tr>
-                    <tr>
-                      <th><div class="ui teal circular label">Social</div></th>
-                      <th><div class="ui yellow circular label">Service</div></th>
-                      <th><div class="ui purple circular label">Progr..</div></th>
-                      <th><div class="ui pink circular label">Meeting</div></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    
-                  <% members.forEach(function(member){ %>  
-                    <tr>
-                      <td><img class="ui centered small image" src="<%=member.profilePicture%>"></td>
-                      <td><%= member.lastName %></td>
-                      <td><%= member.firstName %></td>
-                      <td><%= member.subcommittee %></td>
-                      
-                      <% if(member.socialEvents.length >= goals[0]){%> <td class="positive"><%= member.socialEvents.length%></td>
-                      <% } else { %> <td class="negative"><%= member.socialEvents.length%></td> <% } %>
-                      
-                      <% if(member.serviceEvents.length >= goals[1]){%> <td class="positive"><%= member.serviceEvents.length%></td>
-                      <% } else { %> <td class="negative"><%= member.serviceEvents.length%></td> <% } %>
-                      
-                      <% if(member.programmingEvents.length >= goals[2]){%> <td class="positive"><%= member.programmingEvents.length%></td>
-                      <% } else { %> <td class="negative"><%= member.programmingEvents.length%></td> <% } %>
-                      
-                      <% if(member.meetingPoints >= goals[3]){%> <td class="positive"><%= member.meetingPoints%></td>
-                      <% } else { %> <td class="negative"><%= member.meetingPoints%></td> <% } %>
-                      
-                      
-                    </tr>
-                  <% }) %> 
-                
-                  </tbody>
+        <div class="sixteen wide column">
+          <div class="ui container">
+            <table class="ui celled center aligned structured compact mini table">
+              <thead>
+                <tr>
+                  <th rowspan="2"></th>
+                  <th rowspan="2">Last Name</th>
+                  <th rowspan="2">First Name</th>
+                  <th rowspan="2">Subcommittee</th>
+                  <th colspan="4">Points</th>
+                </tr>
+                <tr>
+                  <th>
+                    <div class="ui teal circular label">Social</div>
+                  </th>
+                  <th>
+                    <div class="ui yellow circular label">Service</div>
+                  </th>
+                  <th>
+                    <div class="ui purple circular label">Progr..</div>
+                  </th>
+                  <th>
+                    <div class="ui pink circular label">Meeting</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <% members.forEach(function(member){ %>
+                <tr>
+                  <td><img class="ui centered small image" src="<%=member.profilePicture%>"></td>
+                  <td><%= member.lastName %></td>
+                  <td><%= member.firstName %></td>
+                  <td><%= member.subcommittee %></td>
+
+                  <% if(member.socialEvents.length >= goals[0]){%> <td class="positive"><%= member.socialEvents.length%>
+                  </td>
+                  <% } else { %> <td class="negative"><%= member.socialEvents.length%></td> <% } %>
+
+                  <% if(member.serviceEvents.length >= goals[1]){%> <td class="positive">
+                    <%= member.serviceEvents.length%></td>
+                  <% } else { %> <td class="negative"><%= member.serviceEvents.length%></td> <% } %>
+
+                  <% if(member.programmingEvents.length >= goals[2]){%> <td class="positive">
+                    <%= member.programmingEvents.length%></td>
+                  <% } else { %> <td class="negative"><%= member.programmingEvents.length%></td> <% } %>
+
+                  <% if(member.meetingPoints >= goals[3]){%> <td class="positive"><%= member.meetingPoints%></td>
+                  <% } else { %> <td class="negative"><%= member.meetingPoints%></td> <% } %>
+
+
+                </tr>
+                <% }) %>
+
+              </tbody>
             </table>
-         </div>   
-        </div>
-        
-        
-     </div>
-     
-     </div>
-     </div>
-    </div>       
-<!--  ------------------------------------------------------------------------------------------------------>
-
-    <div class="ui basic modal">
-          
-          <form class="ui inverted center aligned tiny form" method="POST" action="/staff/points/change-goals" style="padding-left:100px; padding-right:100px;">
-              <div class="field">
-                   <h2 class="ui center aligned icon header" style="color:white">
-                      <i class="pencil icon" style="color:white"></i>
-                      <div class=" content">
-                        Points Goal
-                        <div class="sub header" style="color:white">Change points goal for this semester by entering digit</div>
-                       
-                      </div>
-                    </h2>
-                
-              <div class="four fields">
-                <div class="field">
-                  <label>Social Points</label>
-                  <select class="ui search dropdown" name="socialGoal">
-                    <option value="">Select a Number</option>
-                    <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-                      <option value="13">13</option>
-                      <option value="14">14</option>
-                      <option value="15">15</option>
-                      <option value="16">16</option>
-                      <option value="17">17</option>
-                      <option value="18">18</option>
-                      <option value="19">19</option>
-                      <option value="20">20</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Service Points</label>
-                  <select class="ui search dropdown" name="serviceGoal">
-                    <option value="">Select a Number</option>
-                    <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">2</option>
-                      <option value="8">3</option>
-                      <option value="9">4</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-                      <option value="13">13</option>
-                      <option value="14">14</option>
-                      <option value="15">15</option>
-                      <option value="16">16</option>
-                      <option value="17">17</option>
-                      <option value="18">18</option>
-                      <option value="19">19</option>
-                      <option value="20">20</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Programming Points</label>
-                  <select class="ui search dropdown" name="programmingGoal">
-                    <option value="">Select a Number</option>
-                    <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-                      <option value="13">13</option>
-                      <option value="14">14</option>
-                      <option value="15">15</option>
-                      <option value="16">16</option>
-                      <option value="17">17</option>
-                      <option value="18">18</option>
-                      <option value="19">19</option>
-                      <option value="20">20</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Meeting Points</label>
-                  <select class="ui search dropdown" name="meetingGoal">
-                    <option value="">Select a Number</option>
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-                      <option value="13">13</option>
-                      <option value="14">14</option>
-                      <option value="15">15</option>
-                      <option value="16">16</option>
-                      <option value="17">17</option>
-                      <option value="18">18</option>
-                      <option value="19">19</option>
-                      <option value="20">20</option>
-                  </select>
-                </div>
-               
-              </div>
-              <button class="ui right floated primary button" type="submit">Submit</button>
-            </form>
+          </div>
         </div>
 
 
-        
-         <% include ../partials/footer2 %>
+      </div>
 
-    </body>
+    </div>
+  </div>
+  </div>
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+  <div class="ui basic modal">
+
+    <form class="ui inverted center aligned tiny form" method="POST" action="/staff/points/change-goals"
+      style="padding-left:100px; padding-right:100px;">
+      <div class="field">
+        <h2 class="ui center aligned icon header" style="color:white">
+          <i class="pencil icon" style="color:white"></i>
+          <div class=" content">
+            Points Goal
+            <div class="sub header" style="color:white">Change points goal for this semester by entering digit</div>
+
+          </div>
+        </h2>
+
+        <div class="four fields">
+          <div class="field">
+            <label>Social Points</label>
+            <select class="ui search dropdown" name="socialGoal">
+              <option value="">Select a Number</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Service Points</label>
+            <select class="ui search dropdown" name="serviceGoal">
+              <option value="">Select a Number</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">2</option>
+              <option value="8">3</option>
+              <option value="9">4</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Programming Points</label>
+            <select class="ui search dropdown" name="programmingGoal">
+              <option value="">Select a Number</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Meeting Points</label>
+            <select class="ui search dropdown" name="meetingGoal">
+              <option value="">Select a Number</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+
+        </div>
+        <button class="ui right floated primary button" type="submit">Submit</button>
+    </form>
+  </div>
+
+
+
+  <% include ../partials/footer2 %>
+
+  </body>
+
 </html>

@@ -1,151 +1,131 @@
     </div>
-  </div>
-</div>
-<!--=================================================================================================== --> 
-   
-    <script 
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
-        <script type="text/javascript" src="https://www.w3schools.com/w3css/4/w3.css"></script> 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/circletype@2.2.0/dist/circletype.min.js"></script> 
-         <script type="text/javascript" src="javascripts/Semantic-UI-Alert.js"></script>
-         <script>
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script type="text/javascript" src="https://www.w3schools.com/w3css/4/w3.css"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/circletype@2.2.0/dist/circletype.min.js"></script>
+    <script type="text/javascript" src="javascripts/Semantic-UI-Alert.js"></script>
+    <script>
+      $('.menu .item').tab();
+
+      jQuery(document).ready(function ($) {
+        var alterClass = function () {
+          var ww = document.body.clientWidth;
+          if (ww <= 768) {
+            $('#secondcolumn').removeClass('thirteen wide column');
+            $('#secondcolumn').addClass('sixteen wide column');
+
+          } else {
+            $('#secondcolumn').removeClass(' sixteen  wide column');
+            $('#secondcolumn').addClass('thirteen  wide column');
+          };
+        };
+        $(window).resize(function () {
+          alterClass();
+        });
+        //Fire it when the page first loads:
+        alterClass();
+      });
+
+      $('#openMenu').click(function () {
+        $('.ui.sidebar')
+          .sidebar('toggle');;
+      })
 
 
 
-           $('.menu .item').tab();
+      $('.message .close')
+        .on('click', function () {
+          $(this)
+            .closest('.message')
+            .transition('fade');
+        });
 
-          jQuery(document).ready(function($) {
-                var alterClass = function() {
-                  var ww = document.body.clientWidth;
-                  if (ww <= 768) {
-                    $('#secondcolumn').removeClass('thirteen wide column');
-                    $('#secondcolumn').addClass('sixteen wide column');
+      $('#createMeeting').click(function () {
+        $(".ui.modal").modal({
+            blurring: false
+          }).modal('setting', 'transition', 'Vertical Flip')
+          .modal('show');
+      });
+      $('#changePoints').click(function () {
+        $(".ui.modal").modal({
+            blurring: false
+          }).modal('setting', 'transition', 'Vertical Flip')
+          .modal('show');
+      });
 
-                  } else {
-                    $('#secondcolumn').removeClass(' sixteen  wide column');
-                    $('#secondcolumn').addClass('thirteen  wide column');
-                  };
-                };
-                $(window).resize(function(){
-                  alterClass();
-                });
-                //Fire it when the page first loads:
-                alterClass();
-              });
-         
-           $('#openMenu').click(function(){
-              $('.ui.sidebar')
-              .sidebar('toggle');
-            ;
-          })
-         
-        
-         
-         $('.message .close')
-              .on('click', function() {
-                $(this)
-                  .closest('.message')
-                  .transition('fade')
-                ;
-              })
-            ;
-             
-        $('#createMeeting').click(function(){
-            $(".ui.modal").modal({
-                        blurring: false
-                      }).modal('setting', 'transition', 'Vertical Flip')
-                        .modal('show');
-                  });
-         $('#changePoints').click(function(){
-            $(".ui.modal").modal({
-                        blurring: false
-                      }).modal('setting', 'transition', 'Vertical Flip')
-                        .modal('show');
-                  });
-                  
-            $('#newAnnouncement').click(function(){
-            $(".ui.modal").modal({
-                        blurring: false
-                      }).modal('setting', 'transition', 'Vertical Flip')
-                        .modal('show');
-                  });
+      $('#newAnnouncement').click(function () {
+        $(".ui.modal").modal({
+            blurring: false
+          }).modal('setting', 'transition', 'Vertical Flip')
+          .modal('show');
+      });
 
-            $('#biographyButton').click(function(){
-            $(".ui.modal.one").modal({
-                        blurring: false
-                      }).modal('setting', 'transition', 'Vertical Flip')
-                        .modal('show');
-                  });
+      $('#biographyButton').click(function () {
+        $(".ui.modal.one").modal({
+            blurring: false
+          }).modal('setting', 'transition', 'Vertical Flip')
+          .modal('show');
+      });
 
-            $('#presidentButton').click(function(){
-            $(".ui.modal.two").modal({
-                        blurring: false
-                      }).modal('setting', 'transition', 'Vertical Flip')
-                        .modal('show');
-                  });
+      $('#presidentButton').click(function () {
+        $(".ui.modal.two").modal({
+            blurring: false
+          }).modal('setting', 'transition', 'Vertical Flip')
+          .modal('show');
+      });
 
-            $('#vpButton').click(function(){
-            $(".ui.modal.three").modal({
-                        blurring: false
-                      }).modal('setting', 'transition', 'Vertical Flip')
-                        .modal('show');
-                  });
+      $('#vpButton').click(function () {
+        $(".ui.modal.three").modal({
+            blurring: false
+          }).modal('setting', 'transition', 'Vertical Flip')
+          .modal('show');
+      });
 
-            $('#execButton').click(function(){
-            $(".ui.modal.four").modal({
-                        blurring: false
-                      }).modal('setting', 'transition', 'Vertical Flip')
-                        .modal('show');
-                  });
+      $('#execButton').click(function () {
+        $(".ui.modal.four").modal({
+            blurring: false
+          }).modal('setting', 'transition', 'Vertical Flip')
+          .modal('show');
+      });
 
-            $('#newGuideline').click(function(){
-            $(".ui.modal.five").modal({
-                        blurring: false
-                      }).modal('setting', 'transition', 'Vertical Flip')
-                        .modal('show');
-                  });
-
-            
-            $('#pictureButton').click(function(){
-            $(".ui.modal.six").modal({
-                        blurring: false
-                      }).modal('setting', 'transition', 'Vertical Flip')
-                        .modal('show');
-                  });
-
-            $('.ui.dropdown').dropdown({on: 'hover'});
-            
-            $('.paths.example .menu .item')
-              .tab({
-                context: '.paths.example'
-              })
-            ; 
-           
-           $('.delete.icon')
-              .popup({
-                inline: true
-              })
-            ;
-            
-            $('.ui.sticky')
-              .sticky({
-               offset: 20
-              })
-            ;
+      $('#newGuideline').click(function () {
+        $(".ui.modal.five").modal({
+            blurring: false
+          }).modal('setting', 'transition', 'Vertical Flip')
+          .modal('show');
+      });
 
 
-          semantic.button = {};
+      $('#pictureButton').click(function () {
+        $(".ui.modal.six").modal({
+            blurring: false
+          }).modal('setting', 'transition', 'Vertical Flip')
+          .modal('show');
+      });
 
-        
+      $('.ui.dropdown').dropdown({
+        on: 'hover'
+      });
+
+      $('.paths.example .menu .item')
+        .tab({
+          context: '.paths.example'
+        });
+
+      $('.delete.icon')
+        .popup({
+          inline: true
+        });
+
+      $('.ui.sticky')
+        .sticky({
+          offset: 20
+        });
 
 
-
-            
-            
-
-        </script>
-        
-        
+      semantic.button = {};
+    </script>

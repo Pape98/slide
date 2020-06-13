@@ -1,131 +1,148 @@
 <html>
-    <head>
-        <title>SLIDE | Shifts</title>
 
-                 <% include ../partials/menu2 %>   
-         
-          
-             <h2 class="ui center aligned icon header">
-                  <i class="users icon"></i>
-                  <div class="content">
-                    <%= event.eventName%>
-                    <div class="sub header"></div>
-                     <div style="padding-top:20px">
-                        <a href="/event"><button id="" class="ui button">View Events</button></a>
-                        
-                    </div>
-                  </div>
-            </h2>
+<head>
+  <title>SLIDE | Shifts</title>
 
-          <div class="ui piled segments">
-          <% shifts.forEach(function(shift){ %>
-           <% var condition = 1; %>
-           <% var userEvent; %>
-            <%  user.events.forEach(function(event){ %>
-                <%  if(String(shift._id) ==  String(event)) condition = 0; }) %>
-                
-                      <% var d = new Date(); %>
-                       <% var m = new Date(); %>
-                       <% m = shift.eventDate %>
-                       <% d = d.getTime();  m = m.getTime() %>
-        
-        <%  if(shift.pointType == "Social"&& d < (m+86500000)  && (shift.numberSpots > 0 || shift.numberSpots == null )){ %>
-        
-              
-            <div class="ui clearing teal raised segment" style="font-size:12px">
-                 <% if(condition == 1) { %>
-                <a href="/event/<%= shift._id%>"  class="ui right floated green button">Sign Up</a>
-                <% } else if(condition == 0) { %>
-                 <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
-                <% } %>
+  <% include ../partials/menu2 %>
 
-              
-              <a class="ui teal ribbon label">Social</a> <span> <%= shift.pointShift%> Point(s)</span>
-                <div class= "ui header">  <%= shift.eventName %></div>
-                <p ><%= shift.Description%></p>
-                <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= shift.eventDate.toUTCString() %> </span>  </p>
-                <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= shift.Location %> </span>  </p>
-                <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= shift.startTime %> </span> </p> 
-                <p><i class="hourglass end icon"></i> Ends at :  <span style="font-weight:bold"><%=shift.endTime %></span> </p>
-                <% if(shift.numberSpots != null && shift.slots != "Yes") { %>
-                <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold;color:red"><%= shift.numberSpots %></span> </p>
-                <% } if (shift.numberSpots == null) { %> 
-                 <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold;color:red"> Everyone is invited</span> </p>
-                <% } %>
-            </div>
-               
-             
-            
-        <%  } else if(shift.pointType == "Service" && d < (m+86500000) &&  shift.wasSubmitted == false   && (shift.numberSpots > 0 || shift.numberSpots == null )){ %>
-        
-        
-                
-            <div class="ui clearing yellow raised segment" style="font-size:12px">
-      
-                 <% if(condition == 1) { %>
-                <a href="/event/<%= shift._id%>"  class="ui right floated green button">Sign Up</a>
-                <% } else if(condition == 0) { %>
-                 <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
-                <% } %>
-      
-              <a class="ui yellow ribbon label">Service</a> <span> <%= shift.pointShift%> Point(s)</span>
-                <div class= "ui header"> <%= shift.eventName %> </div>
-                <p><%= shift.Description%></p> 
-                <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= shift.eventDate.toUTCString() %> </span>  </p>
-                <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= shift.Location %> </span>  </p>
-                <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= shift.startTime %> </span> </p> 
-                <p><i class="hourglass end icon"></i> Ends at :  <span style="font-weight:bold"><%=shift.endTime %></span> </p>
-                <% if(shift.numberSpots != null && shift.slots != "Yes") { %>
-                <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span style="font-weight:bold;color:red"><%= shift.numberSpots %></span> </p>
-                <% } if  (shift.numberSpots == null) { %>
-                 <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span style="font-weight:bold;color:red"> Everyone is invited</span> </p>
-                <% } %>
-            </div>
-               
-                  
-          
-       <%   } else if(shift.pointType == "Programming" &&  d < (m+86500000)  && shift.wasSubmitted == false  && (shift.numberSpots > 0 || shift.numberSpots == null )){  %>
- 
-            <div class="ui clearing purple raised segment" style="font-size:12px">
-                 <% if(condition == 1) { %>
-                <a href="/event/<%= shift._id%>"  class="ui right floated green button">Sign Up</a>
-                 <% } else if(condition == 0) { %>
-                 <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
-                <% } %>
-             
-              <a class="ui purple ribbon label">Programming</a> <span> <%= shift.pointShift%> Point(s)</span>
-                <div class= "ui header"> <%= shift.eventName %> </div>
-                <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= shift.eventDate.toUTCString()  %> </span>  </p>
-                <p ><%= event.Description%></p>
-                <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= shift.Location %> </span>  </p>
-                <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= shift.startTime %> </span> </p> 
-                <p><i class="hourglass end icon"></i> Ends at :  <span style="font-weight:bold"><%=shift.endTime %></span> </p>
-                  <% if(shift.numberSpots != null && shift.slots != "Yes") { %>
-                <p> <i class="sort numeric down icon"></i>Number of spots left:&ensp; <span style="font-weight:bold; color:red"><%= shift.numberSpots %></span> </p>
-                <% } if(shift.numberSpots == null) { %>
-                 <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold; color:red"> Everyone is invited</span> </p>
-                <% } %>
-            </div>
-               
-                  
-            <%  }; %> 
-              
-        <%  }); %> 
-              
-              
-              
+
+  <h2 class="ui center aligned icon header">
+    <i class="users icon"></i>
+    <div class="content">
+      <%= event.eventName%>
+      <div class="sub header"></div>
+      <div style="padding-top:20px">
+        <a href="/event"><button id="" class="ui button">View Events</button></a>
+
+      </div>
     </div>
-            
+  </h2>
+
+  <div class="ui piled segments">
+    <% shifts.forEach(function(shift){ %>
+    <% var condition = 1; %>
+    <% var userEvent; %>
+    <%  user.events.forEach(function(event){ %>
+    <%  if(String(shift._id) ==  String(event)) condition = 0; }) %>
+
+    <% var d = new Date(); %>
+    <% var m = new Date(); %>
+    <% m = shift.eventDate %>
+    <% d = d.getTime();  m = m.getTime() %>
+
+    <%  if(shift.pointType == "Social"&& d < (m+86500000)  && (shift.numberSpots > 0 || shift.numberSpots == null )){ %>
+
+
+    <div class="ui clearing teal raised segment" style="font-size:12px">
+      <% if(condition == 1) { %>
+      <a href="/event/<%= shift._id%>" class="ui right floated green button">Sign Up</a>
+      <% } else if(condition == 0) { %>
+      <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
+      <% } %>
+
+
+      <a class="ui teal ribbon label">Social</a> <span> <%= shift.pointShift%> Point(s)</span>
+      <div class="ui header"> <%= shift.eventName %></div>
+      <p><%= shift.Description%></p>
+      <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= shift.eventDate.toUTCString() %>
+        </span> </p>
+      <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= shift.Location %> </span>
+      </p>
+      <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= shift.startTime %> </span>
+      </p>
+      <p><i class="hourglass end icon"></i> Ends at : <span style="font-weight:bold"><%=shift.endTime %></span> </p>
+      <% if(shift.numberSpots != null && shift.slots != "Yes") { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span
+          style="font-weight:bold;color:red"><%= shift.numberSpots %></span> </p>
+      <% } if (shift.numberSpots == null) { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold;color:red">
+          Everyone is invited</span> </p>
+      <% } %>
+    </div>
 
 
 
-        </div>
-        <!-- -------------------------------------------------------------------------------------------- -->
-            
-        </div>
-    
-        <% include ../partials/dashboard %>
-  
+    <%  } else if(shift.pointType == "Service" && d < (m+86500000) &&  shift.wasSubmitted == false   && (shift.numberSpots > 0 || shift.numberSpots == null )){ %>
 
-    </body>
+
+
+    <div class="ui clearing yellow raised segment" style="font-size:12px">
+
+      <% if(condition == 1) { %>
+      <a href="/event/<%= shift._id%>" class="ui right floated green button">Sign Up</a>
+      <% } else if(condition == 0) { %>
+      <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
+      <% } %>
+
+      <a class="ui yellow ribbon label">Service</a> <span> <%= shift.pointShift%> Point(s)</span>
+      <div class="ui header"> <%= shift.eventName %> </div>
+      <p><%= shift.Description%></p>
+      <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= shift.eventDate.toUTCString() %>
+        </span> </p>
+      <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= shift.Location %> </span>
+      </p>
+      <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= shift.startTime %> </span>
+      </p>
+      <p><i class="hourglass end icon"></i> Ends at : <span style="font-weight:bold"><%=shift.endTime %></span> </p>
+      <% if(shift.numberSpots != null && shift.slots != "Yes") { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span
+          style="font-weight:bold;color:red"><%= shift.numberSpots %></span> </p>
+      <% } if  (shift.numberSpots == null) { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp;<span style="font-weight:bold;color:red">
+          Everyone is invited</span> </p>
+      <% } %>
+    </div>
+
+
+
+    <%   } else if(shift.pointType == "Programming" &&  d < (m+86500000)  && shift.wasSubmitted == false  && (shift.numberSpots > 0 || shift.numberSpots == null )){  %>
+
+    <div class="ui clearing purple raised segment" style="font-size:12px">
+      <% if(condition == 1) { %>
+      <a href="/event/<%= shift._id%>" class="ui right floated green button">Sign Up</a>
+      <% } else if(condition == 0) { %>
+      <a class="ui right floated disabled  button"><i class=" red ban large icon "></i>Already Signed up</a>
+      <% } %>
+
+      <a class="ui purple ribbon label">Programming</a> <span> <%= shift.pointShift%> Point(s)</span>
+      <div class="ui header"> <%= shift.eventName %> </div>
+      <p><i class="calendar  icon"></i>Date : <span style="font-weight:bold"> <%= shift.eventDate.toUTCString()  %>
+        </span> </p>
+      <p><%= event.Description%></p>
+      <p><i class="location arrow icon"></i>Location : <span style="font-weight:bold"> <%= shift.Location %> </span>
+      </p>
+      <p><i class="hourglass start icon"></i> Starts at : <span style="font-weight:bold"> <%= shift.startTime %> </span>
+      </p>
+      <p><i class="hourglass end icon"></i> Ends at : <span style="font-weight:bold"><%=shift.endTime %></span> </p>
+      <% if(shift.numberSpots != null && shift.slots != "Yes") { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left:&ensp; <span
+          style="font-weight:bold; color:red"><%= shift.numberSpots %></span> </p>
+      <% } if(shift.numberSpots == null) { %>
+      <p> <i class="sort numeric down icon"></i>Number of spots left: &ensp; <span style="font-weight:bold; color:red">
+          Everyone is invited</span> </p>
+      <% } %>
+    </div>
+
+
+    <%  }; %>
+
+    <%  }); %>
+
+
+
+  </div>
+
+
+
+
+  </div>
+  <!-- -------------------------------------------------------------------------------------------- -->
+
+  </div>
+
+  <% include ../partials/dashboard %>
+
+
+  </body>
+
 </html>

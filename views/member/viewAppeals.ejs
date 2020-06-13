@@ -1,176 +1,161 @@
 <html>
-    <head>
-        <title>SLIDE | My Appeals</title>
-       
-       
 
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-          
-         
+<head>
+  <title>SLIDE | My Appeals</title>
+
+  <% if(user.role == "member"){%>
 
 
-      <% if(user.role == "member"){%>
+  <% include ../partials/menu2 %>
 
 
-        <% include ../partials/menu2 %>
+  <h2 class="ui center aligned icon header">
+    <i class="balance scale icon"></i>
+    <div class="content">
+      My Appeals
+      <div class="sub header">All of your appeals are located here along with their decisions.</div>
+    </div>
+  </h2>
+
+  <div class="ui container" style="padding-top:8px">
+
+    <table class="ui celled center aligned compact mini table">
+      <thead>
+        <tr>
+          <th colspan="4">Event</th>
+          <th rowspan="2">Submission Date</th>
+          <th rowspan="2">Status</th>
+          <th rowspan="2">Comments</th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Date</th>
+          <th>Reason</th>
+        </tr>
+
+      </thead>
+      <tbody>
 
 
-            <h2 class="ui center aligned icon header" >
-                  <i class="balance scale icon"></i>
-                  <div class="content">
-                     My Appeals
-                    <div class="sub header">All of your appeals are located here along with their decisions.</div>
-                  </div>
-            </h2>
-            
-           <div class="ui container" style="padding-top:8px"> 
-          <!--   <div class="ui cookie red nag">
-                  <span class="title">
-                    Remember that you have a limited number of appeals per semester. Use them wisely!
-                  </span>
-                  <i class="close icon"></i>
-            </div> -->
-    <!-- ----------------------------------------------------------------------------------------- -->
-           <table class="ui celled center aligned compact mini table" >
-              <thead>
-                <tr>
-                  <th colspan="4">Event</th>
-                  <th rowspan="2">Submission Date</th>
-                  <th rowspan="2">Status</th>
-                  <th rowspan="2">Comments</th>
-                </tr>
-                <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Date</th>
-                  <th>Reason</th>
-                 </tr>
-                
-              </thead>
-              <tbody>
-        
-                  
-                <%  appeals.forEach(function(appeal){ %>
-                      <tr>
-                       
-                 
-                      
-                    
-                      
-                    
-                      <td> <%=appeal.eventName %> </td>
-                      <td> <%=appeal.eventType %> </td>
-                      <td> <%=appeal.eventDate.toDateString() %> </td>
-                      <td> <%=appeal.reason %> </td>
-                      <td> <%=appeal.submissionDate.toDateString()  %> </td>
-                      
-                      
-                      <% if(appeal.staffDecision == null){ %>
-                      <td class="warning"> Pending</td>
-                      <% } else if(appeal.staffDecision == "Accepted"){ %>
-                          <td class="positive"> Approved </td>
-                      <% } else if (appeal.staffDecision == "Denied"){%>
-                        <td class="negative"> Denied </td>
-                      <% } %>
-                       <td><%=appeal.comment %> </td>
-                      </tr>
-                 <% }) %>
-                
-       
-              </tbody>
-            </table>
-        </div>   
-           
-           
-        </div>
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-         <% include ../partials/dashboard %>
+        <%  appeals.forEach(function(appeal){ %>
+        <tr>
 
 
-         <%} else {%>
-
-          <% include ../partials/menu3 %>
 
 
-            <h2 class="ui center aligned icon header" >
-                  <i class="balance scale icon"></i>
-                  <div class="content">
-                     My Appeals
-                    <div class="sub header">All of your appeals are located here along with their decisions.</div>
-                  </div>
-            </h2>
-            
-           <div class="ui container" style="padding-top:8px"> 
-            <div class="ui cookie red nag">
-                  <span class="title">
-                    Remember that you have a limited number of appeals per semester. Use them wisely!
-                  </span>
-                  <i class="close icon"></i>
-            </div>
-    <!-- ----------------------------------------------------------------------------------------- -->
-           <table class="ui celled center aligned compact  table" >
-              <thead>
-                <tr>
-                  <th colspan="4">Event</th>
-                  <th rowspan="2">Submission Date</th>
-                  <th rowspan="2">Status</th>
-                  <th rowspan="2">Comments</th>
-                </tr>
-                <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Date</th>
-                  <th>Reason</th>
-                 </tr>
-                
-              </thead>
-              <tbody>
-        
-                  
-                <%  appeals.forEach(function(appeal){ %>
-                      <tr>
-                       
-                 
-                      
-                    
-                      
-                    
-                      <td> <%=appeal.eventName %> </td>
-                      <td> <%=appeal.eventType %> </td>
-                      <td> <%=appeal.eventDate.toDateString() %> </td>
-                      <td> <%=appeal.reason %> </td>
-                      <td> <%=appeal.submissionDate.toDateString()  %> </td>
-                      
-                      
-                      <% if(appeal.staffDecision == null){ %>
-                      <td class="warning"> Pending</td>
-                      <% } else if(appeal.staffDecision == "Accepted"){ %>
-                          <td class="positive"> Approved </td>
-                      <% } else if (appeal.staffDecision == "Denied"){%>
-                        <td class="negative"> Denied </td>
-                      <% } %>
-                      <td><%=appeal.comment %> </td>
-                      </tr>
-
-                 <% }) %>
-
-                
-       
-              </tbody>
-            </table>
-        </div>   
-           
-          
 
 
-                 </div>
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-         <% include ../partials/footer2 %>
-         <%}%>
+          <td> <%=appeal.eventName %> </td>
+          <td> <%=appeal.eventType %> </td>
+          <td> <%=appeal.eventDate.toDateString() %> </td>
+          <td> <%=appeal.reason %> </td>
+          <td> <%=appeal.submissionDate.toDateString()  %> </td>
+
+
+          <% if(appeal.staffDecision == null){ %>
+          <td class="warning"> Pending</td>
+          <% } else if(appeal.staffDecision == "Accepted"){ %>
+          <td class="positive"> Approved </td>
+          <% } else if (appeal.staffDecision == "Denied"){%>
+          <td class="negative"> Denied </td>
+          <% } %>
+          <td><%=appeal.comment %> </td>
+        </tr>
+        <% }) %>
+
+
+      </tbody>
+    </table>
+  </div>
+
+
+  </div>
+
+
+  <% include ../partials/dashboard %>
+
+
+  <%} else {%>
+
+  <% include ../partials/menu3 %>
+
+
+  <h2 class="ui center aligned icon header">
+    <i class="balance scale icon"></i>
+    <div class="content">
+      My Appeals
+      <div class="sub header">All of your appeals are located here along with their decisions.</div>
+    </div>
+  </h2>
+
+  <div class="ui container" style="padding-top:8px">
+    <div class="ui cookie red nag">
+      <span class="title">
+        Remember that you have a limited number of appeals per semester. Use them wisely!
+      </span>
+      <i class="close icon"></i>
+    </div>
+
+    <table class="ui celled center aligned compact  table">
+      <thead>
+        <tr>
+          <th colspan="4">Event</th>
+          <th rowspan="2">Submission Date</th>
+          <th rowspan="2">Status</th>
+          <th rowspan="2">Comments</th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Date</th>
+          <th>Reason</th>
+        </tr>
+
+      </thead>
+      <tbody>
+
+
+        <%  appeals.forEach(function(appeal){ %>
+        <tr>
+
+
+
+
+
+
+          <td> <%=appeal.eventName %> </td>
+          <td> <%=appeal.eventType %> </td>
+          <td> <%=appeal.eventDate.toDateString() %> </td>
+          <td> <%=appeal.reason %> </td>
+          <td> <%=appeal.submissionDate.toDateString()  %> </td>
+
+
+          <% if(appeal.staffDecision == null){ %>
+          <td class="warning"> Pending</td>
+          <% } else if(appeal.staffDecision == "Accepted"){ %>
+          <td class="positive"> Approved </td>
+          <% } else if (appeal.staffDecision == "Denied"){%>
+          <td class="negative"> Denied </td>
+          <% } %>
+          <td><%=appeal.comment %> </td>
+        </tr>
+
+        <% }) %>
+
+
+
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+  </div>
+
+
+  <% include ../partials/footer2 %>
+  <%}%>
     </body>
 </html>

@@ -1,332 +1,348 @@
 <html>
-    <head>
-        <title>SLIDE | My Points </title>
-          
-       
-        <% include ../partials/menu2 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-        
-       
-          
-             <h2 class="ui center aligned icon header">
-                  <i class=" folder open icon"></i>
-                  <div class="content">
-                    My Points
-                    <div class="sub header">All of your accepted points for the semestes are located here along with how many more you need.</div>
-                    <div style="padding-top:20px">
-                        <a href="/event"><button class="ui button"> All Events</button></a>
-                        <a href="/my-events"><button class="ui button"> My Events</button></a>
-                    </div>
-                  </div>
-            </h2>
-            
-          
-             <div class="ui equal width grid">
-                 <div class="row">
-                    <h2 class="ui dividing header" style="padding-top:30px;"><i class=" birthday icon"></i> Social Points</h2> 
-                 </div>
-                 
-                 
-                 <div class="row">
-                 <div class="ui center aligned column">
-                    <div class="ui inverted segment">
-                    <table class="ui celled center aligned table">
-                  <thead>
-                    <tr>
-                      <th><div class="ui teal horizontal large label">Social Event</div> </th>
-                      <th><div class="ui inverted horizontal large black label">Points</div> </th>
-                    <tr>
-                  </thead>
-                  <tbody>
-                        <% var totalSocialPoints = 0;  %>
-                        <% user.socialEvents.forEach(function(event){ %>
-                            <% totalSocialPoints += event.pointShift; %>
-                            <tr style="background:#e6ffff">
-                                <td> <%= event.eventName%> </td>
-                                <td> <%= event.pointShift %></td>
-                            </tr>
-                        <% }) %>
-                    
-                  </tbody>
-                  
-                </table>
-                    
-                 </div>
-                 </div>
-                  <div class="ui center aligned column">
-                      <div class="ui inverted segment">
-                     <div class="ui header">
-                         <p> 
-                             <div class="ui teal inverted statistic">
-                              <div class="value">
-                                <%= user.socialEvents.length %>
-                              </div>
-                              <div class="label">
-                                 Event(s)
-                              </div>
-                            </div>
-                        </p>
-                        <p> 
-                             <div class="ui teal inverted statistic">
-                              <div class="value">
-                                <%= user.socialEvents.length %>
-                              </div>
-                              <div class="label">
-                                Social Point(s)
-                              </div>
-                            </div>
-                        </p>
-                        <p>    
-                            <div class="ui red inverted statistic">
-                              <div class="value">
-                                 <% var z = Number(goals[0]) - totalSocialPoints; %>
-                                 <% if((z) > 0){ %>
-                                <%= z %> 
-                                <% } if(z <= 0){ %>  
-                                    0  
-                                <% } %>
-                              
-                              </div>
-                              <div class="label">
-                                Point(s) Away from Goal 
-                              </div>
-                            </div>
-                        </p>
-                        
-                     </div>
-                 </div>
-                 </div>
-                 </div>
-                 <div class="row">
-                     <h2 class="ui dividing header" style="padding-top:30px;"><i class=" heart icon"></i> Service Points</h2> 
-                 </div>
-                 <div class ="row">
-                     <div class="ui center aligned column">
-                         <div class="ui inverted segment">
-                         <table class="ui celled center aligned table">
-                              <thead>
-                                <tr>
-                                  <th><div class="ui yellow horizontal large label">Service Event</div> </th>
-                                  <th><div class="ui inverted horizontal large black label">Points</div> </th>
-                                <tr>
-                              </thead>
-                              <tbody>
-                               <% var totalServicePoints = 0;  %>
-                                <% user.serviceEvents.forEach(function(event){ %>
-                                    <% totalServicePoints += event.pointShift; %>
-                                    <tr style="background:#ffffcc">
-                                        <td> <%= event.eventName%> </td>
-                                        <td> <%= event.pointShift %></td>
-                                    </tr>
-                                <% }) %>
-                              </tbody>
-                              
-                            </table>
-                     </div>
-                      </div>
-                     <div class="ui center aligned column">
-                         <div class="ui inverted segment">
-                             <div class="ui header">
-                         <p> 
-                             <div class="ui yellow inverted statistic">
-                              <div class="value">
-                                <%= user.serviceEvents.length %>
-                              </div>
-                              <div class="label">
-                                 Event(s)
-                              </div>
-                            </div>
-                        </p>
-                        <p> 
-                             <div class="ui yellow inverted statistic">
-                              <div class="value">
-                                <%= totalServicePoints %>
-                              </div>
-                              <div class="label">
-                                Service Point(s)
-                              </div>
-                            </div>
-                        </p>
-                        <p>    
-                            <div class="ui red inverted statistic">
-                              <div class="value">
-                                 <% var y = Number(goals[1]) - totalServicePoints; 0 %>
-                                 <% if((y) > 0){ %>
-                                <%= y %> 
-                                <% } if(y <= 0) { %>  
-                                    0  
-                                <% } %>
-                              </div>
-                              <div class="label">
-                                Point(s) Away from Goal 
-                              </div>
-                            </div>
-                        </p>
-                     </div>
-                             
-                     </div>
-                      </div>
-                 </div>
-                 
-                 <div class="row">
-                    <h2 class="ui dividing header" style="padding-top:30px;"><i class=" cogs icon"></i> Programming Points</h2> 
-                 </div>
-                 
-                 <div class ="row">
-                     <div class=" ui center aligned column">
-                         <div class="ui inverted segment">
-                             <table class="ui celled center aligned table">
-                              <thead>
-                                <tr>
-                                  <th><div class="ui purple horizontal large label">Programming Event</div> </th>
-                                  <th><div class="ui inverted horizontal large black label">Points</div> </th>
-                                <tr>
-                              </thead>
-                              <tbody>
-                                <% var totalProgrammingPoints = 0;  %>
-                                    <% user.programmingEvents.forEach(function(event){ %>
-                                        <% totalProgrammingPoints += event.pointShift; %>
-                                        <tr style="background:#f2e6ff">
-                                            <td> <%= event.eventName%> </td>
-                                            <td> <%= event.pointShift %></td>
-                                        </tr>
-                                    <% }) %>
-                              </tbody>
-                             
-                            </table>
-                     </div>
-                     </div>
-                     <div class="ui center aligned column">
-                         <div class="ui inverted segment">
-                              <div class="ui header">
-                         <p> 
-                             <div class="ui purple inverted statistic">
-                              <div class="value">
-                                <%= user.programmingEvents.length %>
-                              </div>
-                              <div class="label">
-                                 Event(s)
-                              </div>
-                            </div>
-                        </p>
-                        <p> 
-                             <div class="ui purple inverted statistic">
-                              <div class="value">
-                                <%= totalProgrammingPoints %>
-                              </div>
-                              <div class="label">
-                                Programming Point(s)
-                              </div>
-                            </div>
-                        </p>
-                        <p>    
-                            <div class="ui red inverted statistic">
-                              <div class="value"> 
-                              
-                              <% var x = Number(goals[2]) - totalProgrammingPoints; %>
-                                 <% if((x) > 0){ %>
-                                <%= x %> 
-                                <% } if(x <= 0) { %>  
-                                    0  
-                                <% } %>
-                                
-                              </div>
-                              <div class="label">
-                                Point(s) Away from Goal 
-                              </div>
-                            </div>
-                        </p>
-                     </div>
-                     </div>
-                 </div>
-                  </div>
-                  
-                  
-                   <div class="row">
-                    <h2 class="ui dividing header" style="padding-top:30px;"><i class=" calendar icon"></i> Meeting Points</h2> 
-                 </div>
-                  
-                   <div class ="row">
-                     <div class=" ui center aligned column">
-                         <div class="ui inverted segment">
-                             <table class="ui celled center aligned table">
-                              <thead>
-                                <tr>
-                                  <th><div class="ui pink horizontal large label">Developmental Meeting</div> </th>
-                                  <th><div class="ui inverted horizontal large black label">Points</div> </th>
-                                <tr>
-                              </thead>
-                              <tbody>
-                                    <% var i = 1; %>
-                                    <% for(i; i <= user.meetingPoints; ++i){ %>
-                                        
-                                        <tr style="background:#f2e6ff">
-                                            <td> Meeting <%= i %> </td>
-                                            <td> <%= 1 %></td>
-                                        </tr>
-                                    <% } %>
-                              </tbody>
-                             
-                            </table>
-                     </div>
-                     </div>
-                     <div class="ui center aligned column">
-                         <div class="ui inverted segment">
-                              <div class="ui header">
-                         <p> 
-                             <div class="ui pink inverted statistic">
-                              <div class="value">
-                                <%= user.meetingPoints %>
-                              </div>
-                              <div class="label">
-                                 DM Meeting(s)
-                              </div>
-                            </div>
-                        </p>
-                        <p> 
-                             <div class="ui pink inverted statistic">
-                              <div class="value">
-                                <%= user.meetingPoints %>
-                              </div>
-                              <div class="label">
-                                DM Point(s)
-                              </div>
-                            </div>
-                        </p>
-                        <p>    
-                            <div class="ui red inverted statistic">
-                              <div class="value"> 
-                              
-                              <% var x = Number(goals[3]) - user.meetingPoints; %>
-                                 <% if((x) > 0){ %>
-                                <%= x %> 
-                                <% } if(x <= 0) { %>  
-                                    0  
-                                <% } %>
-                                
-                              </div>
-                              <div class="label">
-                                Point(s) Away from Goal 
-                              </div>
-                            </div>
-                        </p>
-                     </div>
-                     </div>
-                 </div>
-                  </div>
-                  
-                  
-                  
-             </div>               
-            
-            
+<head>
+  <title>SLIDE | My Points </title>
+
+
+  <% include ../partials/menu2 %>
+
+
+
+  <h2 class="ui center aligned icon header">
+    <i class=" folder open icon"></i>
+    <div class="content">
+      My Points
+      <div class="sub header">All of your accepted points for the semestes are located here along with how many more you
+        need.</div>
+      <div style="padding-top:20px">
+        <a href="/event"><button class="ui button"> All Events</button></a>
+        <a href="/my-events"><button class="ui button"> My Events</button></a>
+      </div>
+    </div>
+  </h2>
+
+
+  <div class="ui equal width grid">
+    <div class="row">
+      <h2 class="ui dividing header" style="padding-top:30px;"><i class=" birthday icon"></i> Social Points</h2>
+    </div>
+
+
+    <div class="row">
+      <div class="ui center aligned column">
+        <div class="ui inverted segment">
+          <table class="ui celled center aligned table">
+            <thead>
+              <tr>
+                <th>
+                  <div class="ui teal horizontal large label">Social Event</div>
+                </th>
+                <th>
+                  <div class="ui inverted horizontal large black label">Points</div>
+                </th>
+              <tr>
+            </thead>
+            <tbody>
+              <% var totalSocialPoints = 0;  %>
+              <% user.socialEvents.forEach(function(event){ %>
+              <% totalSocialPoints += event.pointShift; %>
+              <tr style="background:#e6ffff">
+                <td> <%= event.eventName%> </td>
+                <td> <%= event.pointShift %></td>
+              </tr>
+              <% }) %>
+
+            </tbody>
+
+          </table>
+
         </div>
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-         <% include ../partials/dashboard %>
+      </div>
+      <div class="ui center aligned column">
+        <div class="ui inverted segment">
+          <div class="ui header">
+            <p>
+              <div class="ui teal inverted statistic">
+                <div class="value">
+                  <%= user.socialEvents.length %>
+                </div>
+                <div class="label">
+                  Event(s)
+                </div>
+              </div>
+            </p>
+            <p>
+              <div class="ui teal inverted statistic">
+                <div class="value">
+                  <%= user.socialEvents.length %>
+                </div>
+                <div class="label">
+                  Social Point(s)
+                </div>
+              </div>
+            </p>
+            <p>
+              <div class="ui red inverted statistic">
+                <div class="value">
+                  <% var z = Number(goals[0]) - totalSocialPoints; %>
+                  <% if((z) > 0){ %>
+                  <%= z %>
+                  <% } if(z <= 0){ %>
+                  0
+                  <% } %>
 
-    </body>
+                </div>
+                <div class="label">
+                  Point(s) Away from Goal
+                </div>
+              </div>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h2 class="ui dividing header" style="padding-top:30px;"><i class=" heart icon"></i> Service Points</h2>
+    </div>
+    <div class="row">
+      <div class="ui center aligned column">
+        <div class="ui inverted segment">
+          <table class="ui celled center aligned table">
+            <thead>
+              <tr>
+                <th>
+                  <div class="ui yellow horizontal large label">Service Event</div>
+                </th>
+                <th>
+                  <div class="ui inverted horizontal large black label">Points</div>
+                </th>
+              <tr>
+            </thead>
+            <tbody>
+              <% var totalServicePoints = 0;  %>
+              <% user.serviceEvents.forEach(function(event){ %>
+              <% totalServicePoints += event.pointShift; %>
+              <tr style="background:#ffffcc">
+                <td> <%= event.eventName%> </td>
+                <td> <%= event.pointShift %></td>
+              </tr>
+              <% }) %>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+      <div class="ui center aligned column">
+        <div class="ui inverted segment">
+          <div class="ui header">
+            <p>
+              <div class="ui yellow inverted statistic">
+                <div class="value">
+                  <%= user.serviceEvents.length %>
+                </div>
+                <div class="label">
+                  Event(s)
+                </div>
+              </div>
+            </p>
+            <p>
+              <div class="ui yellow inverted statistic">
+                <div class="value">
+                  <%= totalServicePoints %>
+                </div>
+                <div class="label">
+                  Service Point(s)
+                </div>
+              </div>
+            </p>
+            <p>
+              <div class="ui red inverted statistic">
+                <div class="value">
+                  <% var y = Number(goals[1]) - totalServicePoints; 0 %>
+                  <% if((y) > 0){ %>
+                  <%= y %>
+                  <% } if(y <= 0) { %>
+                  0
+                  <% } %>
+                </div>
+                <div class="label">
+                  Point(s) Away from Goal
+                </div>
+              </div>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <h2 class="ui dividing header" style="padding-top:30px;"><i class=" cogs icon"></i> Programming Points</h2>
+    </div>
+
+    <div class="row">
+      <div class=" ui center aligned column">
+        <div class="ui inverted segment">
+          <table class="ui celled center aligned table">
+            <thead>
+              <tr>
+                <th>
+                  <div class="ui purple horizontal large label">Programming Event</div>
+                </th>
+                <th>
+                  <div class="ui inverted horizontal large black label">Points</div>
+                </th>
+              <tr>
+            </thead>
+            <tbody>
+              <% var totalProgrammingPoints = 0;  %>
+              <% user.programmingEvents.forEach(function(event){ %>
+              <% totalProgrammingPoints += event.pointShift; %>
+              <tr style="background:#f2e6ff">
+                <td> <%= event.eventName%> </td>
+                <td> <%= event.pointShift %></td>
+              </tr>
+              <% }) %>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+      <div class="ui center aligned column">
+        <div class="ui inverted segment">
+          <div class="ui header">
+            <p>
+              <div class="ui purple inverted statistic">
+                <div class="value">
+                  <%= user.programmingEvents.length %>
+                </div>
+                <div class="label">
+                  Event(s)
+                </div>
+              </div>
+            </p>
+            <p>
+              <div class="ui purple inverted statistic">
+                <div class="value">
+                  <%= totalProgrammingPoints %>
+                </div>
+                <div class="label">
+                  Programming Point(s)
+                </div>
+              </div>
+            </p>
+            <p>
+              <div class="ui red inverted statistic">
+                <div class="value">
+
+                  <% var x = Number(goals[2]) - totalProgrammingPoints; %>
+                  <% if((x) > 0){ %>
+                  <%= x %>
+                  <% } if(x <= 0) { %>
+                  0
+                  <% } %>
+
+                </div>
+                <div class="label">
+                  Point(s) Away from Goal
+                </div>
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <h2 class="ui dividing header" style="padding-top:30px;"><i class=" calendar icon"></i> Meeting Points</h2>
+    </div>
+
+    <div class="row">
+      <div class=" ui center aligned column">
+        <div class="ui inverted segment">
+          <table class="ui celled center aligned table">
+            <thead>
+              <tr>
+                <th>
+                  <div class="ui pink horizontal large label">Developmental Meeting</div>
+                </th>
+                <th>
+                  <div class="ui inverted horizontal large black label">Points</div>
+                </th>
+              <tr>
+            </thead>
+            <tbody>
+              <% var i = 1; %>
+              <% for(i; i <= user.meetingPoints; ++i){ %>
+
+              <tr style="background:#f2e6ff">
+                <td> Meeting <%= i %> </td>
+                <td> <%= 1 %></td>
+              </tr>
+              <% } %>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+      <div class="ui center aligned column">
+        <div class="ui inverted segment">
+          <div class="ui header">
+            <p>
+              <div class="ui pink inverted statistic">
+                <div class="value">
+                  <%= user.meetingPoints %>
+                </div>
+                <div class="label">
+                  DM Meeting(s)
+                </div>
+              </div>
+            </p>
+            <p>
+              <div class="ui pink inverted statistic">
+                <div class="value">
+                  <%= user.meetingPoints %>
+                </div>
+                <div class="label">
+                  DM Point(s)
+                </div>
+              </div>
+            </p>
+            <p>
+              <div class="ui red inverted statistic">
+                <div class="value">
+
+                  <% var x = Number(goals[3]) - user.meetingPoints; %>
+                  <% if((x) > 0){ %>
+                  <%= x %>
+                  <% } if(x <= 0) { %>
+                  0
+                  <% } %>
+
+                </div>
+                <div class="label">
+                  Point(s) Away from Goal
+                </div>
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+  </div>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+  <% include ../partials/dashboard %>
+
+  </body>
+
 </html>

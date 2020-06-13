@@ -1,55 +1,63 @@
 <html>
-    <head>
-        <title>SLIDE | Calendar</title>
-        <link  rel="stylesheet" type="text/css" href="/stylesheets/calendar.css">  
-       
-       
-       <% if(user.role == "member"){ %>
-       
-        <% include ../partials/menu2 %>
 
-      
-        <div class="ui container">
-          <h2 class="ui center aligned icon header">
-                  <i class="calendar alternate icon"></i>
-                  <div class="content">
-                    SLIDE CALENDAR
-                    <div class="sub header">This calendar is constantly updated by staff.</div>
-                  </div>
-            </h2>
-          <div>
-              <p style ="text-align:center;"><iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23c0c0c0&amp;src=tamu.edu_mh7e3rtumjqrfl3jjacdffac80%40group.calendar.google.com&amp;color=%2342104A&amp;ctz=America%2FChicago" style="border-width:0;position: absolute; top: 90%; left: 0;width: 100%;height: 270%;border: 0;" frameborder="0"></iframe></p>
-          </div>
+<head>
+  <title>SLIDE | Calendar</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/calendar.css">
+
+
+  <% if(user.role == "member"){ %>
+
+  <% include ../partials/menu2 %>
+
+
+  <div class="ui container">
+    <h2 class="ui center aligned icon header">
+      <i class="calendar alternate icon"></i>
+      <div class="content">
+        SLIDE CALENDAR
+        <div class="sub header">This calendar is constantly updated by staff.</div>
+      </div>
+    </h2>
+    <div>
+      <p style="text-align:center;"><iframe
+          src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23c0c0c0&amp;src=tamu.edu_mh7e3rtumjqrfl3jjacdffac80%40group.calendar.google.com&amp;color=%2342104A&amp;ctz=America%2FChicago"
+          style="border-width:0;position: absolute; top: 90%; left: 0;width: 100%;height: 270%;border: 0;"
+          frameborder="0"></iframe></p>
+    </div>
+  </div>
+
+
+  <% include ../partials/dashboard %>
+
+  <% } else { %>
+
+  <% include ../partials/menu3 %>
+
+  <div class="thirteen wide column" id="secondcolumn" style="padding-right:42px;">
+    <div class="ui container">
+      <h2 class="ui center aligned icon header">
+        <i class="calendar alternate icon"></i>
+        <div class="content">
+          SLIDE CALENDAR
+          <div class="sub header"></div>
         </div>
-    
-        
-         <% include ../partials/dashboard %>
-         
-         <% } else { %>
-         
-              <% include ../partials/menu3 %>
+      </h2>
+      <div>
+        <p style="text-align:center;"><iframe
+            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23c0c0c0&amp;src=tamu.edu_mh7e3rtumjqrfl3jjacdffac80%40group.calendar.google.com&amp;color=%2342104A&amp;ctz=America%2FChicago"
+            style="border-width:0;position: absolute; top: 90%; left: 0;width: 97%;height: 270%;border: 0;"
+            frameborder="0"></iframe></p>
+      </div>
+    </div>
+  </div>
 
-                <div class="thirteen wide column" id ="secondcolumn" style="padding-right:42px;">
-                  <div class="ui container">
-                    <h2 class="ui center aligned icon header">
-                            <i class="calendar alternate icon"></i>
-                            <div class="content">
-                              SLIDE CALENDAR
-                              <div class="sub header"></div>
-                            </div>
-                      </h2>
-                    <div>
-                        <p style ="text-align:center;"><iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23c0c0c0&amp;src=tamu.edu_mh7e3rtumjqrfl3jjacdffac80%40group.calendar.google.com&amp;color=%2342104A&amp;ctz=America%2FChicago" style="border-width:0;position: absolute; top: 90%; left: 0;width: 97%;height: 270%;border: 0;" frameborder="0" ></iframe></p>
-                    </div>
-                  </div>
-                </div>
-    
-        
-         <% include ../partials/footer2 %>
-         
-         <% } %>
-        <script type="text/javascript" src="/javascripts/calendar.js"></script> 
-        
 
-    </body>
+  <% include ../partials/footer2 %>
+
+  <% } %>
+  <script type="text/javascript" src="/javascripts/calendar.js"></script>
+
+
+  </body>
+
 </html>

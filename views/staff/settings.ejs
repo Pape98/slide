@@ -1,68 +1,69 @@
 <html>
-    <head>
-        <title>SLIDE | My Settings</title>
-       
-        <% include ../partials/menu3 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-    
-             
+<head>
+  <title>SLIDE | My Settings</title>
 
-             <h2 class="ui center aligned icon header">
-                  <i class="wrench icon"></i>
-                  <div class="content">
-                    My Settings
-                    <div class="sub header">You can edit your biography on this page</div>
-                  </div>
-            </h2>
+  <% include ../partials/menu3 %>
+
+  <h2 class="ui center aligned icon header">
+    <i class="wrench icon"></i>
+    <div class="content">
+      My Settings
+      <div class="sub header">You can edit your biography on this page</div>
+    </div>
+  </h2>
 
 
-            <div class="ui container clearing vertical segment">
-              <h3 class="ui header">
-                Biography <button class="ui right floated secondary button" id="biographyButton"><i class="icon edit "></i>Edit</button>
-                <div class="sub header">Edit my biography that is located on the staff page.</div>
-              </h3>
-            </div>
+  <div class="ui container clearing vertical segment">
+    <h3 class="ui header">
+      Biography <button class="ui right floated secondary button" id="biographyButton"><i
+          class="icon edit "></i>Edit</button>
+      <div class="sub header">Edit my biography that is located on the staff page.</div>
+    </h3>
+  </div>
 
-          <% if(user.position == "President"){%>
-            <div class="ui container clearing vertical segment">
-              <h3 class="ui header">
-                 President Message<button class="ui right floated  secondary button" id="presidentButton"><i class="icon edit "></i>Edit</button>
-                <div class="sub header">Edit President Message that is located on the home page.</div>
-              </h3>
-            </div>
-            <%}%>
+  <% if(user.position == "President"){%>
+  <div class="ui container clearing vertical segment">
+    <h3 class="ui header">
+      President Message<button class="ui right floated  secondary button" id="presidentButton"><i
+          class="icon edit "></i>Edit</button>
+      <div class="sub header">Edit President Message that is located on the home page.</div>
+    </h3>
+  </div>
+  <%}%>
 
           <% if(user.position == "Vice President"){%>
-            <div class="ui container clearing vertical segment">
-              <h3 class="ui header">
-                Vice President Message<button class="ui right floated  secondary button" id="vpButton"><i class="icon edit "></i>Edit</button>
-                <div class="sub header">Edit VP message that is located on the home page.</div>
-              </h3>
-          </div>
+  <div class="ui container clearing vertical segment">
+    <h3 class="ui header">
+      Vice President Message<button class="ui right floated  secondary button" id="vpButton"><i
+          class="icon edit "></i>Edit</button>
+      <div class="sub header">Edit VP message that is located on the home page.</div>
+    </h3>
+  </div>
 
-          <%}%>
+  <%}%>
 
           <% if(user.position.includes("Executive")){%>
-          <div class="ui container clearing vertical segment">
-              <h3 class="ui header">
-                Executive Message<button class="ui right floated  secondary button" id="execButton"><i class="icon edit "></i>Edit</button>
-                <div class="sub header">Edit Executive message that is located on my subco's page.</div>
-              </h3>
-          </div>
-          <%}%>
+  <div class="ui container clearing vertical segment">
+    <h3 class="ui header">
+      Executive Message<button class="ui right floated  secondary button" id="execButton"><i
+          class="icon edit "></i>Edit</button>
+      <div class="sub header">Edit Executive message that is located on my subco's page.</div>
+    </h3>
+  </div>
+  <%}%>
 
           <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
-            <div class="ui container clearing vertical segment">
-                <h3 class="ui header">
-                  Change Profile Pics
-                  
-                    <button class="ui right floated  secondary button" id="pictureButton"><i class="plus icon "></i>Add</button>
-                
-                  <div class="sub header">Use the following form to change profile pics of both members and staff</div>
-                </h3>
-            </div>
-          <%}%>
+  <div class="ui container clearing vertical segment">
+    <h3 class="ui header">
+      Change Profile Pics
+
+      <button class="ui right floated  secondary button" id="pictureButton"><i class="plus icon "></i>Add</button>
+
+      <div class="sub header">Use the following form to change profile pics of both members and staff</div>
+    </h3>
+  </div>
+  <%}%>
 
           
           <form class="ui container clearing vertical segment" action="/staff/change-my-profile" method="POST">
@@ -102,33 +103,33 @@
            
 
           <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
-          <form class="ui container clearing vertical segment" action="/staff/settings/change-app" method="POST">
-              <h3 class="ui header">
-                Change Application
-                <a href="">
-                  <button class="ui right floated  secondary button"><i class="icon edit "></i>Change</button>
-                </a>
-                <div class="sub header">Change the link of the application so that people can access it. 
-                  <p>Follow these steps:</p>
-                  <p>1. Upload the file on google drive (Assuming it isn't there already)</p>
-                  <p>2. Open up the file and press "SHARE" button (top-right corner)</p>
-                  <p>3. A small window will come up and you will press " WHO HAS ACCESS" (left-bottom corner) </p>
-                  <p>4. Turn On link sharing and copy the link.</p>
-                  <p> NB: Make sure that it says "People at Texas A&M University with the link can view."</p>
-                </div>
-              </h3>
-              <div class="ui selection dropdown">
-                <input type="hidden" name="appType">
-                <i class="dropdown icon"></i>
-                <div class="default text">Application</div>
-                <div class="menu">
-                  
-                  <% if(user.position == "President") {%>
-                    <div class="item" data-value="President">President</div>
-                    <div class="item" data-value="VP">Vice-President</div>
-                    <div class="item" data-value="Executive">Executive</div>
-                    <div class="item" data-value="Director">Director</div>
-                  <%}%>
+  <form class="ui container clearing vertical segment" action="/staff/settings/change-app" method="POST">
+    <h3 class="ui header">
+      Change Application
+      <a href="">
+        <button class="ui right floated  secondary button"><i class="icon edit "></i>Change</button>
+      </a>
+      <div class="sub header">Change the link of the application so that people can access it.
+        <p>Follow these steps:</p>
+        <p>1. Upload the file on google drive (Assuming it isn't there already)</p>
+        <p>2. Open up the file and press "SHARE" button (top-right corner)</p>
+        <p>3. A small window will come up and you will press " WHO HAS ACCESS" (left-bottom corner) </p>
+        <p>4. Turn On link sharing and copy the link.</p>
+        <p> NB: Make sure that it says "People at Texas A&M University with the link can view."</p>
+      </div>
+    </h3>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="appType">
+      <i class="dropdown icon"></i>
+      <div class="default text">Application</div>
+      <div class="menu">
+
+        <% if(user.position == "President") {%>
+        <div class="item" data-value="President">President</div>
+        <div class="item" data-value="VP">Vice-President</div>
+        <div class="item" data-value="Executive">Executive</div>
+        <div class="item" data-value="Director">Director</div>
+        <%}%>
                   
                   <div class="item" data-value="Member">Member</div>
                   <div class="item" data-value="Big">Big</div>
@@ -142,26 +143,26 @@
 
           <%}%>
 
-          <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
-           <form class="ui container clearing vertical segment" action="/staff/settings/release-app" method="POST">
-              <h3 class="ui header">
-                Release Application
-                <a href="">
-                  <button class="ui positive right floated  secondary button"><i class="icon edit "></i>Release</button>
-                </a>
-                <div class="sub header">Release Application on the Admissions Page.</div>
-              </h3>
-              <div class="ui selection dropdown">
-                <input type="hidden" name="appType">
-                <i class="dropdown icon"></i>
-                <div class="default text">Application</div>
-                <div class="menu">
-                  <% if(user.position == "President") {%>
-                    <div class="item" data-value="President">President</div>
-                    <div class="item" data-value="VP">Vice-President</div>
-                    <div class="item" data-value="Executive">Executive</div>
-                    <div class="item" data-value="Director">Director</div>
-                  <%}%>
+        <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+        <form class="ui container clearing vertical segment" action="/staff/settings/release-app" method="POST">
+          <h3 class="ui header">
+            Release Application
+            <a href="">
+              <button class="ui positive right floated  secondary button"><i class="icon edit "></i>Release</button>
+            </a>
+            <div class="sub header">Release Application on the Admissions Page.</div>
+          </h3>
+          <div class="ui selection dropdown">
+            <input type="hidden" name="appType">
+            <i class="dropdown icon"></i>
+            <div class="default text">Application</div>
+            <div class="menu">
+              <% if(user.position == "President") {%>
+              <div class="item" data-value="President">President</div>
+              <div class="item" data-value="VP">Vice-President</div>
+              <div class="item" data-value="Executive">Executive</div>
+              <div class="item" data-value="Director">Director</div>
+              <%}%>
                   <div class="item" data-value="Member">Member</div>
                   <div class="item" data-value="Big">Big</div>
                 </div>
@@ -170,27 +171,28 @@
 
           <%}%>
 
-          <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
-          <form class="ui container clearing vertical segment" action="/staff/settings/remove-app" method="POST">
-              <h3 class="ui header">
-                Remove Application 
-                <a href="">
-                  <button class="ui right floated  negative button" id="execButton"><i class="icon edit "></i>Remove</button>
-                </a>
-                <div class="sub header">Remove Application from the Admissions Page.</div>
-              </h3>
-              <div class="ui selection dropdown">
-                <input type="hidden" name="appType">
-                <i class="dropdown icon"></i>
-                <div class="default text">Application</div>
-                <div class="menu">
-                  
-                  <% if(user.position == "President") {%>
+              <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+              <form class="ui container clearing vertical segment" action="/staff/settings/remove-app" method="POST">
+                <h3 class="ui header">
+                  Remove Application
+                  <a href="">
+                    <button class="ui right floated  negative button" id="execButton"><i
+                        class="icon edit "></i>Remove</button>
+                  </a>
+                  <div class="sub header">Remove Application from the Admissions Page.</div>
+                </h3>
+                <div class="ui selection dropdown">
+                  <input type="hidden" name="appType">
+                  <i class="dropdown icon"></i>
+                  <div class="default text">Application</div>
+                  <div class="menu">
+
+                    <% if(user.position == "President") {%>
                     <div class="item" data-value="President">President</div>
                     <div class="item" data-value="VP">Vice-President</div>
                     <div class="item" data-value="Executive">Executive</div>
                     <div class="item" data-value="Director">Director</div>
-                  <%}%>
+                    <%}%>
                   
                   <div class="item" data-value="Member">Member</div>
                   <div class="item" data-value="Big">Big</div>
@@ -199,37 +201,40 @@
           </form>
           <%}%>
 
-         
-          <div class="ui container clearing vertical segment">
-              <h3 class="ui header">
-                Delete My Account<button class="ui disabled right floated negative button" onclick="show(this)">Delete</button>
-                <div class="sub header">Delete your account. Remember that you won't be able to access the account after deletion.</div>
-              </h3>
-          </div>
 
-          <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
-          <div class="ui container clearing vertical segment">
-              <h3 class="ui header">
-                Delete a Member's Account 
+                    <div class="ui container clearing vertical segment">
+                      <h3 class="ui header">
+                        Delete My Account<button class="ui disabled right floated negative button"
+                          onclick="show(this)">Delete</button>
+                        <div class="sub header">Delete your account. Remember that you won't be able to access the
+                          account after deletion.</div>
+                      </h3>
+                    </div>
 
-                
-                <div class="sub header">Delete a member's account. Remember that they won't be able to access the account after deletion.</div>
-              </h3>
-              <form method="POST" action="/staff/settings/delete/member-account">
-                <select name="memberID" class="ui small dropdown">
-                   <option value="">Select Name</option>
-                  <% users.forEach(function(user){ %>
-                  <% if(user.role == "member"){%>
-                    <option value="<%=user._id%>"><%= user.firstName + " "+ user.lastName%></option>
-                 <%}}); %> 
-              </select>
-              <button class="ui right floated negative button" onclick="show(this)">Delete</button>
-              </form>
+                    <% if(user.position.includes("Membership") || user.position.includes("President")) {%>
+                    <div class="ui container clearing vertical segment">
+                      <h3 class="ui header">
+                        Delete a Member's Account
 
-              
-          </div>
 
-          <%}%>
+                        <div class="sub header">Delete a member's account. Remember that they won't be able to access
+                          the account after deletion.</div>
+                      </h3>
+                      <form method="POST" action="/staff/settings/delete/member-account">
+                        <select name="memberID" class="ui small dropdown">
+                          <option value="">Select Name</option>
+                          <% users.forEach(function(user){ %>
+                          <% if(user.role == "member"){%>
+                          <option value="<%=user._id%>"><%= user.firstName + " "+ user.lastName%></option>
+                          <%}}); %>
+                        </select>
+                        <button class="ui right floated negative button" onclick="show(this)">Delete</button>
+                      </form>
+
+
+                    </div>
+
+                    <%}%>
 
  <!--  ------------------------------------------------------------------------------------------------------>
 
@@ -340,5 +345,6 @@
 <!--  ------------------------------------------------------------------------------------------------------>
         <% include ../partials/footer2 %>
 
-    </body>
+                    </body>
+
 </html>

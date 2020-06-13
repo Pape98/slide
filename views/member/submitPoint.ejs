@@ -1,86 +1,89 @@
 <html>
-    <head>
-        <title>SLIDE | Submit Point</title>
-         
-       
-        <% include ../partials/menu2 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-          
-             <h2 class="ui center aligned icon header">
-                  <i class=" pencil alternate icon"></i>
-                  <div class="content">
-                    Submit Your Point
-                    <div class="sub header">Use this form to log your points</div>
-                  </div>
-            </h2>
-            
-            
-            <form class=" ui equal width tiny form" action="/points" method="POST">
-                     <h4 class="ui dividing header">Event Information</h4>
-                     <div class="fields">
-                            <div class="required field">
-                            <label>Event Name</label>
-                            <input type="text" name="eventName" placeholder="Which event did you go to?">
-                         </div>  
-                         <div class="required field">
-                            <label>Event Date</label>
-                            <div class="ui right icon input">
-                            <input type="date" name="eventDate" placeholder="Event Name">
-                            <i class="calendar icon"></i>
-                         </div> 
-                         </div> 
-                                                      
-                          </div>
-                          
-                          <div class="fields">
-                                <div class="required field">
-                              <label>Point Type</label>
-                              <div class="ui selection dropdown">
-                                  <input type="hidden" name="pointType">
-                                  <i class="dropdown icon"></i>
-                                  <div class="default text">-- Select Point Type</div>
-                                  <div class="menu">
-                                      <div class="item" data-value="Social"><div class="ui teal horizontal small label">Social </div></div>
-                                      <div class="item" data-value="Service"><div class="ui yellow horizontal small label">Service</div></div>
-                                      <div class="item" data-value="Programming"><div class="ui purple horizontal small label">Programming</div></div>
-                                  </div>
-                              </div>
-                          </div>
-                          
-                           
-                           <div class="required field">
-                               <label>Location</label>
-                               <div class="ui right icon input">
-                            
-                            <input type="text" name="Location" placeholder="Location of Event">
-                            <i class="map icon"></i>
-                         </div> 
-                          </div>
-                          </div>
-                          
-                           <div class="required field" style="padding-bottom:30px">
-                                <label>Event Description</label>
-                                <textarea name="Description"></textarea>
-                            </div>
-                    
-                   
-                        <div class="ui right floated  buttons">
-                          <button class="ui button">Cancel</button>
-                          <div class="or"></div>
-                          <button class="ui submit green button">Submit</button>
-                        </div>
-                </form>
-                
+<head>
+    <title>SLIDE | Submit Point</title>
+
+
+    <% include ../partials/menu2 %>
+
+
+    <h2 class="ui center aligned icon header">
+        <i class=" pencil alternate icon"></i>
+        <div class="content">
+            Submit Your Point
+            <div class="sub header">Use this form to log your points</div>
+        </div>
+    </h2>
+
+
+    <form class=" ui equal width tiny form" action="/points" method="POST">
+        <h4 class="ui dividing header">Event Information</h4>
+        <div class="fields">
+            <div class="required field">
+                <label>Event Name</label>
+                <input type="text" name="eventName" placeholder="Which event did you go to?">
             </div>
-            
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-         <% include ../partials/dashboard %>
-        
-        
+            <div class="required field">
+                <label>Event Date</label>
+                <div class="ui right icon input">
+                    <input type="date" name="eventDate" placeholder="Event Name">
+                    <i class="calendar icon"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="fields">
+            <div class="required field">
+                <label>Point Type</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="pointType">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">-- Select Point Type</div>
+                    <div class="menu">
+                        <div class="item" data-value="Social">
+                            <div class="ui teal horizontal small label">Social </div>
+                        </div>
+                        <div class="item" data-value="Service">
+                            <div class="ui yellow horizontal small label">Service</div>
+                        </div>
+                        <div class="item" data-value="Programming">
+                            <div class="ui purple horizontal small label">Programming</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="required field">
+                <label>Location</label>
+                <div class="ui right icon input">
+
+                    <input type="text" name="Location" placeholder="Location of Event">
+                    <i class="map icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="required field" style="padding-bottom:30px">
+            <label>Event Description</label>
+            <textarea name="Description"></textarea>
+        </div>
+
+
+        <div class="ui right floated  buttons">
+            <button class="ui button">Cancel</button>
+            <div class="or"></div>
+            <button class="ui submit green button">Submit</button>
+        </div>
+    </form>
+
+    </div>
+
+    <% include ../partials/dashboard %>
+
+
 
     </body>
+
 </html>

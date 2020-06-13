@@ -1,147 +1,163 @@
 <html>
-    <head>
-        <title>SLIDE | Meeting <%= %></title>
-       
-        <% include ../partials/menu3 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-       
-            
-          
-             <h2 class="ui center aligned icon header">
-                  <i class="calendar  icon"></i>
-                  <div class="content">
-                     Meeting of <%= foundMeeting.meetingDate %>
-                    <div class="sub header"> Sign in Sheet and summary of attendance</div>
-                    <div style="padding:15px">
-                        <a href="/meetings"><button class="ui button">View all meetings</button></a>
-                    </div>
-                  </div>
-            </h2>
-            
-            
-            <div class="ui top attached tabular tiny menu">
-                  <a class="item active" data-tab="first">Sign in</a>
-                  <a class="item" data-tab="second">Summary</a>
-                  
-                </div>
-                <div class="ui bottom attached tab segment active" data-tab="first">
-                  <table class="ui celled center aligned compact mini table">
-                  <thead>
-                    <tr> 
-                    <th></th>
-                      <th>Last Name</th>
-                      <th>First Name</th>
-                      <th>Present</th>
-                      <th>Absent</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                     
-                     
-                     <% members.forEach(function(member){ %>
-                     <% var condition = false; %>
-                     <% var condition2 = false %>
-                     
-                     <% foundMeeting.presentIDs.forEach(function(user){  %>
-                            <% if(String(user._id) == String(member._id)) condition = true; %>
-                     <% }) %>
-                     
-                     <% foundMeeting.absentIDs.forEach(function(user){ %>
-                            <% if(String(user._id) == String(member._id)) condition2 = true; %>
-                     <% }) %>
-                     
-                      <%  if(condition == true || condition2 == true){ %>
-                             <tr class= disabled>
-                                <td><img class="ui centered small image" src="<%=member.profilePicture%>"></td>
-                                 <td style="text-decoration: line-through;"> <%= member.lastName%> </td>
-                                  <td style="text-decoration: line-through;"> <%= member.firstName%> </td>
-                                  <td> <a class="present" href="/meetings/<%=foundMeeting._id%>/present/<%=member._id%>"><i class="checkmark  big grey disabled icon"></i></a></td>
-                                  <td> <a class="absent" href="/meetings/<%=foundMeeting._id%>/absent/<%=member._id%>"><i class="close  big grey disabled icon"></i></td>
-                            </tr>
-                       <% } else { %>
-                                <tr>
-                                <td><img class="ui centered small image" src="<%=member.profilePicture%>"></td>
-                                 <td> <%= member.lastName%> </td>
-                                  <td> <%= member.firstName%> </td>
-                                  <td> <a class="present" href="/meetings/<%=foundMeeting._id%>/present/<%=member._id%>"><i class="checkmark green big icon"></i></a></td>
-                                  <td> <a class="absent" href="/meetings/<%=foundMeeting._id%>/absent/<%=member._id%>"><i class="close red big icon"></i></td>
-                            </tr>
-                       <% } %>
-                          
-                     
-                     <% }); %>
-                   
-                    
-                  </tbody>
-                </table>
-                </div>
-                <!-- --------------------------------------------------------- -->
-                <div class="ui bottom attached tab segment" data-tab="second">
-                    
-                    <div class="ui equal width grid">
-                        <div class=" column">
-                            <div class="ui centered header"> <div class="ui green horizontal big label"><i class="smile outline large  icon "></i>PRESENT</div></div>
-                            <table class="ui center aligned celled small table">
-                              <thead>
-                                <th></th>
-                                <th>Last Name</th>
-                                <th>First Name</th>
-                                <th>Subcommittee</th>
-                              </tr></thead>
-                              <tbody>
-                                    
-                                    <% foundMeeting.presentIDs.forEach(function(attendee){ %>
-                                        
-                                    <tr>
-                                      <td><i class="checkmark green big icon "></i></td>
-                                      <td><div class="content"><%=attendee.lastName%></div></td>
-                                      <td><%=attendee.firstName%></td>
-                                      <td><%=attendee.subcommittee%></td>
-                                    </tr>
-                                    
-                                    <% }); %>
-                                    
-                                
-                              </tbody>
-                            </table>
-                            
-                        </div>
-                        
-                            <div class=" column">
-                                <div class="ui centered header"><div class="ui red horizontal big label"><i class="frown outline large icon "></i>ABSENT</div></div>
-                            <table class="ui center aligned celled small table">
-                              <thead>
-                                <th></th>
-                                <th>Last Name</th>
-                                <th>First Name</th>
-                                <th>Subcommittee</th>
-                              </tr></thead>
-                              <tbody>
-                                    
-                                    <% foundMeeting.absentIDs.forEach(function(attendee){ %>
-                                        
-                                    <tr>
-                                      <td><i class="close red big icon "></i></td>
-                                      <td><div class="content"><%=attendee.lastName%></div></td>
-                                      <td><%=attendee.firstName%></td>
-                                      <td><%=attendee.subcommittee%></td>
-                                    </tr>
-                                    
-                                    <% }); %>
-                                
-                              </tbody>
-                            </table>
-                        </div>
-                    
-                </div>
-                
-            
+<head>
+  <title>SLIDE | Meeting <%= %></title>
+
+  <% include ../partials/menu3 %>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+
+
+  <h2 class="ui center aligned icon header">
+    <i class="calendar  icon"></i>
+    <div class="content">
+      Meeting of <%= foundMeeting.meetingDate %>
+      <div class="sub header"> Sign in Sheet and summary of attendance</div>
+      <div style="padding:15px">
+        <a href="/meetings"><button class="ui button">View all meetings</button></a>
+      </div>
+    </div>
+  </h2>
+
+
+  <div class="ui top attached tabular tiny menu">
+    <a class="item active" data-tab="first">Sign in</a>
+    <a class="item" data-tab="second">Summary</a>
+
+  </div>
+  <div class="ui bottom attached tab segment active" data-tab="first">
+    <table class="ui celled center aligned compact mini table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>Present</th>
+          <th>Absent</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+        <% members.forEach(function(member){ %>
+        <% var condition = false; %>
+        <% var condition2 = false %>
+
+        <% foundMeeting.presentIDs.forEach(function(user){  %>
+        <% if(String(user._id) == String(member._id)) condition = true; %>
+        <% }) %>
+
+        <% foundMeeting.absentIDs.forEach(function(user){ %>
+        <% if(String(user._id) == String(member._id)) condition2 = true; %>
+        <% }) %>
+
+        <%  if(condition == true || condition2 == true){ %>
+        <tr class=disabled>
+          <td><img class="ui centered small image" src="<%=member.profilePicture%>"></td>
+          <td style="text-decoration: line-through;"> <%= member.lastName%> </td>
+          <td style="text-decoration: line-through;"> <%= member.firstName%> </td>
+          <td> <a class="present" href="/meetings/<%=foundMeeting._id%>/present/<%=member._id%>"><i
+                class="checkmark  big grey disabled icon"></i></a></td>
+          <td> <a class="absent" href="/meetings/<%=foundMeeting._id%>/absent/<%=member._id%>"><i
+                class="close  big grey disabled icon"></i></td>
+        </tr>
+        <% } else { %>
+        <tr>
+          <td><img class="ui centered small image" src="<%=member.profilePicture%>"></td>
+          <td> <%= member.lastName%> </td>
+          <td> <%= member.firstName%> </td>
+          <td> <a class="present" href="/meetings/<%=foundMeeting._id%>/present/<%=member._id%>"><i
+                class="checkmark green big icon"></i></a></td>
+          <td> <a class="absent" href="/meetings/<%=foundMeeting._id%>/absent/<%=member._id%>"><i
+                class="close red big icon"></i></td>
+        </tr>
+        <% } %>
+
+
+        <% }); %>
+
+
+      </tbody>
+    </table>
+  </div>
+  <!-- --------------------------------------------------------- -->
+  <div class="ui bottom attached tab segment" data-tab="second">
+
+    <div class="ui equal width grid">
+      <div class=" column">
+        <div class="ui centered header">
+          <div class="ui green horizontal big label"><i class="smile outline large  icon "></i>PRESENT</div>
         </div>
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-         <% include ../partials/footer2 %>
+        <table class="ui center aligned celled small table">
+          <thead>
+            <th></th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Subcommittee</th>
+            </tr>
+          </thead>
+          <tbody>
 
-    </body>
+            <% foundMeeting.presentIDs.forEach(function(attendee){ %>
+
+            <tr>
+              <td><i class="checkmark green big icon "></i></td>
+              <td>
+                <div class="content"><%=attendee.lastName%></div>
+              </td>
+              <td><%=attendee.firstName%></td>
+              <td><%=attendee.subcommittee%></td>
+            </tr>
+
+            <% }); %>
+
+
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class=" column">
+        <div class="ui centered header">
+          <div class="ui red horizontal big label"><i class="frown outline large icon "></i>ABSENT</div>
+        </div>
+        <table class="ui center aligned celled small table">
+          <thead>
+            <th></th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Subcommittee</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% foundMeeting.absentIDs.forEach(function(attendee){ %>
+
+            <tr>
+              <td><i class="close red big icon "></i></td>
+              <td>
+                <div class="content"><%=attendee.lastName%></div>
+              </td>
+              <td><%=attendee.firstName%></td>
+              <td><%=attendee.subcommittee%></td>
+            </tr>
+
+            <% }); %>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <!--  ------------------------------------------------------------------------------------------------------>
+
+  <% include ../partials/footer2 %>
+
+  </body>
+
 </html>

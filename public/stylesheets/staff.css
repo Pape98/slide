@@ -1,113 +1,126 @@
-html,body{margin:0;padding:0;height:100%; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
 /*---------------------------------------------------------------------------------------------------*/
 
 
 
-#bigpic{
-      position: relative;
-    text-align: center;
-    color: white;
-    width: 100%;
-
- 
-}
-
-.mySlides1, .mySlides2 {display: none}
-img {vertical-align: middle;}
-
-
-
-#staff{
-  font-weight:bold;
-  font-style:italic;
-  line-height:1.6;
-  font-size:75px;
-  position:absolute;
-  color:white;
-  top:65%;
-  width:100%;
-  padding:10px 60px 10px 40px;
-  letter-spacing: 0.05em;
-  
-}
-
-.text{
-  margin-right:  0;
-}
-
- @media only screen and (min-width: 1025px) {
-
-/* Slideshow container */
-.slideshow-container {
-    padding: 40px 0 0 0;
-  width: 100%;
+#bigpic {
   position: relative;
-  height: 100%;
-  margin: 0;
-}
-
-/* Next & previous buttons */
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
+  text-align: center;
   color: white;
-     background:black;
-  font-weight: bold;
-  font-size: 37px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+  width: 100%;
+
+
 }
 
-.prev{
-  cursor: pointer;
+.mySlides1,
+.mySlides2 {
+  display: none
+}
+
+img {
+  vertical-align: middle;
+}
+
+
+
+#staff {
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.6;
+  font-size: 75px;
   position: absolute;
-  top: 50%;
-  left :0%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
   color: white;
-     background:black;
-  font-weight: bold;
-  font-size: 37px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a grey background color */
-.prev:hover, .next:hover {
-  background-color: #f1f1f1;
-  color: black;
-}
-
-#myheader{
-  font-weight:bold;
-  font-style:italic;
-  line-height:1.6;
-  font-size:35px;
-  position:absolute;
-  color:white;
-  top:78%;
-     background:black;
-  width:100%;
-  padding:10px 40px 10px 10px;
-  opacity: .70; filter: alpha(opacity=70); 
+  top: 65%;
+  width: 100%;
+  padding: 10px 60px 10px 40px;
   letter-spacing: 0.05em;
+
 }
-      
+
+.text {
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 1025px) {
+
+  /* Slideshow container */
+  .slideshow-container {
+    padding: 40px 0 0 0;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    margin: 0;
+  }
+
+  /* Next & previous buttons */
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    background: black;
+    font-weight: bold;
+    font-size: 37px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  .prev {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    background: black;
+    font-weight: bold;
+    font-size: 37px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a grey background color */
+  .prev:hover,
+  .next:hover {
+    background-color: #f1f1f1;
+    color: black;
+  }
+
+  #myheader {
+    font-weight: bold;
+    font-style: italic;
+    line-height: 1.6;
+    font-size: 35px;
+    position: absolute;
+    color: white;
+    top: 78%;
+    background: black;
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    opacity: .70;
+    filter: alpha(opacity=70);
+    letter-spacing: 0.05em;
+  }
+
 
 }
 
@@ -115,79 +128,81 @@ img {vertical-align: middle;}
 
 @media only screen and (max-width: 1025px) {
 
-/* Slideshow container */
-.slideshow-container {
-  padding: 35px 0 35px 0;
-  width: 100%;
-  position: relative;
-  height: 50%;
-  margin: 0;
-}
+  /* Slideshow container */
+  .slideshow-container {
+    padding: 35px 0 35px 0;
+    width: 100%;
+    position: relative;
+    height: 50%;
+    margin: 0;
+  }
 
-/* Next & previous buttons */
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-     background:black;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
+  /* Next & previous buttons */
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    background: black;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
 
-.prev{
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left :0%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-     background:black;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
+  .prev {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    background: black;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
 
-/* On hover, add a grey background color */
-.prev:hover, .next:hover {
-  background-color: #f1f1f1;
-  color: black;
-}
+  /* On hover, add a grey background color */
+  .prev:hover,
+  .next:hover {
+    background-color: #f1f1f1;
+    color: black;
+  }
 
-#myheader{
-  font-weight:bold;
-  font-style:italic;
-  line-height:1.6;
-  font-size:120%;
-  position:absolute;
-  color:white;
-  top:67%;
-  background:black;
-  width:100%;
-  padding:10px 40px 10px 10px;
-  opacity: .70; filter: alpha(opacity=70); 
-  letter-spacing: 0.05em;
-}
+  #myheader {
+    font-weight: bold;
+    font-style: italic;
+    line-height: 1.6;
+    font-size: 120%;
+    position: absolute;
+    color: white;
+    top: 67%;
+    background: black;
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    opacity: .70;
+    filter: alpha(opacity=70);
+    letter-spacing: 0.05em;
+  }
 
-#staff{
-  display: none;
-}
-      
+  #staff {
+    display: none;
+  }
+
 
 }

@@ -1,105 +1,144 @@
 <html>
-  <head>
-      <meta charset="utf-8" />
-         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>SLIDE | Welcome <%= firstName %></title>
-     <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
-      <link  rel="stylesheet" type="text/css" href="/stylesheets/welcome.css">  
-      <link href="https://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400i" rel="stylesheet">
-  </head>
-  <body>
-    
-    
-<div id="pic-container">
-    
-<% if(subcommittee != undefined){ %>
 
-    <% if(subcommittee == "DEVO"){ %>
-        <img class="slide" src="https://image.ibb.co/jp4Mcn/IMG_2775.jpg" >
-    <% } else if (subcommittee == "SAAM") { %>
-        <img class="slide" src="https://image.ibb.co/dmxoq7/sam.jpg" >
-    <% } else if (subcommittee == "RAMH") { %>
-        <img class="slide" src="https://image.ibb.co/kHVuxn/DSC_0026.jpg" >
-    <% } else{ %> 
-        <img class="slide" src="https://image.ibb.co/mt49V7/IMG_2204.jpg" >
-    <% } %>
-    
-    
-    
-     
-    <div class= "ui container">
-        <div class="top"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif"> Howdy <%= firstName %>!</h1></div>
-        
-         <% if(subcommittee == "DEVO"){ %>
-        <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">DEVO</h1></div>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>SLIDE | Welcome <%= firstName %></title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/welcome.css">
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400i" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <div id="pic-container">
+
+        <% if(subcommittee != undefined){ %>
+
+        <% if(subcommittee == "DEVO"){ %>
+        <img class="slide" src="https://image.ibb.co/jp4Mcn/IMG_2775.jpg">
         <% } else if (subcommittee == "SAAM") { %>
-           <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">SAAM</h1></div>
+        <img class="slide" src="https://image.ibb.co/dmxoq7/sam.jpg">
         <% } else if (subcommittee == "RAMH") { %>
-            <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">RAMH</h1></div>
-        <% } else{ %> 
-            <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">SHIP</h1></div>
+        <img class="slide" src="https://image.ibb.co/kHVuxn/DSC_0026.jpg">
+        <% } else{ %>
+        <img class="slide" src="https://image.ibb.co/mt49V7/IMG_2204.jpg">
         <% } %>
-        
-        <div class ="button-bottom"><button class="ui big blue button"><a href="/my-home-page" style="color:white">Continue</a></button></div>
-    </div>
-    <% } else { %>
-            
-        <% if(position == "DEVO Executive"){ %>
-            <img class="slide" src="https://image.ibb.co/jp4Mcn/IMG_2775.jpg" >
-        <% } else if (position == "SAAM Executive") { %>
-            <img class="slide" src="https://image.ibb.co/dmxoq7/sam.jpg" >
-        <% } else if (position == "RAMH Executive") { %>
-            <img class="slide" src="https://image.ibb.co/kHVuxn/DSC_0026.jpg" >
-        <% } else{ %> 
-            <img class="slide" src="https://image.ibb.co/mt49V7/IMG_2204.jpg" >
-        <% } %>
-        
-     
-        <div class= "ui container">
-            <div class="top"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif"> Howdy <%= firstName %>!</h1></div>
-            
-             <% if(position == "DEVO Executive"){ %>
-            <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">DEVO Executive</h1></div>
-            <% } else if (position == "SAAM Executive") { %>
-               <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">SAAM Executive</h1></div>
-            <% } else if (position == "RAMH Executive") { %>
-                <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">RAMH Executive</h1></div>
-            <% } else if (position == "SHIP Executive") { %>
-                <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">SHIP Executive</h1></div>
-             <% } else if (position == "President") { %>
-                <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">President </h1></div>
-            <% } else if (position == "Vice President") { %>
-                <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">Vice President</h1></div>
-            <% } else if (position == "Membership Executive") { %>
-                <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">Membership Executive</h1></div>
-            <% } else if (position == "DEVO Director") { %>
-                <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">DEVO Director</h1></div>
-            <% } else if (position == "SAAM Director") { %>
-                <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">SAAM Director</h1></div>
-            <% } else if (position == "RAMH Director") { %>
-                <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">RAMH Director</h1></div>
-            <% } else if (position == "SHIP Director") { %>
-                <div class="title"><h1 class="text" style= "font-family: 'IM Fell Double Pica', serif">SHIP Director</h1></div>
+
+
+
+
+        <div class="ui container">
+            <div class="top">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif"> Howdy <%= firstName %>!</h1>
+            </div>
+
+            <% if(subcommittee == "DEVO"){ %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">DEVO</h1>
+            </div>
+            <% } else if (subcommittee == "SAAM") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">SAAM</h1>
+            </div>
+            <% } else if (subcommittee == "RAMH") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">RAMH</h1>
+            </div>
+            <% } else{ %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">SHIP</h1>
+            </div>
             <% } %>
-            
-            <div class ="button-bottom"><button class="ui big blue button"><a href="/home-page" style="color:white">Continue</a></button></div>
-        
-        <% } %>    
-        
-    
-  
-</div>
-    
-  
-  
-   
-    <script 
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
+
+            <div class="button-bottom"><button class="ui big blue button"><a href="/my-home-page"
+                        style="color:white">Continue</a></button></div>
+        </div>
+        <% } else { %>
+
+        <% if(position == "DEVO Executive"){ %>
+        <img class="slide" src="https://image.ibb.co/jp4Mcn/IMG_2775.jpg">
+        <% } else if (position == "SAAM Executive") { %>
+        <img class="slide" src="https://image.ibb.co/dmxoq7/sam.jpg">
+        <% } else if (position == "RAMH Executive") { %>
+        <img class="slide" src="https://image.ibb.co/kHVuxn/DSC_0026.jpg">
+        <% } else{ %>
+        <img class="slide" src="https://image.ibb.co/mt49V7/IMG_2204.jpg">
+        <% } %>
+
+
+        <div class="ui container">
+            <div class="top">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif"> Howdy <%= firstName %>!</h1>
+            </div>
+
+            <% if(position == "DEVO Executive"){ %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">DEVO Executive</h1>
+            </div>
+            <% } else if (position == "SAAM Executive") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">SAAM Executive</h1>
+            </div>
+            <% } else if (position == "RAMH Executive") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">RAMH Executive</h1>
+            </div>
+            <% } else if (position == "SHIP Executive") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">SHIP Executive</h1>
+            </div>
+            <% } else if (position == "President") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">President </h1>
+            </div>
+            <% } else if (position == "Vice President") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">Vice President</h1>
+            </div>
+            <% } else if (position == "Membership Executive") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">Membership Executive</h1>
+            </div>
+            <% } else if (position == "DEVO Director") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">DEVO Director</h1>
+            </div>
+            <% } else if (position == "SAAM Director") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">SAAM Director</h1>
+            </div>
+            <% } else if (position == "RAMH Director") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">RAMH Director</h1>
+            </div>
+            <% } else if (position == "SHIP Director") { %>
+            <div class="title">
+                <h1 class="text" style="font-family: 'IM Fell Double Pica', serif">SHIP Director</h1>
+            </div>
+            <% } %>
+
+            <div class="button-bottom"><button class="ui big blue button"><a href="/home-page"
+                        style="color:white">Continue</a></button></div>
+
+            <% } %>
+
+
+
+        </div>
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
-        <script type="text/javascript" src="https://www.w3schools.com/w3css/4/w3.css"></script> 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/circletype@2.2.0/dist/circletype.min.js"></script> 
-        <script type="text/javascript" src="/javascripts/welcome.js"></script> 
-  </body>
+        <script type="text/javascript" src="https://www.w3schools.com/w3css/4/w3.css"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/circletype@2.2.0/dist/circletype.min.js">
+        </script>
+        <script type="text/javascript" src="/javascripts/welcome.js"></script>
+</body>
+
 </html>

@@ -1,44 +1,43 @@
 <html>
-    <head>
-        <title>SLIDE | FAQs</title>
-        <link  rel="stylesheet" type="text/css" href="/stylesheets/memberpage.css">  
-       
-        <% include ../partials/menu2 %>
 
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-          
-             <h2 class="ui center aligned icon header">
-                  <i class=" question circle icon"></i>
-                  <div class="content">
-                    FAQs
-                    <div class="sub header"> Should be used as reference if you have ever have questions</div>
-                  </div>
-            </h2>
-            
-            
-            <div class="ui styled fluid accordion">
-              
-            <%faqs.forEach(function(faq){%>
+<head>
+  <title>SLIDE | FAQs</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/memberpage.css">
 
-              <div class="title">
-                <i class="dropdown icon"></i>
-                  <%=faq.title%>
-              </div>
-              <div class="content">
-                <p><%=faq.text%></p>
-              </div>
-            <%})%>
-            </div>
-            
-            
-        </div>
-    
-<!--  ------------------------------------------------------------------------------------------------------>
-        
-         <% include ../partials/dashboard %>
-        <script type="text/javascript" src="/javascripts/memberpage.js"></script> 
-        
+  <% include ../partials/menu2 %>
 
-    </body>
+
+  <h2 class="ui center aligned icon header">
+    <i class=" question circle icon"></i>
+    <div class="content">
+      FAQs
+      <div class="sub header"> Should be used as reference if you have ever have questions</div>
+    </div>
+  </h2>
+
+
+  <div class="ui styled fluid accordion">
+
+    <%faqs.forEach(function(faq){%>
+
+    <div class="title">
+      <i class="dropdown icon"></i>
+      <%=faq.title%>
+    </div>
+    <div class="content">
+      <p><%=faq.text%></p>
+    </div>
+    <%})%>
+  </div>
+
+
+  </div>
+
+
+  <% include ../partials/dashboard %>
+  <script type="text/javascript" src="/javascripts/memberpage.js"></script>
+
+
+  </body>
+
 </html>
