@@ -55,7 +55,7 @@ cd Slide-Website
 npm install
 npm start
 ```
-
+Access website on localhost with the port number printed on terminal (usually 3000).
 ### Features
 
 General members have the ability to:
